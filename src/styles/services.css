@@ -1,0 +1,255 @@
+/* ==========================================
+   OUR CORE SERVICES SECTION STYLES
+   Las Colinas Hospitality Management
+   Palette:
+   Dark Navy: #121F34
+   Gold:      #B08C48
+   Beige:     #F5F2EA
+   White:     #FFFFFF
+   ========================================== */
+
+.services-section {
+  position: relative;
+  background-color: #121F34; /* LCHM Navy background */
+  color: var(--color-cream, #F5F2EA);
+  padding: 75px 2rem; /* Equal top and bottom padding */
+  overflow: hidden;
+}
+
+.services-section .editorial-header {
+  margin-bottom: 3rem; /* Equalized gap above and below grid */
+}
+
+.services-container {
+  max-width: 1340px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ------------------------------------------
+   HEADER STYLES
+   ------------------------------------------ */
+.services-header {
+  text-align: center;
+  margin-bottom: var(--section-gap);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.services-heading {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--color-white, #FFFFFF);
+  line-height: 1.2;
+}
+
+.services-gold-line-accent {
+  width: 80px;
+  height: 2px;
+  background-color: var(--color-gold, #B08C48);
+  margin-top: var(--spacing-label-to-heading);
+  border-radius: 1px;
+}
+
+/* ------------------------------------------
+   SERVICES GRID (Responsive Columns)
+   ------------------------------------------ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  width: 100%;
+  margin-bottom: 3.5rem;
+}
+
+/* ------------------------------------------
+   SERVICE CARDS (Square Minimalist Design)
+   ------------------------------------------ */
+.service-card {
+  position: relative;
+  height: 290px;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(176, 140, 72, 0.16);
+  background-color: #17253B; /* Slightly lighter navy for card contrast */
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.25rem 1.5rem;
+  transition: border-color 0.4s ease,
+              box-shadow 0.4s ease,
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card:hover {
+  border-color: var(--color-gold, #B08C48);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+}
+
+.service-card:focus-visible {
+  border-color: var(--color-gold-light, #DFBE7A);
+  box-shadow: 0 0 0 3px rgba(176, 140, 72, 0.4);
+}
+
+/* Background image - fades in on hover */
+.service-card-image-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(1.08);
+}
+
+.service-card:hover .service-card-image-wrap {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.service-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.65) contrast(1.05);
+}
+
+/* Dark overlay inside image wrap for text readability */
+.service-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 19, 34, 0.76);
+  z-index: 2;
+}
+
+/* Card Content Area */
+.service-card-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  height: 100%;
+  width: 100%;
+}
+
+/* Centered Icon Box */
+.service-card-icon-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold, #B08C48);
+  margin: 0;
+  transition: transform 0.4s ease, color 0.3s ease;
+}
+
+.service-card-lucide-icon {
+  width: 38px;
+  height: 38px;
+  stroke-width: 1.25px;
+}
+
+.service-card:hover .service-card-icon-center {
+  transform: scale(1.08) rotate(3deg);
+  color: var(--color-gold-light, #DFBE7A);
+}
+
+/* Title at the bottom */
+.service-card-title-bottom {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--color-white, #FFFFFF);
+  line-height: 1.35;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.service-card:hover .service-card-title-bottom {
+  color: var(--color-gold-light, #DFBE7A);
+}
+
+/* ------------------------------------------
+   CTA WRAPPER
+   ------------------------------------------ */
+.services-cta-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* ------------------------------------------
+   RESPONSIVE DESIGN BREAKPOINTS
+   ------------------------------------------ */
+
+@media (max-width: 1024px) {
+  .services-section {
+    padding: 60px 2.5rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-section {
+    padding: 40px 1.25rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 2.5rem;
+  }
+
+  .services-cta-wrap {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .services-cta-wrap .btn-gold,
+  .services-cta-wrap .btn-secondary {
+    width: 100%;
+  }
+}
+
+/* Reduced Motion Compliance */
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .service-card-image-wrap,
+  .service-card-icon-center {
+    transition: none !important;
+    transform: none !important;
+  }
+}

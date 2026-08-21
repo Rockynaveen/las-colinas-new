@@ -1,0 +1,287 @@
+/* Luxury Editorial Timeline Our Story Styles - Las Colinas Hospitality Management */
+
+.our-story-section {
+  position: relative;
+  background-color: var(--color-white, #FFFFFF);
+  color: var(--color-navy-dark, #0A1322);
+  padding: 6rem 2rem;
+  overflow: hidden;
+}
+
+.our-story-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.our-story-header {
+  text-align: center;
+  margin-bottom: 4.5rem;
+}
+
+.story-label-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.story-label-gold-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-gold, #B08C48);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(176, 140, 72, 0.5);
+}
+
+.story-label {
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--color-gold, #B08C48);
+  text-transform: uppercase;
+}
+
+.story-main-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 500;
+  color: var(--color-navy-dark, #0A1322);
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+}
+
+.story-heading-line2 {
+  color: var(--color-navy-dark, #0A1322);
+  font-weight: 400;
+}
+
+.story-gold-divider {
+  width: 50px;
+  height: 1px;
+  background-color: var(--color-gold, #B08C48);
+  margin: 0 auto;
+}
+
+/* ------------------------------------------
+   VERTICAL TIMELINE TRACK
+   ------------------------------------------ */
+.story-timeline-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.story-timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: rgba(18, 31, 52, 0.15); /* Muted gray line */
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.story-timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem; /* Spacious spacing between timeline stages */
+}
+
+.story-timeline-row {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Timeline Sides (Left & Right columns) */
+.story-timeline-side {
+  width: 44%;
+  display: flex;
+  flex-direction: column;
+}
+
+.story-timeline-side.side-left {
+  align-items: flex-end;
+  text-align: right;
+  padding-right: 2.5rem;
+}
+
+.story-timeline-side.side-right {
+  align-items: flex-start;
+  text-align: left;
+  padding-left: 2.5rem;
+}
+
+/* Center timeline node and year */
+.story-timeline-center {
+  width: 12%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.story-timeline-node {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-gold, #B08C48);
+  border: 2px solid var(--color-white, #FFFFFF);
+  box-shadow: 0 0 0 2px rgba(176, 140, 72, 0.25);
+  margin-bottom: 0.5rem;
+  z-index: 3;
+}
+
+.story-timeline-year {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-navy-dark, #0A1322);
+  letter-spacing: 0.05em;
+  background-color: var(--color-white, #FFFFFF);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+/* ------------------------------------------
+   SMALL REDUCED IMAGE SIZE
+   ------------------------------------------ */
+.story-small-image-frame {
+  width: 100%;
+  max-width: 260px; /* Reduced image size! */
+  aspect-ratio: 16 / 9; /* Sleek rectangular landscape */
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(18, 31, 52, 0.08);
+}
+
+.story-small-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ------------------------------------------
+   NARRATIVE CONTENT BLOCK
+   ------------------------------------------ */
+.story-clean-content-block {
+  max-width: 380px;
+}
+
+.story-stage-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+
+.side-left .story-stage-title-wrap {
+  justify-content: flex-end;
+}
+
+.story-stage-icon {
+  color: var(--color-gold, #B08C48);
+  flex-shrink: 0;
+}
+
+.story-stage-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-navy-dark, #0A1322);
+}
+
+.story-stage-desc {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: rgba(18, 31, 52, 0.75);
+  margin: 0;
+}
+
+/* ------------------------------------------
+   RESPONSIVE DESIGN BREAKPOINTS
+   ------------------------------------------ */
+
+@media (max-width: 768px) {
+  .our-story-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .story-timeline-line {
+    left: 20px; /* Align timeline line to the left on mobile */
+    transform: none;
+  }
+
+  .story-timeline-list {
+    gap: 3rem;
+  }
+
+  .story-timeline-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 40px; /* Leave space for timeline line */
+  }
+
+  .story-timeline-side {
+    width: 100% !important;
+    text-align: left !important;
+    align-items: flex-start !important;
+    padding: 0 !important;
+  }
+
+  /* Swap order so text always precedes the image on mobile */
+  .story-timeline-side.side-content {
+    order: 1;
+  }
+
+  .story-timeline-side.side-image {
+    order: 2;
+    margin-top: 1.25rem;
+  }
+
+  .story-timeline-center {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: auto;
+    align-items: flex-start;
+    transform: translateX(-5px); /* Position nodes on line */
+  }
+
+  .story-timeline-node {
+    margin-bottom: 0;
+  }
+
+  .story-timeline-year {
+    font-size: 0.75rem;
+    padding: 0;
+    position: absolute;
+    left: 24px;
+    top: -4px;
+    background: transparent;
+    font-weight: 800;
+  }
+
+  .story-clean-content-block {
+    max-width: 100%;
+    margin-top: 0.75rem; /* Leave space for absolute positioned year badge */
+  }
+
+  .story-stage-title-wrap {
+    justify-content: flex-start !important;
+  }
+
+  .story-small-image-frame {
+    max-width: 280px;
+    aspect-ratio: 16 / 9;
+  }
+}

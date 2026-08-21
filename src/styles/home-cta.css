@@ -1,0 +1,336 @@
+.home-cta-section {
+  background-color: var(--color-navy-dark); /* #0A1322 */
+  padding: 3.5rem 0 1.5rem; /* Reduced bottom padding to snug up section gaps */
+  width: 100%;
+}
+
+.home-cta-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+/* Elegant CTA Banner Panel */
+.cta-banner-panel {
+  background-color: #060C14; /* very dark, elegant navy/black */
+  border-radius: 4px; /* subtle rounded corners matching the screenshot */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+}
+
+/* Inner Gold Frame Border */
+.cta-inner-frame {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  border: 1px solid rgba(176, 140, 72, 0.45);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Flex Layout: Text on Left, Masked Image on Right */
+.cta-banner-grid {
+  display: flex;
+  min-height: 400px;
+  position: relative;
+  width: 100%;
+}
+
+/* Left Column Styling */
+.cta-left-column {
+  flex: 1.15;
+  padding: 4rem 3.5rem 4rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 2;
+  position: relative;
+}
+
+.cta-banner-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 400;
+  color: var(--color-white);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.cta-banner-heading .gold-text {
+  color: var(--color-gold);
+  font-style: italic;
+}
+
+/* Horizontal Gold Accent Line */
+.cta-heading-divider {
+  width: 50px;
+  height: 2px;
+  background-color: var(--color-gold);
+  margin: var(--spacing-label-to-heading) 0;
+}
+
+.cta-banner-subtext {
+  font-family: var(--font-sans);
+  font-size: clamp(0.9rem, 1.8vw, 0.98rem);
+  color: rgba(245, 242, 234, 0.8);
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+  max-width: 580px;
+}
+
+/* Button layout group */
+.cta-banner-buttons {
+  display: flex;
+  gap: 1.25rem;
+}
+
+/* Gold Filled Rectangular Button */
+.cta-btn-gold-rect {
+  background-color: var(--color-gold);
+  color: #060C14;
+  border: 1px solid var(--color-gold);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.825rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.75rem;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--transition-smooth);
+}
+
+.cta-btn-gold-rect:hover {
+  background-color: var(--color-gold-hover);
+  border-color: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(176, 140, 72, 0.35);
+}
+
+/* Outline Rectangular Button */
+.cta-btn-outline-rect {
+  background-color: transparent;
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.825rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.75rem;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--transition-smooth);
+}
+
+.cta-btn-outline-rect:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(176, 140, 72, 0.15);
+}
+
+.cta-btn-outline-rect .gold-icon {
+  color: var(--color-gold);
+  transition: transform var(--transition-fast);
+}
+
+.cta-btn-outline-rect:hover .gold-icon {
+  transform: scale(1.08);
+}
+
+/* Right Column Styling */
+.cta-right-column {
+  flex: 0.85;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.cta-hotel-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* Left-to-right fade mask: Blends image into solid navy on the left */
+.cta-image-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #060C14 0%, rgba(6, 12, 20, 0.98) 8%, rgba(6, 12, 20, 0.7) 45%, rgba(6, 12, 20, 0) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Vector Logo Overlay Bottom-Right */
+.cta-logo-overlay {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(6, 12, 20, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.9rem 1.4rem;
+  border-radius: 2px;
+  border: 1px solid rgba(176, 140, 72, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.cta-logo-crest {
+  width: 75px;
+  height: 30px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-logo-crest-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(176, 140, 72, 0.2));
+}
+
+.cta-logo-text-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-logo-primary {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--color-white);
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.cta-logo-secondary {
+  font-family: var(--font-sans);
+  font-size: 0.54rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--color-gold);
+  margin-top: 0.25rem;
+  line-height: 1.1;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.cta-logo-tagline {
+  font-family: var(--font-sans);
+  font-size: 0.44rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--color-cream);
+  opacity: 0.8;
+  margin-top: 0.4rem;
+  line-height: 1.1;
+}
+
+/* Responsive breakdowns */
+@media (max-width: 1080px) {
+  .cta-left-column {
+    flex: 1.1;
+    padding: 4.5rem 3rem 4.5rem 4rem;
+  }
+  .cta-right-column {
+    flex: 0.9;
+  }
+}
+
+@media (max-width: 991px) {
+  .cta-banner-grid {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .cta-left-column {
+    flex: none;
+    padding: 4rem 3.5rem;
+    width: 100%;
+  }
+  
+  .cta-right-column {
+    flex: none;
+    height: 280px;
+    width: 100%;
+  }
+  
+  /* Fade from bottom to top on tablet/mobile */
+  .cta-image-mask {
+    background: linear-gradient(0deg, #060C14 0%, rgba(6, 12, 20, 0.95) 15%, rgba(6, 12, 20, 0.6) 55%, rgba(6, 12, 20, 0) 100%);
+  }
+  
+  .cta-logo-overlay {
+    bottom: 25px;
+    right: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-cta-section {
+    padding: 2.5rem 0; /* Reduced top/bottom padding on mobile */
+  }
+  
+  .home-cta-container {
+    padding: 0 1.5rem;
+  }
+  
+  .cta-inner-frame {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .cta-left-column {
+    padding: 3.5rem 2rem;
+  }
+  
+  .cta-banner-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.85rem;
+  }
+  
+  .cta-btn-gold-rect, .cta-btn-outline-rect {
+    width: 100%;
+    padding: 1rem 1.75rem;
+  }
+}

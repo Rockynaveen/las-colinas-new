@@ -1,0 +1,282 @@
+/* luxury About Section Styles - 2 Column Layout - Las Colinas Hospitality Management */
+
+.about-section {
+  position: relative;
+  background-color: #ffffff !important;
+  /* Pure crisp white background */
+  color: #121F34;
+  padding: 4rem 2rem 4rem 3.5rem;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .about-section {
+    padding-top: 4.5rem;
+    padding-right: 3.5rem;
+    padding-bottom: 4.5rem;
+    padding-left: 6.5rem;
+    /* Increased left-side padding */
+  }
+}
+
+.about-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.about-grid-new {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Left Image Column */
+.about-image-col-new {
+  width: 100%;
+}
+
+.about-image-frame-new {
+  width: 100%;
+  border-radius: 20px;
+  /* 20px rounded corners */
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(18, 31, 52, 0.08);
+  border: 1px solid rgba(176, 140, 72, 0.12);
+  aspect-ratio: 16 / 10.5;
+  /* Reduced height aspect ratio */
+}
+
+.about-img-new {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-image-frame-new:hover .about-img-new {
+  transform: scale(1.035);
+}
+
+/* Right Content Column */
+.about-content-col-new {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.about-eyebrow-new {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #C6A457;
+  /* Warm golden tone matching screenshot */
+  letter-spacing: 0.22em;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.about-heading-new {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 3.8vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.18;
+  color: #121F34 !important;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.75rem;
+}
+
+.about-heading-new span.accent-gold-new {
+  color: #C6A457;
+  /* Warm gold headline accent */
+  font-weight: 400;
+}
+
+.about-desc-new {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #121F34 !important; /* Deep non-muted dark navy */
+  font-weight: 500;
+  margin-bottom: 2.25rem;
+  max-width: 540px;
+}
+
+/* Button style matching screenshot */
+.about-cta-btn-new {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: transparent;
+  color: #C6A457;
+  border: 1px solid #D4B66E;
+  padding: 0.85rem 2.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-cta-btn-new:hover {
+  background-color: #C6A457;
+  color: #FFFFFF;
+  border-color: #C6A457;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(198, 164, 87, 0.22);
+}
+
+.about-cta-arrow-new {
+  transition: transform 0.35s ease;
+}
+
+.about-cta-btn-new:hover .about-cta-arrow-new {
+  transform: translateX(4px);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .about-section {
+    padding: 5rem 2rem;
+  }
+
+  .about-grid-new {
+    gap: 3rem;
+  }
+
+  .about-heading-new {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-grid-new {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-content-col-new {
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-cta-btn-new {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .about-heading-new {
+    font-size: 1.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-desc-new {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* About Counter Section Styling */
+.about-counter-section {
+  background-color: #FAF8F5;
+  padding: 2.25rem 2rem 2.5rem;
+  border-top: 1px solid rgba(176, 140, 72, 0.1);
+  border-bottom: 1px solid rgba(176, 140, 72, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .about-counter-section {
+    padding: 2.5rem 3.5rem;
+  }
+}
+
+.about-counter-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.about-counter-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.about-counter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.about-counter-val {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 3.8vw, 3.25rem);
+  font-weight: 400;
+  color: #B08C48;
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+
+.about-counter-label {
+  font-family: var(--font-sans);
+  font-size: clamp(0.6rem, 1vw, 0.725rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #121F34;
+  text-transform: uppercase;
+}
+
+.about-counter-divider {
+  width: 1px;
+  height: 55px;
+  background-color: rgba(176, 140, 72, 0.22);
+  flex-shrink: 0;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 900px) {
+  .about-counter-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .about-counter-divider {
+    display: none;
+  }
+
+  .about-counter-item {
+    flex: 0 0 calc(50% - 1.5rem);
+  }
+}
+
+@media (max-width: 500px) {
+  .about-counter-section {
+    padding: 3.5rem 1.5rem 4.5rem;
+  }
+
+  .about-counter-item {
+    flex: 0 0 100%;
+    margin-bottom: 1rem;
+  }
+}

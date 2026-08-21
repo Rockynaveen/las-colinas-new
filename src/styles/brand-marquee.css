@@ -1,0 +1,125 @@
+/* ==========================================
+   BRAND LOGO MARQUEE STYLES
+   Las Colinas Hospitality Management
+   ========================================== */
+
+.brand-marquee-section {
+  position: relative;
+  background-color: #0A1322;
+  border-bottom: 1px solid rgba(176, 140, 72, 0.15);
+  padding: 2rem 0;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.brand-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Linear gradient overlays on the sides to fade the logos in/out */
+.brand-marquee-container::before,
+.brand-marquee-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.brand-marquee-container::before {
+  left: 0;
+  background: linear-gradient(90deg, #0A1322 0%, transparent 100%);
+}
+
+.brand-marquee-container::after {
+  right: 0;
+  background: linear-gradient(-90deg, #0A1322 0%, transparent 100%);
+}
+
+.brand-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 5rem;
+  animation: scrollMarquee 60s linear infinite;
+}
+
+.brand-logo-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Stylized Brand Logo SVG */
+.brand-logo-svg {
+  height: 38px;
+  width: auto;
+  color: #FFFFFF;
+  opacity: 0.75;
+  transition: opacity 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.brand-logo-item:hover .brand-logo-svg {
+  opacity: 1;
+  color: #FFFFFF;
+  transform: scale(1.03);
+}
+
+/* Mini Crest Separator */
+.brand-mini-crest {
+  width: 16px;
+  height: 16px;
+  color: #B08C48;
+  opacity: 0.5;
+  flex-shrink: 0;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.brand-logo-item:hover .brand-mini-crest {
+  transform: rotate(45deg) scale(1.1);
+  opacity: 0.9;
+}
+
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Reduced Motion support */
+@media (prefers-reduced-motion: reduce) {
+  .brand-marquee-track {
+    animation: none;
+    overflow-x: auto;
+    width: 100%;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 600px) {
+  .brand-marquee-section {
+    padding: 1.5rem 0;
+  }
+  
+  .brand-marquee-track {
+    gap: 3rem;
+  }
+  
+  .brand-logo-svg {
+    height: 28px;
+  }
+  
+  .brand-marquee-container::before,
+  .brand-marquee-container::after {
+    width: 60px;
+  }
+}
