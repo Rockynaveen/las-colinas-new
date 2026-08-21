@@ -1,0 +1,311 @@
+/* ==========================================
+   LEADERSHIP SECTION STYLES
+   Las Colinas Hospitality Management
+   ========================================== */
+
+.team-section {
+  position: relative;
+  background-color: #0A1322;
+  color: #F5F2EA;
+  padding: 4.5rem 2rem; /* Reduced top and bottom padding */
+  overflow: hidden;
+}
+
+.team-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.team-header {
+  text-align: center;
+  margin-bottom: 3rem; /* Reduced space below header */
+}
+
+.team-label-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.team-label-gold-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #B08C48;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(176, 140, 72, 0.5);
+}
+
+.team-label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: #B08C48;
+  text-transform: uppercase;
+}
+
+.team-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+}
+
+.team-heading-divider {
+  width: 60px;
+  height: 2px;
+  background-color: #B08C48;
+  margin: 0 auto;
+}
+
+/* Featured Executives (2-column layout) */
+.team-executives {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-bottom: 3.5rem; /* Reduced spacing below execs */
+}
+
+/* Featured Executive Card */
+.exec-card {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  background-color: #121F34;
+  border: 1px solid rgba(176, 140, 72, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.exec-card:hover {
+  transform: translateY(-5px);
+  border-color: #B08C48;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), 0 0 15px rgba(176, 140, 72, 0.15);
+}
+
+/* Profile Image Area / Placeholder */
+.profile-image-area {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  background-color: #0A1322;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-right: 1px solid rgba(176, 140, 72, 0.15);
+}
+
+.profile-avatar-crest {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #B08C48;
+  letter-spacing: 0.05em;
+  opacity: 0.45;
+  transition: all 0.4s ease;
+}
+
+.exec-card:hover .profile-avatar-crest {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.profile-crest-svg {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  stroke: rgba(176, 140, 72, 0.04);
+  stroke-width: 0.5px;
+  pointer-events: none;
+}
+
+.profile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(18, 31, 52, 0.4) 100%);
+  pointer-events: none;
+}
+
+/* Exec Content Panel */
+.exec-content {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.exec-name {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.exec-title {
+  font-family: var(--font-sans);
+  font-size: 0.785rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #B08C48;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.exec-bio {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: #F5F2EA;
+  opacity: 0.85;
+  margin: 0;
+}
+
+/* Standard Team Members Grid */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.member-card {
+  background-color: #121F34;
+  border: 1px solid rgba(176, 140, 72, 0.12);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.member-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(176, 140, 72, 0.6);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.member-image-area {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: #0A1322;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(176, 140, 72, 0.1);
+}
+
+.member-avatar-crest {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: #B08C48;
+  opacity: 0.35;
+  transition: all 0.4s ease;
+}
+
+.member-card:hover .member-avatar-crest {
+  transform: scale(1.08);
+  opacity: 0.7;
+}
+
+.member-content {
+  padding: 1.5rem 1.5rem 1.75rem 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.member-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin-bottom: 0.2rem;
+}
+
+.member-title {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #B08C48;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.member-bio {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: #F5F2EA;
+  opacity: 0.75;
+  margin: 0;
+}
+
+/* Responsiveness */
+@media (max-width: 1200px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .team-executives {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .exec-card {
+    grid-template-columns: 0.7fr 1.3fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .exec-card {
+    grid-template-columns: 1fr;
+  }
+  
+  .profile-image-area {
+    min-height: 200px;
+    border-right: none;
+    border-bottom: 1px solid rgba(176, 140, 72, 0.15);
+  }
+  
+  .team-section {
+    padding: 3.5rem 1.5rem; /* Reduced top and bottom padding on tablet */
+  }
+}
+
+@media (max-width: 500px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .team-section {
+    padding: 2.5rem 1rem; /* Reduced top and bottom padding on mobile */
+  }
+  
+  .team-header {
+    margin-bottom: 2rem; /* Reduced margin-bottom on mobile */
+  }
+  
+  .team-heading {
+    font-size: 2rem;
+  }
+}

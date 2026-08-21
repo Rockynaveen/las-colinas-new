@@ -1,0 +1,738 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Brand Color Palette */
+  --color-navy: #121F34;
+  --color-navy-dark: #0A1322;
+  --color-navy-light: #1D2E4A;
+  --color-gold: #A48111;
+  --color-gold-hover: #BF9924;
+  --color-gold-light: #E3C564;
+  --color-gold-dark: #806307;
+  --color-cream: #F5F2EA;
+  --color-white: #FFFFFF;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Global Section Spacing System */
+  --section-padding-top: 150px;
+  --section-padding-bottom: 150px;
+  --section-padding-top-large: 180px;
+  --section-padding-bottom-large: 180px;
+  --section-gap: 120px;
+  
+  /* Content Element Spacing System */
+  --spacing-label-to-heading: 24px;
+  --spacing-heading-to-desc: 32px;
+  --spacing-desc-to-cta: 48px;
+  --spacing-cards-to-next: 56px;
+  --spacing-image-to-text: 80px;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --section-padding-top: 120px;
+    --section-padding-bottom: 120px;
+    --section-padding-top-large: 140px;
+    --section-padding-bottom-large: 140px;
+    --section-gap: 90px;
+    
+    --spacing-label-to-heading: 20px;
+    --spacing-heading-to-desc: 26px;
+    --spacing-desc-to-cta: 36px;
+    --spacing-cards-to-next: 44px;
+    --spacing-image-to-text: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding-top: 90px;
+    --section-padding-bottom: 90px;
+    --section-padding-top-large: 100px;
+    --section-padding-bottom-large: 100px;
+    --section-gap: 70px;
+    
+    --spacing-label-to-heading: 18px;
+    --spacing-heading-to-desc: 22px;
+    --spacing-desc-to-cta: 30px;
+    --spacing-cards-to-next: 32px;
+    --spacing-image-to-text: 40px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-navy-dark);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(18, 31, 52, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(176, 140, 72, 0.25);
+}
+
+.glass-dropdown {
+  background: rgba(10, 19, 34, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(176, 140, 72, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(176, 140, 72, 0.15);
+}
+
+/* Gold Button Glow Effect */
+.btn-gold {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1.125rem 2.25rem;
+  border-radius: 2px;
+  border: 1px solid var(--color-gold);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  transition: all var(--transition-smooth);
+  box-shadow: 0 4px 20px rgba(176, 140, 72, 0.35);
+  text-decoration: none;
+}
+
+.btn-gold:hover {
+  background-color: var(--color-gold-hover);
+  border-color: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(176, 140, 72, 0.55), 0 0 20px rgba(223, 190, 122, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1.125rem 2.25rem;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  transition: all var(--transition-smooth);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: rgba(176, 140, 72, 0.18);
+  border-color: var(--color-gold);
+  color: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(176, 140, 72, 0.3);
+}
+
+/* Subtle Gold Line Accent */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-gold) 50%, transparent 100%);
+  width: 100%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-navy-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold-dark);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* ==========================================
+   EDITORIAL SECTION HEADER (WITH WATERMARK)
+   ========================================== */
+
+.editorial-header {
+  text-align: center;
+  margin-bottom: var(--section-gap);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+/* Flanked Lines with Central Crest Icon */
+.header-crest-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: var(--spacing-label-to-heading);
+}
+
+.header-crest-line {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(176, 140, 72, 0) 0%, rgba(176, 140, 72, 0.4) 60%, rgba(176, 140, 72, 0.85) 100%);
+}
+
+.header-crest-line:last-child {
+  background: linear-gradient(-90deg, rgba(176, 140, 72, 0) 0%, rgba(176, 140, 72, 0.4) 60%, rgba(176, 140, 72, 0.85) 100%);
+}
+
+.header-crest-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.header-crest-svg-icon {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(176, 140, 72, 0.25));
+}
+
+/* Heading title with watermark behind it */
+.header-title-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0;
+  width: 100%;
+}
+
+.editorial-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--color-white);
+  line-height: 1.2;
+  text-transform: uppercase;
+  z-index: 2;
+  position: relative;
+  margin: 0;
+}
+
+.header-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 240px;
+  height: 240px;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.25;
+}
+
+.header-watermark svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Subtitle under title */
+.editorial-subtext {
+  font-family: var(--font-sans);
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  line-height: 1.65;
+  color: var(--color-cream);
+  opacity: 0.75;
+  max-width: 750px;
+  margin: var(--spacing-heading-to-desc) auto 0 auto;
+  text-align: center;
+}
+
+/* ==========================================================================
+   LIGHT THEME OVERRIDES (White and Beige Theme)
+   ========================================================================== */
+.light-theme {
+  --color-navy: #FFFFFF;
+  --color-navy-dark: #FAF8F5;
+  --color-navy-light: #F4F1EA;
+  --color-cream: #121F34;
+  --color-white: #0A1322;
+
+  background-color: #FAF8F5 !important;
+  color: #121F34 !important;
+}
+
+/* 1. Global Page Backgrounds and Colors */
+.light-theme .careers-section,
+.light-theme .contact-section,
+.light-theme .core-values-section,
+.light-theme .leadership-section,
+.light-theme .sp-section,
+.light-theme .vision-mission-section,
+.light-theme .why-choose-section,
+.light-theme .our-story-section,
+.light-theme .competitive-advantage-section {
+  background-color: #FFFFFF !important;
+  color: #121F34 !important;
+}
+
+.light-theme .about-section {
+  background-color: #F5F2EA !important; /* Warm beige/cream background matching Concept 3 */
+  color: #121F34 !important;
+}
+
+/* Alternating sections background to solid beige/cream */
+.light-theme .port-filter-section,
+.light-theme .home-leadership-section {
+  background: #F5F2EA !important;
+  color: #121F34 !important;
+}
+
+
+
+
+
+/* 3. Typography & Subtext Overrides for hardcoded rgba colors */
+.light-theme h1,
+.light-theme h2,
+.light-theme h3,
+.light-theme h4,
+.light-theme .editorial-heading,
+.light-theme .about-heading,
+.light-theme .why-section-heading,
+.light-theme .services-heading,
+.light-theme .port-section-heading,
+.light-theme .home-leadership-section .editorial-heading {
+  color: #0A1322 !important;
+}
+
+.light-theme p,
+.light-theme .about-paragraph,
+.light-theme .why-section-description,
+.light-theme .editorial-subtext,
+.light-theme .port-section-subtitle,
+.light-theme .cta-banner-subtext {
+  color: rgba(18, 31, 52, 0.75) !important;
+}
+
+.light-theme .about-eyebrow-pill {
+  color: var(--color-gold) !important;
+}
+
+/* 4. Component Elements & Cards styling */
+/* About Section Stats and Cards */
+.light-theme .about-stat-card {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+ 
+.light-theme .about-stat-value {
+  color: #A48111 !important;
+}
+.light-theme .about-stat-label {
+  color: rgba(18, 31, 52, 0.6) !important;
+}
+.light-theme .about-cta-btn {
+  color: #A48111 !important;
+  border-color: #A48111 !important;
+}
+.light-theme .about-cta-btn:hover {
+  background-color: #A48111 !important;
+  color: #FFFFFF !important;
+}
+
+/* Services Cards */
+.light-theme .service-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(18, 31, 52, 0.06) !important;
+  box-shadow: 0 10px 30px rgba(18, 31, 52, 0.04) !important;
+}
+.light-theme .service-card:hover {
+  border-color: var(--color-gold) !important;
+  box-shadow: 0 15px 35px rgba(176, 140, 72, 0.1) !important;
+}
+.light-theme .sp-bullet-text {
+  color: rgba(18, 31, 52, 0.8) !important;
+}
+.light-theme .service-icon-container {
+  background: rgba(176, 140, 72, 0.1) !important;
+  color: var(--color-gold) !important;
+}
+.light-theme .service-title {
+  color: #0A1322 !important;
+}
+.light-theme .service-description {
+  color: rgba(18, 31, 52, 0.7) !important;
+}
+.light-theme .service-bullet {
+  color: rgba(18, 31, 52, 0.8) !important;
+}
+
+/* Why Choose Us Interactive components */
+.light-theme .why-choose-section {
+  background-color: #FFFFFF !important;
+}
+.light-theme .why-bg-overlay {
+  background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.85) 10%, #FFFFFF 75%) !important;
+}
+.light-theme .why-circle-outline {
+  border-color: rgba(176, 140, 72, 0.25) !important;
+}
+.light-theme .why-circle-node {
+  background-color: #FFFFFF !important;
+  border-color: rgba(18, 31, 52, 0.1) !important;
+  color: #121F34 !important;
+}
+.light-theme .why-circle-node:hover,
+.light-theme .why-circle-node.active {
+  border-color: var(--color-gold) !important;
+  color: #FFFFFF !important;
+  background-color: var(--color-gold) !important;
+}
+.light-theme .why-circle-center {
+  background-color: #FAF8F5 !important;
+  border-color: rgba(176, 140, 72, 0.25) !important;
+  box-shadow: inset 0 0 10px rgba(18, 31, 52, 0.05), 0 10px 40px rgba(18, 31, 52, 0.08) !important;
+}
+.light-theme .why-center-title {
+  color: var(--color-gold) !important;
+}
+.light-theme .why-center-desc {
+  color: rgba(18, 31, 52, 0.8) !important;
+}
+.light-theme .why-stat-card {
+  background-color: #F5F2EA !important;
+  border: 1px solid rgba(176, 140, 72, 0.16) !important;
+}
+.light-theme .why-stat-value {
+  color: #0A1322 !important;
+}
+.light-theme .why-stat-label {
+  color: var(--color-gold) !important;
+}
+
+/* Portfolio Cards */
+.light-theme .port-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(18, 31, 52, 0.06) !important;
+  box-shadow: 0 10px 30px rgba(18, 31, 52, 0.04) !important;
+}
+.light-theme .port-card-name {
+  color: #FFFFFF !important;
+}
+.light-theme .port-card-interaction {
+  color: var(--color-gold) !important;
+}
+.light-theme .port-slider-arrow {
+  background: #FFFFFF !important;
+  border-color: rgba(176, 140, 72, 0.3) !important;
+  color: #121F34 !important;
+}
+.light-theme .port-slider-arrow:hover:not(:disabled) {
+  background: var(--color-gold) !important;
+  color: #FFFFFF !important;
+}
+
+/* Leadership Team Section */
+.light-theme .home-leadership-section {
+  background-color: #F5F2EA !important;
+}
+.light-theme .team-pill-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(176, 140, 72, 0.15) !important;
+  box-shadow: 0 10px 30px rgba(18, 31, 52, 0.04) !important;
+}
+.light-theme .team-pill-card:hover {
+  border-color: var(--color-gold) !important;
+  box-shadow: 0 20px 40px rgba(18, 31, 52, 0.08), 0 0 18px rgba(176, 140, 72, 0.15) !important;
+}
+.light-theme .member-name-text {
+  color: #0A1322 !important;
+}
+.light-theme .member-role-text {
+  color: var(--color-gold) !important;
+}
+.light-theme .leadership-pagination-number {
+  color: rgba(18, 31, 52, 0.8) !important;
+}
+.light-theme .carousel-arrow-btn {
+  background-color: #FFFFFF !important;
+  border-color: rgba(176, 140, 72, 0.3) !important;
+  color: #121F34 !important;
+}
+.light-theme .carousel-arrow-btn:hover:not(:disabled) {
+  background-color: var(--color-gold) !important;
+  color: #FFFFFF !important;
+}
+
+/* Header Dropdowns */
+.light-theme .dropdown-panel {
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(176, 140, 72, 0.3) !important;
+  box-shadow: 0 10px 30px rgba(18, 31, 52, 0.08) !important;
+}
+.light-theme .dropdown-panel-link {
+  color: #121F34 !important;
+}
+.light-theme .dropdown-panel-link:hover {
+  color: #A48111 !important;
+  background-color: #F5F2EA !important;
+}
+
+/* 5. Dark Section Resets (Sections that should remain dark) */
+
+/* Home CTA Section Reset */
+.light-theme .home-cta-section {
+  --color-navy: #121F34;
+  --color-navy-dark: #0A1322;
+  --color-navy-light: #1D2E4A;
+  --color-cream: #F5F2EA;
+  --color-white: #FFFFFF;
+  background-color: #0A1322 !important;
+}
+
+.light-theme .cta-banner-panel {
+  background-color: #060C14 !important;
+  border: none !important;
+}
+
+.light-theme .home-cta-section h2.cta-banner-heading {
+  color: var(--color-white) !important;
+}
+
+.light-theme .home-cta-section p.cta-banner-subtext {
+  color: rgba(245, 242, 234, 0.8) !important;
+}
+
+.light-theme .cta-btn-outline-rect {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: #FFFFFF !important;
+}
+
+.light-theme .cta-btn-outline-rect:hover {
+  border-color: var(--color-gold) !important;
+  color: var(--color-gold-light) !important;
+  background-color: transparent !important;
+}
+
+.light-theme .cta-logo-primary {
+  color: #FFFFFF !important;
+}
+
+.light-theme .cta-logo-tagline {
+  color: #FAF8F5 !important;
+}
+
+/* Hero initial state (when not scrolled, keep header light/white/gold over dark hero background) */
+.light-theme .site-header:not(.scrolled) {
+  --color-navy: #121F34;
+  --color-navy-dark: #0A1322;
+  --color-navy-light: #1D2E4A;
+  --color-cream: #F5F2EA;
+  --color-white: #FFFFFF;
+}
+
+/* Hero Section */
+.light-theme .hero-section {
+  --color-navy-dark: #0A1322;
+  --color-cream: #F5F2EA;
+  --color-white: #FFFFFF;
+}
+
+.light-theme .hero-section p,
+.light-theme .hero-section .hero-short-desc {
+  color: rgba(245, 242, 234, 0.92) !important;
+}
+
+.light-theme .hero-section .hero-highlight-text {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.light-theme .hero-section h1,
+.light-theme .hero-section .hero-title {
+  color: var(--color-white) !important;
+}
+
+/* About hero sits on a dark photo — do not force light-theme navy text */
+.light-theme .about-hero .about-content h1 {
+  color: #f5f2eb !important;
+}
+
+.light-theme .about-hero .about-content p {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.light-theme .overview-main-heading,
+.light-theme .story-main-heading {
+  color: #0a1629 !important;
+}
+
+.light-theme .overview-desc-para,
+.light-theme .story-desc-para {
+  color: #4a5563 !important;
+}
+
+.light-theme .lchm-heading {
+  color: #0b132b !important;
+}
+
+.light-theme .lchm-heading--light,
+.light-theme .lchm-team .team-static-card-name {
+  color: #f8f4f0 !important;
+}
+
+.light-theme .lchm-body {
+  color: #3d4658 !important;
+}
+
+.light-theme .lchm-body--light,
+.light-theme .lchm-value-desc {
+  color: rgba(248, 244, 240, 0.78) !important;
+}
+
+.light-theme .lchm-vm-title,
+.light-theme .lchm-value-title,
+.light-theme .lchm-adv-title,
+.light-theme .lchm-team .team-static-card-role {
+  color: #c5a059 !important;
+}
+
+.light-theme .lchm-vm-text,
+.light-theme .lchm-adv-desc {
+  color: #4a5366 !important;
+}
+
+.light-theme .lchm-services-heading {
+  color: #1a1a1a !important;
+}
+
+.light-theme .svc-hero-title,
+.light-theme .svc-section-title,
+.light-theme .svc-card-title {
+  color: #0b132b !important;
+}
+
+.light-theme .svc-hero-desc,
+.light-theme .svc-section-sub,
+.light-theme .svc-card-desc,
+.light-theme .svc-why-text,
+.light-theme .svc-cta-desc {
+  color: #4a5366 !important;
+}
+
+/* Dark About cards: Vision/Mission, advantage tiles, team on navy */
+.light-theme .vm-column-title,
+.light-theme .advantage-static-card-title,
+.light-theme .team-center-heading,
+.light-theme .team-static-card-name {
+  color: #FFFFFF !important;
+}
+
+.light-theme .vm-column-desc,
+.light-theme .advantage-static-card-desc {
+  color: #D1D5DB !important;
+}
+
+.light-theme .team-static-card-role {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.light-theme .team-static-card-shortbio {
+  color: #D1D5DB !important;
+}
+
+/* Footer Section Reset */
+.light-theme .site-footer {
+  --color-navy: #121F34;
+  --color-navy-dark: #0A1322;
+  --color-navy-light: #1D2E4A;
+  --color-cream: #F5F2EA;
+  --color-white: #FFFFFF;
+  background-color: #070D18 !important;
+}
+
+.light-theme .site-footer h1,
+.light-theme .site-footer h2,
+.light-theme .site-footer h3,
+.light-theme .site-footer h4,
+.light-theme .site-footer .column-title {
+  color: var(--color-gold) !important;
+}
+
+.light-theme .site-footer .newsletter-heading {
+  color: var(--color-gold-light) !important;
+}
+
+.light-theme .site-footer p,
+.light-theme .site-footer .footer-brand-desc {
+  color: rgba(245, 242, 234, 0.7) !important;
+}
+
+.light-theme .site-footer .newsletter-desc {
+  color: rgba(245, 242, 234, 0.75) !important;
+}
+
+.light-theme .site-footer .footer-contact-info,
+.light-theme .site-footer .footer-contact-link,
+.light-theme .site-footer .footer-link {
+  color: rgba(245, 242, 234, 0.65) !important;
+}
+
+.light-theme .site-footer .footer-property-name {
+  color: rgba(245, 242, 234, 0.9) !important;
+}
+
+.light-theme .site-footer .footer-property-action {
+  color: rgba(245, 242, 234, 0.45) !important;
+}
+
+.light-theme .site-footer .copyright-text {
+  color: rgba(245, 242, 234, 0.45) !important;
+}
+
+
+

@@ -1,0 +1,204 @@
+/* ==========================================
+   CORE VALUES SECTION STYLES
+   Las Colinas Hospitality Management
+   ========================================== */
+
+.values-section {
+  position: relative;
+  background-color: #0A1322;
+  color: #F5F2EA;
+  padding: 8rem 2rem;
+  overflow: hidden;
+}
+
+.values-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.values-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.values-label-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.values-label-gold-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #B08C48;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(176, 140, 72, 0.5);
+}
+
+.values-label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: #B08C48;
+  text-transform: uppercase;
+}
+
+.values-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+}
+
+.values-heading-divider {
+  width: 60px;
+  height: 2px;
+  background-color: #B08C48;
+  margin: 0 auto;
+}
+
+/* Grid Layout (4x2 on Desktop, 2x4 on Tablet, 1 col on Mobile) */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Value Card Styling */
+.value-card {
+  position: relative;
+  background-color: #121F34;
+  border: 1px solid rgba(176, 140, 72, 0.15);
+  border-radius: 6px;
+  padding: 2.5rem 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+  overflow: hidden;
+}
+
+.value-card-overlay-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(176, 140, 72, 0.08) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.value-card:hover .value-card-overlay-bg {
+  opacity: 1;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+  border-color: #B08C48;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 10px rgba(176, 140, 72, 0.15);
+}
+
+/* Icon Style */
+.value-icon-wrapper {
+  width: 46px;
+  height: 46px;
+  border-radius: 4px;
+  background-color: rgba(176, 140, 72, 0.1);
+  border: 1px solid rgba(176, 140, 72, 0.25);
+  color: #B08C48;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.75rem;
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+
+.value-card:hover .value-icon-wrapper {
+  background-color: #B08C48;
+  border-color: #B08C48;
+  color: #FFFFFF;
+  transform: scale(1.05);
+}
+
+/* Title & Text */
+.value-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+  letter-spacing: 0.01em;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.value-card:hover .value-title {
+  color: #DFBE7A;
+}
+
+.value-desc {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #F5F2EA;
+  opacity: 0.85;
+  margin: 0;
+  z-index: 2;
+}
+
+/* Gold Underline Slide Indicator */
+.value-bottom-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #B08C48;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 3;
+}
+
+.value-card:hover .value-bottom-line {
+  transform: scaleX(1);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .values-section {
+    padding: 6rem 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .values-section {
+    padding: 5rem 1rem;
+  }
+  .values-header {
+    margin-bottom: 3.5rem;
+  }
+  .values-heading {
+    font-size: 2rem;
+  }
+}
