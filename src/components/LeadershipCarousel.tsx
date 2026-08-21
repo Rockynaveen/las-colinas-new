@@ -176,7 +176,7 @@ export const LeadershipCarousel: React.FC = () => {
   const displayIndex = ((currentIndex - N) % N + N) % N + 1;
 
   return (
-    <section className="home-leadership-section">
+    <section id="team" className="home-leadership-section">
       <div className="home-leadership-container">
         
         {/* Section Header */}

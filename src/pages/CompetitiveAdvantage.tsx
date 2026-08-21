@@ -7,7 +7,6 @@ import {
   ShieldCheck,
   Coins,
   Handshake,
-  BarChart3,
   Check,
 } from 'lucide-react';
 import { SectionLabel } from '../components/About/SectionLabel';
@@ -58,12 +57,15 @@ const advantages: AdvantageItem[] = [
   },
 ];
 
-const metrics = [
-  { title: 'Increase Revenue', icon: TrendingUp },
-  { title: 'Improve Profitability', icon: BarChart3 },
-  { title: 'Protect Your Investment', icon: ShieldCheck },
-  { title: 'Elevate Guest Satisfaction', icon: Award },
-  { title: 'Build Long-Term Asset Value', icon: Coins },
+const checkPillsRow1 = [
+  'Increase Revenue',
+  'Improve Profitability',
+  'Protect Your Investment',
+];
+
+const checkPillsRow2 = [
+  'Elevate Guest Satisfaction',
+  'Build Long-Term Asset Value',
 ];
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -72,59 +74,82 @@ export const CompetitiveAdvantage: React.FC = () => {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="advantage" className="lchm-section lchm-section--cream">
+    <section id="advantage" className="lchm-section lchm-section--cream lchm-adv-exact-section">
       <div className="lchm-inner">
-        <div className="lchm-adv-layout">
-          <motion.div
-            className="lchm-adv-copy"
-            initial={reduceMotion ? false : { opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.7, ease }}
-          >
-            <SectionLabel number="05" label="OUR COMPETITIVE ADVANTAGE" />
-            <h2 className="lchm-heading">
-              We Deliver More Than Hotel Management
-            </h2>
-            <p className="lchm-body">
-              At Las Colinas Hospitality Management, we become an extension of your ownership team.
-            </p>
-            <ul className="lchm-adv-checks">
-              {metrics.map((metric) => (
-                <li key={metric.title}>
-                  <span className="lchm-adv-check">
-                    <Check size={12} strokeWidth={2.4} />
-                  </span>
-                  {metric.title}
-                </li>
-              ))}
-            </ul>
-            <p className="lchm-body lchm-adv-caption">
-              Every strategy is tailored to your property's unique market, ownership objectives, and long-term vision.
-            </p>
-          </motion.div>
+        {/* Centered Section Header */}
+        <motion.div
+          className="lchm-adv-exact-header"
+          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.7, ease }}
+        >
+          {/* Badge */}
+          <SectionLabel number="05" label="OUR COMPETITIVE ADVANTAGE" tone="light" />
 
-          <div className="lchm-adv-grid">
-            {advantages.map((adv, idx) => {
-              const Icon = adv.icon;
-              return (
-                <motion.article
-                  key={adv.id}
-                  className="lchm-adv-card"
-                  initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.15 }}
-                  transition={{ duration: 0.5, delay: idx * 0.06, ease }}
-                >
-                  <div className="lchm-adv-icon">
-                    <Icon size={38} strokeWidth={1.5} />
-                  </div>
-                  <h3 className="lchm-adv-title">{adv.title}</h3>
-                  <p className="lchm-adv-desc">{adv.desc}</p>
-                </motion.article>
-              );
-            })}
+          {/* Two-Tone Title */}
+          <h2 className="lchm-adv-exact-heading">
+            <span className="heading-line-navy">We Deliver More Than</span>
+            <span className="heading-line-gold">Hotel Management</span>
+          </h2>
+
+          {/* Subtext 1 */}
+          <p className="lchm-adv-exact-subtext">
+            At Las Colinas Hospitality Management, we become an extension of your ownership team.
+          </p>
+
+          {/* Checkmark Pills */}
+          <div className="lchm-adv-pills-container">
+            <div className="lchm-adv-pills-row">
+              {checkPillsRow1.map((title) => (
+                <div key={title} className="lchm-adv-pill-item">
+                  <span className="pill-check-icon">
+                    <Check size={11} strokeWidth={3} />
+                  </span>
+                  <span className="pill-check-text">{title}</span>
+                </div>
+              ))}
+            </div>
+            <div className="lchm-adv-pills-row">
+              {checkPillsRow2.map((title) => (
+                <div key={title} className="lchm-adv-pill-item">
+                  <span className="pill-check-icon">
+                    <Check size={11} strokeWidth={3} />
+                  </span>
+                  <span className="pill-check-text">{title}</span>
+                </div>
+              ))}
+            </div>
           </div>
+
+          {/* Subtext 2 */}
+          <p className="lchm-adv-exact-caption">
+            Every strategy is tailored to your property's unique market, ownership objectives, and long-term vision.
+          </p>
+        </motion.div>
+
+        {/* 6 Cards Grid (3 Columns x 2 Rows) */}
+        <div className="lchm-adv-exact-grid">
+          {advantages.map((adv, idx) => {
+            const Icon = adv.icon;
+            return (
+              <motion.article
+                key={adv.id}
+                className="lchm-adv-exact-card"
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.5, delay: idx * 0.06, ease }}
+              >
+                {/* Dark Navy Circle at Top Center */}
+                <div className="lchm-adv-exact-icon-circle">
+                  <Icon size={38} strokeWidth={1.5} />
+                </div>
+                <h3 className="lchm-adv-exact-title">{adv.title}</h3>
+                <p className="lchm-adv-exact-desc">{adv.desc}</p>
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>
