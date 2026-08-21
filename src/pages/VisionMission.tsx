@@ -12,6 +12,7 @@ export const VisionMission: React.FC = () => {
     <section id="vision" className="lchm-section lchm-section--cream">
       <div className="lchm-inner">
         <motion.div
+          className="lchm-section-header-centered"
           initial={reduceMotion ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -29,7 +30,7 @@ export const VisionMission: React.FC = () => {
             transition={{ duration: 0.65, delay: 0.08, ease }}
           >
             <div className="lchm-vm-icon">
-              <Eye size={38} strokeWidth={1.3} />
+              <Eye size={54} strokeWidth={1.5} />
             </div>
             <h3 className="lchm-vm-title">VISION</h3>
             <p className="lchm-vm-text">
@@ -47,7 +48,7 @@ export const VisionMission: React.FC = () => {
             transition={{ duration: 0.65, delay: 0.2, ease }}
           >
             <div className="lchm-vm-icon">
-              <Target size={38} strokeWidth={1.3} />
+              <Target size={54} strokeWidth={1.5} />
             </div>
             <h3 className="lchm-vm-title">MISSION</h3>
             <p className="lchm-vm-text">

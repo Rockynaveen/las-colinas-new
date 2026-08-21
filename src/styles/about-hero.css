@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   background: #020d1c;
-  padding-top: 80px;
+  padding-top: 90px;
 }
 
 /* Background image */
@@ -41,7 +41,7 @@
   max-width: 720px;
 
   margin: 0 auto;
-  padding: 30px;
+  padding: 40px 30px 30px 30px;
 
   color: white;
   text-align: center;
@@ -51,19 +51,34 @@
   justify-content: center;
 }
 
-/* ABOUT US */
+/* HERO PAGE TITLE PILL BADGE BUTTON */
 .about-label {
-  display: block;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin-bottom: 16px !important;
+  padding: 7px 22px !important;
+  background: rgba(10, 19, 34, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1.5px solid rgba(176, 140, 72, 0.45) !important;
+  border-radius: 50px !important;
+  color: #E2C27C !important;
+  font-family: var(--font-sans), Arial, sans-serif !important;
+  font-size: 0.725rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 0 12px rgba(176, 140, 72, 0.12) !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
 
-  margin-bottom: 12px;
-
-  color: #B08C48 !important;
-
-  font-family: var(--font-sans), Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-
-  letter-spacing: 0.5px;
+.about-label:hover {
+  border-color: #B08C48 !important;
+  background: rgba(176, 140, 72, 0.2) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 25px rgba(176, 140, 72, 0.3) !important;
 }
 
 /* Main heading — beat .light-theme h1 (import order can put that rule last) */

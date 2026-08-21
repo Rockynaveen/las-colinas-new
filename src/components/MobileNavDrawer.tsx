@@ -21,11 +21,12 @@ export const MobileNavDrawer: React.FC<MobileNavDrawerProps> = ({ isOpen, onClos
       label: 'ABOUT US',
       href: '#',
       submenu: [
-        { label: 'About Us', href: '#overview' },
+        { label: 'Overview', href: '#overview' },
         { label: 'Our Story', href: '#story' },
         { label: 'Vision & Mission', href: '#vision' },
         { label: 'Core Values', href: '#values' },
-        { label: 'Our Competitive Advantage', href: '#advantage' }
+        { label: 'Our Competitive Advantage', href: '#advantage' },
+        { label: 'Our Team', href: '#team' }
       ]
     },
     {

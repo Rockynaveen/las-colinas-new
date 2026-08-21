@@ -543,6 +543,7 @@
 }
 
 @media (min-width: 1024px) {
+
   .section-card-wrapper.vm-card-wrapper-override .section-card-sidebar,
   .section-card-wrapper.team-card-wrapper-override .section-card-sidebar {
     border-right-color: rgba(176, 140, 72, 0.3) !important;
@@ -601,7 +602,8 @@
 .about-hero-new {
   position: relative;
   width: auto;
-  height: 480px; /* Exact height from visual specification */
+  height: 480px;
+  /* Exact height from visual specification */
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -665,7 +667,7 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(to right, rgba(10, 19, 34, 0.85) 0%, rgba(10, 19, 34, 0.65) 60%, transparent 100%),
-              linear-gradient(to top, var(--color-navy-dark) 0%, transparent 40%, rgba(10, 19, 34, 0.35) 100%);
+    linear-gradient(to top, var(--color-navy-dark) 0%, transparent 40%, rgba(10, 19, 34, 0.35) 100%);
   z-index: 1;
 }
 
@@ -1317,9 +1319,11 @@
     flex-wrap: wrap;
     gap: 1.5rem;
   }
+
   .advantage-metric-divider {
     display: none;
   }
+
   .advantage-metric-col {
     flex: 0 0 calc(50% - 1.5rem);
   }
@@ -1897,22 +1901,6 @@
   color: #B08C48 !important;
 }
 
-/* Center all section labels and headings on the About Page */
-.about-page-wrap .lchm-label {
-  display: flex !important;
-  width: fit-content !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  align-self: center !important;
-}
-
-.about-page-wrap .lchm-heading {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  align-self: center !important;
-}
-
 /* Custom Our Team Header Image Ornament Styling */
 .about-page-wrap .lchm-team-header-wrapper {
   width: 100%;
@@ -2089,6 +2077,7 @@
     grid-template-columns: 1fr;
     gap: 3.5rem;
   }
+
   .lchm-overview-top-frame {
     max-width: 580px;
     margin: 0 auto;
@@ -2100,8 +2089,3 @@
 .about-page-wrap .lchm-overview {
   padding-top: 2.5rem !important;
 }
-
-
-
-
-

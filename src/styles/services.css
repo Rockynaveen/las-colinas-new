@@ -163,22 +163,22 @@
 }
 
 .service-card-lucide-icon {
-  width: 38px;
-  height: 38px;
-  stroke-width: 1.25px;
+  width: 60px;
+  height: 60px;
+  stroke-width: 1.6px;
 }
 
 .service-card:hover .service-card-icon-center {
-  transform: scale(1.08) rotate(3deg);
-  color: var(--color-gold-light, #DFBE7A);
+  transform: scale(1.12);
+  color: #DFBE7A !important;
 }
 
 /* Title at the bottom */
 .service-card-title-bottom {
   font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--color-white, #FFFFFF);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #121F34 !important; /* Bold dark navy title on white card */
   line-height: 1.35;
   margin: 0;
   text-align: center;
@@ -191,7 +191,7 @@
 }
 
 .service-card:hover .service-card-title-bottom {
-  color: var(--color-gold-light, #DFBE7A);
+  color: #FFFFFF !important; /* Pure white title on dark hover image background */
 }
 
 /* ------------------------------------------

@@ -100,7 +100,8 @@
   font-family: var(--font-sans);
   font-size: 0.95rem;
   line-height: 1.75;
-  color: #121F34 !important; /* Deep non-muted dark navy */
+  color: #121F34 !important;
+  /* Deep non-muted dark navy */
   font-weight: 500;
   margin-bottom: 2.25rem;
   max-width: 540px;

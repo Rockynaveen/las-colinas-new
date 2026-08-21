@@ -258,7 +258,7 @@ export const Services: React.FC = () => {
                 <div className="service-card-content">
                   {/* Large Center Icon */}
                   <div className="service-card-icon-center">
-                    <ServiceIcon size={38} className="service-card-lucide-icon" />
+                    <ServiceIcon size={60} className="service-card-lucide-icon" />
                   </div>
 
                   {/* Title at the Bottom */}

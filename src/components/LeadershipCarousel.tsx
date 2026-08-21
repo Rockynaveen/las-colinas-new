@@ -17,7 +17,7 @@ const teamMembers: TeamMember[] = [
     id: 'nandini-tiwari',
     name: 'Nandini Tiwari',
     role: 'President',
-    image: '/images/team/nandini_tiwari.jpg',
+    image: '/images/portfolio/christa-wijendran–regiona-accounting-HR-manager-lchm.webp',
     description: 'Nandini has over 20 years of hospitality experience, beginning her career in guest relations and advancing to General Manager. She oversees hotel development under LCHM, negotiating Property Improvement Plans (PIPs) and directing design, construction, and property openings.',
     expertise: ['Property Development', 'PIP Negotiation', 'Construction Management', 'Hotel Openings', 'Brand Compliance']
   },
@@ -25,31 +25,31 @@ const teamMembers: TeamMember[] = [
     id: 'nitin-tiwari',
     name: 'Nitin Tiwari',
     role: 'Chief Executive Officer',
-    image: '/images/team/nitin_tiwari.jpg',
+    image: '/images/portfolio/diana-ortiz-director-of-sales-lchm.webp',
     description: 'Nitin possesses over 20 years of hospitality experience as a Sales Manager, GM, Regional Manager, and owner of multiple hotels. He holds an M.B.A. from the University of Sydney, Australia, with deep brand expertise across Hilton, IHG, Choice Hotels, Wyndham, and La Quinta.',
     expertise: ['Executive Leadership', 'Strategic Planning', 'Brand Partnerships', 'Regional Management', 'Asset Portfolio Growth']
-  },
-  {
-    id: 'jignesh-patel',
-    name: 'Jignesh Patel',
-    role: 'Accounting Manager',
-    image: '/images/team/jignesh_patel.jpg',
-    description: "Jignesh manages LCHM's corporate accounting operations, auditing property financials, running accounts payable, and enforcing accounting standards.",
-    expertise: ['Accounting Operations', 'Financial Auditing', 'Accounts Payable', 'Regulatory Compliance', 'Standard Enforcement']
   },
   {
     id: 'manasa-sharma',
     name: 'Manasa Sharma',
     role: 'Chief Financial Officer',
-    image: '/images/team/manasa_sharma.jpg',
+    image: '/images/portfolio/image.png',
     description: 'Manasa directs corporate financial planning, capital allocation, and underwriting strategies, aligning investor expectations with asset performance.',
     expertise: ['Corporate Finance', 'Underwriting Strategies', 'Capital Allocation', 'Asset Performance', 'Investor Relations']
+  },
+  {
+    id: 'jignesh-patel',
+    name: 'Jignesh Patel',
+    role: 'Accounting Manager',
+    image: '/images/portfolio/image1.png',
+    description: "Jignesh manages LCHM's corporate accounting operations, auditing property financials, running accounts payable, and enforcing accounting standards.",
+    expertise: ['Accounting Operations', 'Financial Auditing', 'Accounts Payable', 'Regulatory Compliance', 'Standard Enforcement']
   },
   {
     id: 'jimmy-munoz',
     name: 'Jimmy Munoz',
     role: 'Regional Operations Manager',
-    image: '/images/team/jimmy_munoz.jpg',
+    image: '/images/portfolio/image2.png',
     description: 'Jimmy oversees property operations, ensuring brand compliance, preventative maintenance execution, and high guest satisfaction scores.',
     expertise: ['Operations Management', 'Brand Compliance', 'Preventative Maintenance', 'Guest Satisfaction', 'Property Audits']
   },
@@ -57,41 +57,9 @@ const teamMembers: TeamMember[] = [
     id: 'christa-wijendran',
     name: 'Christa Wijendran',
     role: 'Regional Accounting & HR Manager',
-    image: '/images/team/christa_wijendran.jpg',
+    image: '/images/portfolio/image3.png',
     description: 'Christa has 16+ years of finance and HR experience. She holds a BBA from Heriot-Watt University and a PG Business Analysis degree from Purdue.',
     expertise: ['Human Resources', 'Finance Management', 'Business Analysis', 'Staffing & Recruitment', 'Employee Relations']
-  },
-  {
-    id: 'tanmay-patel',
-    name: 'Tanmay Patel',
-    role: 'Acquisition Manager',
-    image: '/images/team/tanmay_patel.jpg',
-    description: 'Tanmay serves as Chief Hospitality Officer and Acquisition Manager, directing new property underwriting and serving on the AAHOA Board of Directors.',
-    expertise: ['Property Acquisition', 'Asset Underwriting', 'AAHOA Relations', 'Hospitality Management', 'Market Expansion']
-  },
-  {
-    id: 'shawn-patel',
-    name: 'Shawn Patel',
-    role: 'Regional Operational Manager of Hotel Operations',
-    image: '/images/team/shawn_patel.jpg',
-    description: 'Shawn leads operational execution across properties, drawing on years as a GM to implement practical staff training and guest-centered programs.',
-    expertise: ['Hotel Operations', 'Staff Training', 'Guest-Centered Programs', 'Operational Execution', 'On-Property Leadership']
-  },
-  {
-    id: 'laura-lewis',
-    name: 'Laura Lewis',
-    role: 'Regional Sales & Marketing',
-    image: '/images/team/laura_lewis.jpg',
-    description: 'Laura leads sales and marketing initiatives, holding over 20 years of history in group sales, revenue planning, and digital channels.',
-    expertise: ['Sales & Marketing', 'Group Bookings', 'Revenue Planning', 'Digital Channels', 'Brand Positioning']
-  },
-  {
-    id: 'diana-ortiz',
-    name: 'Diana Ortiz',
-    role: 'Director of Sales',
-    image: '/images/team/diana_ortiz.jpg',
-    description: 'Diana brings 38 years of hospitality sales experience and an MBA, directing corporate accounts and group bookings to capture market share.',
-    expertise: ['Corporate Accounts', 'Group Sales', 'Market Share Capture', 'Strategic Sales', 'MBA Leadership']
   }
 ];
 
@@ -404,7 +372,8 @@ export const LeadershipCarousel: React.FC = () => {
                       <ul className="team-modal-expertise-list">
                         {selectedMember.expertise.map((exp, index) => (
                           <li key={index} className="team-modal-expertise-item">
-                            • {exp}
+                            <span className="expertise-gold-bullet" aria-hidden="true" />
+                            <span>{exp}</span>
                           </li>
                         ))}
                       </ul>

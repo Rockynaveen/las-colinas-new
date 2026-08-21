@@ -9,16 +9,10 @@ export interface VideoScene {
 
 export const SCENES: VideoScene[] = [
   {
-    id: 'resort',
-    name: 'Luxury Resort',
-    src: 'https://www.pexels.com/download/video/29936032/',
+    id: 'lc-8',
+    name: 'Las Colinas Video',
+    src: '/videos/lc-video-8.mp4',
     poster: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=85'
-  },
-  {
-    id: 'hospitality',
-    name: 'Premier Estate',
-    src: 'https://vjs.zencdn.net/v/oceans.mp4',
-    poster: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=2000&q=85'
   }
 ];
 

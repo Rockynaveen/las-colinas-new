@@ -19,7 +19,7 @@ const teamMembers: TeamMember[] = [
     id: 'nandini-tiwari',
     name: 'Nandini Tiwari',
     role: 'President',
-    image: 'public/images/portfolio/christa-wijendran–regiona-accounting-HR-manager-lchm.webp',
+    image: '/images/portfolio/christa-wijendran–regiona-accounting-HR-manager-lchm.webp',
     bio: 'Nandini has over 20 years of hospitality experience, beginning her career in guest relations and advancing to General Manager. She oversees hotel development under LCHM, negotiating Property Improvement Plans (PIPs) and directing design, construction, and property openings.',
     shortBio: 'Over 20 years of hospitality industry experience; brings visionary leadership and extensive expertise in hotel operations, development, and organizational growth.',
     expertise: ['Property Development', 'PIP Negotiation', 'Construction Management', 'Hotel Openings', 'Brand Compliance'],
@@ -28,7 +28,7 @@ const teamMembers: TeamMember[] = [
     id: 'nitin-tiwari',
     name: 'Nitin Tiwari',
     role: 'Chief Executive Officer',
-    image: 'public/images/portfolio/diana-ortiz-director-of-sales-lchm.webp',
+    image: '/images/portfolio/diana-ortiz-director-of-sales-lchm.webp',
     bio: 'Nitin possesses over 20 years of hospitality experience as a Sales Manager, GM, Regional Manager, and owner of multiple hotels. He holds an M.B.A. from the University of Sydney, Australia, with deep brand expertise across Hilton, IHG, Choice Hotels, Wyndham, and La Quinta.',
     shortBio: 'Provides strategic direction across hotel development, operations, asset management, and business growth, driving long-term value for owners and investors.',
     expertise: ['Executive Leadership', 'Strategic Planning', 'Brand Partnerships', 'Regional Management', 'Asset Portfolio Growth'],
@@ -37,7 +37,7 @@ const teamMembers: TeamMember[] = [
     id: 'manasa-sharma',
     name: 'Manasa Sharma',
     role: 'Chief Financial Officer',
-    image: 'public/images/portfolio/image.png',
+    image: '/images/portfolio/image.png',
     bio: 'Manasa directs corporate financial planning, capital allocation, and underwriting strategies, aligning investor expectations with asset performance.',
     shortBio: 'Leads financial strategy, budgeting, forecasting, and reporting to ensure sound financial performance and support long-term growth.',
     expertise: ['Corporate Finance', 'Underwriting Strategies', 'Capital Allocation', 'Asset Performance', 'Investor Relations'],
@@ -46,7 +46,7 @@ const teamMembers: TeamMember[] = [
     id: 'jignesh-patel',
     name: 'Jignesh Patel',
     role: 'Accounting Manager',
-    image: 'public/images/portfolio/image1.png',
+    image: '/images/portfolio/image1.png',
     bio: "Jignesh manages LCHM's corporate accounting operations, auditing property financials, running accounts payable, and enforcing accounting standards.",
     shortBio: 'Manages corporate accounting operations, audits property financials, and enforces internal compliance and accounting standards.',
     expertise: ['Accounting Operations', 'Financial Auditing', 'Accounts Payable', 'Regulatory Compliance', 'Standard Enforcement'],
@@ -55,7 +55,7 @@ const teamMembers: TeamMember[] = [
     id: 'jimmy-munoz',
     name: 'Jimmy Munoz',
     role: 'Regional Operations Manager',
-    image: 'public/images/portfolio/image2.png',
+    image: '/images/portfolio/image2.png',
     bio: 'Jimmy oversees property operations, ensuring brand compliance, preventative maintenance execution, and high guest satisfaction scores.',
     shortBio: 'Drives hotel performance, enhances guest satisfaction, and builds high-performing teams across multiple nationally recognized hotel brands.',
     expertise: ['Operations Management', 'Brand Compliance', 'Preventative Maintenance', 'Guest Satisfaction', 'Property Audits'],
@@ -64,46 +64,10 @@ const teamMembers: TeamMember[] = [
     id: 'christa-wijendran',
     name: 'Christa Wijendran',
     role: 'Regional Accounting & HR Manager',
-    image: 'public/images/portfolio/image3.png',
+    image: '/images/portfolio/image3.png',
     bio: 'Christa has 16+ years of finance and HR experience. She holds a BBA from Heriot-Watt University and a PG Business Analysis degree from Purdue.',
     shortBio: 'Christa has 16+ years of finance and HR experience. She holds a BBA from Heriot-Watt University and a PG Business Analysis degree from Purdue.',
     expertise: ['Human Resources', 'Finance Management', 'Business Analysis', 'Staffing & Recruitment', 'Employee Relations'],
-  },
-  {
-    id: 'tanmay-patel',
-    name: 'Tanmay Patel (CHO)',
-    role: 'Acquisition Manager',
-    image: '/images/team/tanmay_patel.jpg',
-    bio: 'Tanmay serves as Chief Hospitality Officer and Acquisition Manager, directing new property underwriting and serving on the AAHOA Board of Directors.',
-    shortBio: 'Tanmay serves as Chief Hospitality Officer and Acquisition Manager, directing new property underwriting and serving on the AAHOA Board of Directors.',
-    expertise: ['Property Acquisition', 'Asset Underwriting', 'AAHOA Relations', 'Hospitality Management', 'Market Expansion'],
-  },
-  {
-    id: 'shawn-patel',
-    name: 'Shawn Patel',
-    role: 'Regional Operational Manager of Hotel Operations',
-    image: '/images/team/shawn_patel.jpg',
-    bio: 'Shawn leads operational execution across properties, drawing on years as a GM to implement practical staff training and guest-centered programs.',
-    shortBio: 'Shawn leads operational execution across properties, drawing on years as a GM to implement practical staff training and guest-centered programs.',
-    expertise: ['Hotel Operations', 'Staff Training', 'Guest-Centered Programs', 'Operational Execution', 'On-Property Leadership'],
-  },
-  {
-    id: 'laura-lewis',
-    name: 'Laura Lewis',
-    role: 'Regional Sales & Marketing',
-    image: '/images/team/laura_lewis.jpg',
-    bio: 'Laura leads sales and marketing initiatives, holding over 20 years of history in group sales, revenue planning, and digital channels.',
-    shortBio: 'Laura leads sales and marketing initiatives, holding over 20 years of history in group sales, revenue planning, and digital channels.',
-    expertise: ['Sales & Marketing', 'Group Bookings', 'Revenue Planning', 'Digital Channels', 'Brand Positioning'],
-  },
-  {
-    id: 'diana-ortiz',
-    name: 'Diana Ortiz',
-    role: 'Director of Sales',
-    image: '/images/team/diana_ortiz.jpg',
-    bio: 'Diana brings 38 years of hospitality sales experience and an MBA, directing corporate accounts and group bookings to capture market share.',
-    shortBio: 'Diana brings 38 years of hospitality sales experience and an MBA, directing corporate accounts and group bookings to capture market share.',
-    expertise: ['Corporate Accounts', 'Group Sales', 'Market Share Capture', 'Strategic Sales', 'MBA Leadership'],
   },
 ];
 
@@ -139,9 +103,9 @@ export const OurTeam: React.FC = () => {
           <h2 className="lchm-heading" style={{ color: '#ffffff', marginTop: '0.75rem', marginBottom: '1.25rem' }}>
             Leadership & Management
           </h2>
-          <img 
-            src="/images/team-header-ornament.png" 
-            alt="Divider Ornament" 
+          <img
+            src="/images/team-header-ornament.png"
+            alt="Divider Ornament"
             className="lchm-team-header-img"
             style={{ maxWidth: '360px', marginTop: '0.25rem' }}
           />

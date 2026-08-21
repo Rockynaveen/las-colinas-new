@@ -6,24 +6,20 @@ import {
   Mail, 
   Clock,
   Loader2, 
-  Check 
+  Check,
+  Send
 } from 'lucide-react';
 
-
 interface FormData {
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
-  phone: string;
   subject: string;
   message: string;
 }
 
 const initialFormState: FormData = {
-  firstName: '',
-  lastName: '',
+  name: '',
   email: '',
-  phone: '',
   subject: '',
   message: ''
 };
@@ -44,15 +40,10 @@ export const Contact: React.FC = () => {
     if (status === 'error') setStatus('idle');
   };
 
-
-  const handlePartnerCTA = () => {
-    window.location.hash = '#home';
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!form.firstName || !form.lastName || !form.email || !form.subject || !form.message) {
+    if (!form.name || !form.email || !form.subject || !form.message) {
       setStatus('error');
       setErrorMsg('Please complete all required fields.');
       return;
@@ -81,199 +72,195 @@ export const Contact: React.FC = () => {
     transition: { duration: 0.8, delay, ease }
   });
 
+  const heroFadeUp = (delay: number) => ({
+    initial: reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 22 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.7, delay, ease },
+  });
+
   return (
     <div className="contact-page-wrap">
       
-      {/* 1. HERO SECTION (Dallas Skyline Banner) */}
+      {/* 1. HERO BANNER */}
       <section className="about-hero contact-hero-banner">
         <motion.img
           className="about-hero-image"
-          src="/images/dallas-skyline.jpg"
-          alt="Dallas skyline at sunset"
-          initial={reduceMotion ? { scale: 1 } : { scale: 1.08 }}
+          src="/images/orlando-skyline.png"
+          alt="Orlando skyline"
+          initial={reduceMotion ? { scale: 1 } : { scale: 1.15 }}
           animate={{ scale: 1 }}
-          transition={{ duration: 1.4, ease }}
+          transition={{ duration: 1.6, ease }}
+          style={{ objectPosition: 'center 42%' }}
         />
 
         <div className="about-overlay" />
 
         <div className="about-content">
-          <span className="about-label">CONTACT US</span>
-          <h1 className="about-title">Let's Start a Partnership.</h1>
-          <div className="gold-line" />
-          <p className="about-desc">
-            Have questions or want to explore how we can maximize your hotel's potential? Reach out to us today.
-          </p>
+          <motion.span className="about-label" {...heroFadeUp(0.15)}>
+            Home &gt; Contact
+          </motion.span>
+          <motion.h1 className="about-title" {...heroFadeUp(0.28)}>
+            Get In Touch With Las Colinas
+          </motion.h1>
+          <motion.div className="gold-line" {...heroFadeUp(0.38)} />
+          <motion.p className="about-desc" {...heroFadeUp(0.46)}>
+            Have questions or want to explore how Las Colinas Hospitality Management can elevate your hotel asset? Reach out to our executive team today.
+          </motion.p>
         </div>
       </section>
 
-      {/* 2. CONTACT DETAILS & MESSAGE FORM (Side by Side Layout) */}
-      <section className="contact-main-section">
-        <div className="contact-main-container">
+      {/* 2. GET IN TOUCH SECTION HEADER + ALTERNATING 4 INFO CARDS */}
+      <section className="contact-info-cards-section">
+        <div className="contact-cards-container">
           
-          <div className="contact-grid-layout">
+          {/* Section Header */}
+          <motion.div className="contact-section-header" {...fadeUp(0.05)}>
+            <span className="contact-script-eyebrow">Contact Us</span>
+            <h2 className="contact-main-heading">Get In Touch With Las Colinas</h2>
+            <p className="contact-sub-heading">
+              Have questions or want to explore how Las Colinas Hospitality Management can elevate your hotel asset? Reach out to our executive team today.
+            </p>
+          </motion.div>
+
+          {/* 4 Alternating Info Cards Grid */}
+          <motion.div className="contact-info-grid-4" {...fadeUp(0.15)}>
             
-            {/* Left Column: Contact Details Stack */}
-            <motion.div 
-              className="contact-info-column"
-              {...fadeUp(0.1)}
-            >
-              <span className="contact-info-eyebrow">Get in Touch</span>
-              <div className="contact-info-eyebrow-diamond">◇</div>
-              <h2 className="contact-info-main-title">We'd love to hear from you</h2>
-              
-              <div className="contact-info-cards-stack">
-                
-                {/* Detail 1: Office */}
-                <div className="contact-info-stack-item">
-                  <div className="contact-info-item-icon">
-                    <MapPin size={18} />
-                  </div>
-                  <div className="contact-info-item-content">
-                    <h4>Our Office</h4>
-                    <p>
-                      Las Colinas Hospitality Management LLC<br />
-                      450 E. John Carpenter Freeway<br />
-                      Irving, Texas 75062
-                    </p>
-                  </div>
-                </div>
-
-                {/* Detail 2: Phone */}
-                <div className="contact-info-stack-item">
-                  <div className="contact-info-item-icon">
-                    <Phone size={18} />
-                  </div>
-                  <div className="contact-info-item-content">
-                    <h4>Phone</h4>
-                    <p>
-                      <a href="tel:214-729-9676">214-729-9676</a><br />
-                      <a href="tel:214-709-4231">214-709-4231</a>
-                    </p>
-                  </div>
-                </div>
-
-                {/* Detail 3: Email */}
-                <div className="contact-info-stack-item">
-                  <div className="contact-info-item-icon">
-                    <Mail size={18} />
-                  </div>
-                  <div className="contact-info-item-content">
-                    <h4>Email</h4>
-                    <p>
-                      <a href="mailto:info@lascolinasmanagement.com">info@lascolinasmanagement.com</a>
-                    </p>
-                  </div>
-                </div>
-
-                {/* Detail 4: Business Hours */}
-                <div className="contact-info-stack-item">
-                  <div className="contact-info-item-icon">
-                    <Clock size={18} />
-                  </div>
-                  <div className="contact-info-item-content">
-                    <h4>Business Hours</h4>
-                    <p>
-                      Monday – Friday: 9:00 AM – 6:00 PM<br />
-                      Saturday – Sunday: By Appointment
-                    </p>
-                  </div>
-                </div>
-
+            {/* Card 1: White */}
+            <div className="contact-card-item contact-card--light">
+              <div className="contact-card-icon-wrap">
+                <MapPin size={42} strokeWidth={1.5} />
               </div>
-            </motion.div>
+              <h3 className="contact-card-title">Our Location</h3>
+              <p className="contact-card-desc">
+                450 E. John Carpenter Freeway<br />
+                Irving, Texas 75062
+              </p>
+            </div>
 
-            {/* Right Column: Message Form */}
-            <motion.div 
-              className="contact-form-column"
-              {...fadeUp(0.2)}
-            >
-              <span className="contact-form-eyebrow">Send Us a Message</span>
-              <div className="contact-form-eyebrow-diamond">◇</div>
-              
-              <form onSubmit={handleSubmit} className="contact-message-form" noValidate>
+            {/* Card 2: White */}
+            <div className="contact-card-item contact-card--light">
+              <div className="contact-card-icon-wrap">
+                <Phone size={42} strokeWidth={1.5} />
+              </div>
+              <h3 className="contact-card-title">Phone Number</h3>
+              <p className="contact-card-desc">
+                <a href="tel:214-729-9676">+1 (214) 729-9676</a><br />
+                <a href="tel:214-709-4231">+1 (214) 709-4231</a>
+              </p>
+            </div>
+
+            {/* Card 3: White */}
+            <div className="contact-card-item contact-card--light">
+              <div className="contact-card-icon-wrap">
+                <Mail size={42} strokeWidth={1.5} />
+              </div>
+              <h3 className="contact-card-title">Email Us</h3>
+              <p className="contact-card-desc">
+                <a href="mailto:info@lascolinasmanagement.com">info@lascolinasmanagement.com</a>
+              </p>
+            </div>
+
+            {/* Card 4: White */}
+            <div className="contact-card-item contact-card--light">
+              <div className="contact-card-icon-wrap">
+                <Clock size={42} strokeWidth={1.5} />
+              </div>
+              <h3 className="contact-card-title">Working Hours</h3>
+              <p className="contact-card-desc">
+                Mon - Fri: 8:00 AM - 6:00 PM<br />
+                Sat - Sun: By Appointment
+              </p>
+            </div>
+
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* 3. SPLIT UNIFIED MAP + FORM CONTAINER SECTION */}
+      <section className="contact-split-section">
+        <div className="contact-split-container">
+          
+          <motion.div className="contact-split-card" {...fadeUp(0.2)}>
+            
+            {/* Left Side: Full Height Google Map */}
+            <div className="contact-map-col">
+              <iframe 
+                src="https://maps.google.com/maps?q=450%20E%20John%20Carpenter%20Freeway,%20Irving,%20TX%2075062&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0, minHeight: '520px' }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Las Colinas Office Location Map"
+              />
+            </div>
+
+            {/* Right Side: Message Form */}
+            <div className="contact-form-col">
+              <div className="contact-form-header-block">
+                <span className="contact-form-eyebrow">SEND US A MESSAGE</span>
+                <h3 className="contact-form-heading">We'd Love to Hear From You</h3>
+                <p className="contact-form-subtext">
+                  Fill out the form below and our executive leadership team will respond promptly.
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="contact-travella-form" noValidate>
                 
-                <div className="contact-form-row">
-                  <div className="contact-form-field">
-                    <label htmlFor="firstName">First Name *</label>
-                    <input 
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      value={form.firstName}
-                      onChange={handleChange}
-                      disabled={status === 'submitting' || status === 'success'}
-                      required
-                    />
-                  </div>
-                  <div className="contact-form-field">
-                    <label htmlFor="lastName">Last Name *</label>
-                    <input 
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      value={form.lastName}
-                      onChange={handleChange}
-                      disabled={status === 'submitting' || status === 'success'}
-                      required
-                    />
-                  </div>
+                <div className="contact-form-input-wrap">
+                  <label htmlFor="name" className="contact-field-label">Full Name *</label>
+                  <input 
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Enter your full name"
+                    disabled={status === 'submitting' || status === 'success'}
+                    required
+                  />
                 </div>
 
-                <div className="contact-form-row">
-                  <div className="contact-form-field">
-                    <label htmlFor="email">Email Address *</label>
-                    <input 
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      disabled={status === 'submitting' || status === 'success'}
-                      required
-                    />
-                  </div>
-                  <div className="contact-form-field">
-                    <label htmlFor="phone">Phone Number</label>
-                    <input 
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={form.phone}
-                      onChange={handleChange}
-                      disabled={status === 'submitting' || status === 'success'}
-                    />
-                  </div>
+                <div className="contact-form-input-wrap">
+                  <label htmlFor="email" className="contact-field-label">Email Address *</label>
+                  <input 
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="Enter your email address"
+                    disabled={status === 'submitting' || status === 'success'}
+                    required
+                  />
                 </div>
 
-                <div className="contact-form-field">
-                  <label htmlFor="subject">Subject *</label>
-                  <select 
+                <div className="contact-form-input-wrap">
+                  <label htmlFor="subject" className="contact-field-label">Subject *</label>
+                  <input 
+                    type="text"
                     id="subject"
                     name="subject"
                     value={form.subject}
                     onChange={handleChange}
+                    placeholder="Enter subject / inquiry topic"
                     disabled={status === 'submitting' || status === 'success'}
                     required
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="Hotel Management">Hotel Management Services</option>
-                    <option value="Asset Management">Asset Management</option>
-                    <option value="Hotel Development">Hotel Development & Advisory</option>
-                    <option value="Consulting Services">Hospitality Consulting</option>
-                    <option value="Other">Other Inquiry</option>
-                  </select>
+                  />
                 </div>
 
-                <div className="contact-form-field">
-                  <label htmlFor="message">Your Message *</label>
+                <div className="contact-form-input-wrap">
+                  <label htmlFor="message" className="contact-field-label">Your Message *</label>
                   <textarea 
                     id="message"
                     name="message"
                     value={form.message}
                     onChange={handleChange}
+                    placeholder="Write your message here..."
+                    rows={4}
                     disabled={status === 'submitting' || status === 'success'}
-                    placeholder="Type your message here..."
                     required
                   />
                 </div>
@@ -281,7 +268,7 @@ export const Contact: React.FC = () => {
                 <button 
                   type="submit"
                   disabled={status === 'submitting' || status === 'success'}
-                  className="contact-submit-btn"
+                  className="contact-pill-submit-btn"
                 >
                   {status === 'submitting' ? (
                     <>
@@ -296,7 +283,7 @@ export const Contact: React.FC = () => {
                   ) : (
                     <>
                       <span>SEND MESSAGE</span>
-                      <span className="contact-submit-arrow">→</span>
+                      <Send size={15} />
                     </>
                   )}
                 </button>
@@ -325,61 +312,10 @@ export const Contact: React.FC = () => {
                 </AnimatePresence>
 
               </form>
-            </motion.div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* 4. OFFICE LOCATION MAP (Full Width Map) */}
-      <section className="contact-office-map-section">
-        <div className="contact-office-map-container">
-          <iframe 
-            src="https://maps.google.com/maps?q=450%20E%20John%20Carpenter%20Freeway,%20Irving,%20TX%2075062&t=&z=14&ie=UTF8&iwloc=&output=embed" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen={true} 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Las Colinas Hospitality Management Office Location Map"
-          />
-        </div>
-      </section>
-
-      {/* 5. CALL TO ACTION BANNER (Beige background) */}
-      <section className="contact-cta-section">
-        <div className="contact-cta-container">
-          <motion.div 
-            className="contact-cta-card-new"
-            {...fadeUp(0.1)}
-          >
-            <div className="contact-cta-left-content">
-              <div className="contact-cta-icon-circle">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#B08C48" strokeWidth="1.5">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-              </div>
-              <div className="contact-cta-text-block">
-                <h3 className="contact-cta-title">Ready to Maximize Your Asset's Potential?</h3>
-                <p className="contact-cta-desc">
-                  Partner with Las Colinas Hospitality Management and experience exceptional results, driven by expertise and a commitment to your success.
-                </p>
-              </div>
             </div>
-            
-            <button 
-              onClick={handlePartnerCTA}
-              className="contact-cta-button"
-            >
-              <span>PARTNER WITH US</span>
-              <span className="contact-cta-btn-arrow">→</span>
-            </button>
+
           </motion.div>
+
         </div>
       </section>
 

@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Sparkles } from 'lucide-react';
 
 interface TeamMember {
   name: string;
   role: string;
   image: string;
   bio?: string;
-  description?: string; // fallback
+  shortBio?: string;
+  description?: string;
   expertise?: string[];
   initials?: string;
 }
@@ -46,113 +47,76 @@ export const TeamModal: React.FC<TeamModalProps> = ({ isOpen, onClose, member })
     };
   }, [isOpen, onClose]);
 
-  if (!member) return null;
+  if (typeof document === 'undefined') return null;
 
-  const fullBio = member.bio || member.description || '';
-  const areasOfExpertise = member.expertise || [];
+  const fullBio = member?.bio || member?.description || member?.shortBio || '';
+  const areasOfExpertise = member?.expertise || [];
 
-  return (
+  return createPortal(
     <AnimatePresence>
-      {isOpen && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
-          {/* Backdrop Blur Overlay */}
+      {isOpen && member && (
+        <div className="team-modal-backdrop" onClick={onClose}>
           <motion.div
-            className="tm-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-          />
-
-          {/* Modal Container */}
-          <motion.div
-            className="tm-container"
-            initial={{ opacity: 0, scale: 0.95, y: 15 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 15 }}
-            transition={{ type: 'spring', duration: 0.5, bounce: 0.15 }}
+            className="team-modal-content"
+            onClick={(e) => e.stopPropagation()}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
             {/* Close Button */}
             <button
+              className="team-modal-close"
               onClick={onClose}
-              className="tm-close-btn"
-              aria-label="Close profile modal"
+              aria-label="Close details"
               type="button"
             >
-              <X size={22} />
+              &times;
             </button>
 
-            {/* Scrollable Content */}
-            <div className="tm-content-scroll">
-              <div className="tm-layout">
-                
-                {/* Photo & Design Element */}
-                <div className="tm-photo-col">
-                  <div className="tm-photo-frame">
-                    {member.image ? (
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="tm-photo"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div style={{ display: 'flex', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', color: '#F5F2EA', fontSize: '1.5rem', fontFamily: 'var(--font-serif)' }}>
-                        {member.initials}
-                      </div>
-                    )}
-                  </div>
-                  {/* Premium gold underline */}
-                  <div className="tm-photo-line" />
+            <div className="team-modal-inner">
+              {/* Image Section */}
+              <div className="team-modal-image-wrap">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="team-modal-img"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Info Section */}
+              <div className="team-modal-info">
+                <div>
+                  <h2 className="team-modal-name">{member.name}</h2>
+                  <span className="team-modal-role">{member.role}</span>
                 </div>
 
-                {/* Info & Content */}
-                <div className="tm-info-col">
-                  <div className="tm-header-block">
-                    <h2 className="tm-name">
-                      {member.name}
-                    </h2>
-                    <span className="tm-role">
-                      {member.role}
-                    </span>
-                  </div>
-
-                  {/* Bio */}
-                  <div className="tm-section">
-                    <h4 className="tm-section-title">
-                      <Sparkles size={11} /> Biography
-                    </h4>
-                    <p className="tm-bio-text">
-                      {fullBio}
-                    </p>
-                  </div>
-
-                  {/* Areas of Expertise */}
-                  {areasOfExpertise.length > 0 && (
-                    <div className="tm-section">
-                      <h4 className="tm-section-title">
-                        <Sparkles size={11} /> Areas of Expertise
-                      </h4>
-                      <div className="tm-expertise-list">
-                        {areasOfExpertise.map((exp, idx) => (
-                          <span
-                            key={idx}
-                            className="tm-expertise-tag"
-                          >
-                            {exp}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                <div className="team-modal-section">
+                  <h4 className="team-modal-section-title">Professional Overview</h4>
+                  <p className="team-modal-desc">{fullBio}</p>
                 </div>
 
+                {areasOfExpertise.length > 0 && (
+                  <div className="team-modal-section">
+                    <h4 className="team-modal-section-title">Key Expertise</h4>
+                    <ul className="team-modal-expertise-list">
+                      {areasOfExpertise.map((exp, index) => (
+                        <li key={index} className="team-modal-expertise-item">
+                          <span className="expertise-gold-bullet" aria-hidden="true" />
+                          <span>{exp}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </div>
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 

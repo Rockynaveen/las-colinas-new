@@ -16,11 +16,12 @@ export const AboutHero: FC = () => {
     <section id="about-hero" className="about-hero">
       <motion.img
         className="about-hero-image"
-        src="/images/dallas-skyline.jpg"
-        alt="Dallas skyline at sunset"
-        initial={reduceMotion ? { scale: 1 } : { scale: 1.08 }}
+        src="/images/orlando-skyline.png"
+        alt="Orlando skyline"
+        initial={reduceMotion ? { scale: 1 } : { scale: 1.15 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 1.4, ease }}
+        transition={{ duration: 1.6, ease }}
+        style={{ objectPosition: 'center 42%' }}
       />
 
       <div className="about-overlay" />

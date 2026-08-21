@@ -392,10 +392,31 @@
   font-size: 0.95rem;
   font-weight: 700;
   color: #FFFFFF;
-  margin-bottom: 1.15rem;
+  margin-bottom: 0.5rem;
   line-height: 1.4;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.port-card-location {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.port-location-icon {
+  color: #B08C48;
+  flex-shrink: 0;
+}
+
+.port-location-text {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 0.04em;
 }
 
 .port-card-interaction {

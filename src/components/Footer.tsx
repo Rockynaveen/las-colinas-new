@@ -206,7 +206,6 @@ export const Footer: React.FC = () => {
                     />
                   </div>
                   <div className="footer-blog-info">
-                    <span className="footer-blog-category">{post.category}</span>
                     <span className="footer-blog-title">{post.title}</span>
                     <div className="footer-blog-meta">
                       <div className="footer-blog-location">
@@ -255,8 +254,8 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Section: Copyright, Legal, Socials & Top Anchor */}
-        <div className="footer-bottom" style={{ borderTop: '1px solid rgba(176, 140, 72, 0.1)', marginTop: '2rem' }}>
+        {/* Bottom Section: Copyright, Legal, Socials */}
+        <div className="footer-bottom">
           <div className="footer-bottom-inner">
             <p className="copyright-text">
               &copy; 2026 Las Colinas Hospitality Management. All Rights Reserved.

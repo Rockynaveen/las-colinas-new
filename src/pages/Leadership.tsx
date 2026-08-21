@@ -47,30 +47,6 @@ const teamGrid: TeamMember[] = [
     role: 'Regional Accounting & HR Manager',
     bio: 'Christa has 16+ years of finance and HR experience. She holds a BBA from Heriot-Watt University and a PG Business Analysis degree from Purdue.',
     initials: 'CW'
-  },
-  {
-    name: 'Tanmay Patel (CHO)',
-    role: 'Acquisition Manager',
-    bio: 'Tanmay serves as Chief Hospitality Officer and Acquisition Manager, directing new property underwriting and serving on the AAHOA Board of Directors.',
-    initials: 'TP'
-  },
-  {
-    name: 'Shawn Patel',
-    role: 'Regional Operational Manager',
-    bio: 'Shawn leads operational execution across properties, drawing on years as a GM to implement practical staff training and guest-centered programs.',
-    initials: 'SP'
-  },
-  {
-    name: 'Laura Lewis',
-    role: 'Regional Sales & Marketing',
-    bio: 'Laura leads sales and marketing initiatives, holding over 20 years of history in dynamic group sales, revenue planning, and digital channels.',
-    initials: 'LL'
-  },
-  {
-    name: 'Diana Ortiz',
-    role: 'Director of Sales',
-    bio: 'Diana brings 38 years of hospitality sales experience and an MBA, directing corporate accounts and group bookings to capture market share.',
-    initials: 'DO'
   }
 ];
 

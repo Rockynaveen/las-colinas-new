@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, type Variants } from 'framer-motion';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 import { portfolioCategories } from '../utils/portfolioData';
 
 export const PortfolioHome: React.FC = () => {
@@ -16,7 +16,7 @@ export const PortfolioHome: React.FC = () => {
   useEffect(() => {
     if (viewportRef.current) {
       setViewportWidth(viewportRef.current.clientWidth);
-      
+
       const observer = new ResizeObserver((entries) => {
         if (entries[0]) {
           setViewportWidth(entries[0].contentRect.width);
@@ -102,7 +102,7 @@ export const PortfolioHome: React.FC = () => {
   return (
     <section className="port-filter-section" style={{ borderBottom: '1px solid rgba(176, 140, 72, 0.15)', paddingTop: '4.5rem', paddingBottom: '3.5rem' }}>
       <div className="port-filter-container">
-        
+
         {/* Clean Center-Aligned Editorial Header */}
         <span className="port-section-label">OUR PORTFOLIO</span>
         <h2 className="port-section-heading">
@@ -113,15 +113,15 @@ export const PortfolioHome: React.FC = () => {
         </p>
 
         {/* Flanked Interactive Carousel Container */}
-        <div 
+        <div
           className="port-slider-container"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          
+
           {/* Left Navigation Chevron */}
-          <button 
-            className="port-slider-arrow arrow-left" 
+          <button
+            className="port-slider-arrow arrow-left"
             onClick={scrollLeft}
             aria-label="Scroll left"
           >
@@ -129,8 +129,8 @@ export const PortfolioHome: React.FC = () => {
           </button>
 
           {/* Viewport Wrapper */}
-          <motion.div 
-            className="port-slider-viewport" 
+          <motion.div
+            className="port-slider-viewport"
             ref={viewportRef}
             variants={containerVariants}
             initial="hidden"
@@ -139,7 +139,7 @@ export const PortfolioHome: React.FC = () => {
             style={{ width: '100%', overflow: 'hidden', position: 'relative' }}
           >
             {/* Scrollable Track */}
-            <motion.div 
+            <motion.div
               className="port-slider-track"
               animate={{ x: translateX }}
               transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
@@ -156,20 +156,27 @@ export const PortfolioHome: React.FC = () => {
                   style={{ width: cardWidth, flex: '0 0 auto', textDecoration: 'none' }}
                 >
                   <div className="port-card-img-wrap">
-                    <img 
-                      src={cat.image} 
-                      alt={cat.alt} 
+                    <img
+                      src={cat.image}
+                      alt={cat.alt}
                       className="port-card-img"
                       loading="lazy"
                     />
                     <div className="port-card-overlay" />
                   </div>
-                  
+
                   {/* Clean Centered Content */}
                   <div className="port-card-content">
                     <h3 className="port-card-name">
                       {getCardDisplayName(cat.name)}
                     </h3>
+
+                    {cat.location && (
+                      <div className="port-card-location">
+                        <MapPin size={13} className="port-location-icon" />
+                        <span className="port-location-text">{cat.location}</span>
+                      </div>
+                    )}
 
                     <div className="port-card-interaction">
                       <span>VIEW &rarr;</span>
@@ -181,8 +188,8 @@ export const PortfolioHome: React.FC = () => {
           </motion.div>
 
           {/* Right Navigation Chevron */}
-          <button 
-            className="port-slider-arrow arrow-right" 
+          <button
+            className="port-slider-arrow arrow-right"
             onClick={scrollRight}
             aria-label="Scroll right"
           >

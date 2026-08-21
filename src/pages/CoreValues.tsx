@@ -79,6 +79,7 @@ export const CoreValues: React.FC = () => {
     <section id="values" className="lchm-section lchm-section--navy">
       <div className="lchm-inner">
         <motion.div
+          className="lchm-section-header-centered lchm-values-header"
           initial={reduceMotion ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -100,9 +101,9 @@ export const CoreValues: React.FC = () => {
                 transition={{ duration: 0.5, delay: idx * 0.05, ease }}
               >
                 <div className="lchm-value-icon">
-                  <Icon size={40} strokeWidth={1.2} />
+                  <Icon size={68} strokeWidth={1.4} />
                 </div>
-                <h3 className="lchm-value-title">{value.title}</h3>
+                <h3 className="lchm-value-title" style={{ color: '#B08C48' }}>{value.title}</h3>
                 <p className="lchm-value-desc">{value.desc}</p>
               </motion.article>
             );

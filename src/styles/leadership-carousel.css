@@ -1,6 +1,8 @@
 .home-leadership-section {
-  background-color: var(--color-navy); /* #121F34 */
-  padding: 3rem 0 3rem 0; /* Reduced top padding to reduce gap */
+  background-color: var(--color-navy);
+  /* #121F34 */
+  padding: 3rem 0 3rem 0;
+  /* Reduced top padding to reduce gap */
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -8,7 +10,8 @@
 }
 
 .home-leadership-section .editorial-header {
-  margin-bottom: 1rem; /* Significantly reduced margin below header text */
+  margin-bottom: 1rem;
+  /* Significantly reduced margin below header text */
 }
 
 .home-leadership-container {
@@ -24,7 +27,8 @@
 .team-carousel-wrapper {
   position: relative;
   width: 100%;
-  margin-top: 0.5rem; /* Reduced top margin to snug content */
+  margin-top: 0.5rem;
+  /* Reduced top margin to snug content */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,7 +69,8 @@
 .carousel-clip-area {
   overflow: hidden;
   width: 100%;
-  padding: 1.25rem 0 2rem 0; /* Snug top padding, adequate room for hover translations */
+  padding: 1.25rem 0 2rem 0;
+  /* Snug top padding, adequate room for hover translations */
 }
 
 .carousel-cards-track {
@@ -83,9 +88,11 @@
 
 /* Capsule-shaped Card Design */
 .team-pill-card {
-  background-color: #19273E; /* slightly lighter than #121F34 */
+  background-color: #19273E;
+  /* slightly lighter than #121F34 */
   border: 1px solid rgba(176, 140, 72, 0.12);
-  border-radius: 140px; /* high border radius for a pill shape */
+  border-radius: 140px;
+  /* high border radius for a pill shape */
   padding: 1.5rem 1.5rem 2.5rem 1.5rem;
   display: flex;
   flex-direction: column;
@@ -95,7 +102,8 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   aspect-ratio: 1 / 1.75;
-  justify-content: center; /* Centered content vertically */
+  justify-content: center;
+  /* Centered content vertically */
 }
 
 .team-pill-card:hover {
@@ -110,7 +118,8 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  margin-bottom: 0; /* Removed bottom margin to use member-info top margin */
+  margin-bottom: 0;
+  /* Removed bottom margin to use member-info top margin */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,7 +166,8 @@
 
 /* Card details styling */
 .member-info {
-  margin-top: 1rem; /* Snug top margin below the portrait frame */
+  margin-top: 1rem;
+  /* Snug top margin below the portrait frame */
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -280,32 +290,33 @@
 /* Mobile responsive styles overrides */
 @media (max-width: 767px) {
   .home-leadership-section {
-    padding: 3.5rem 0 2rem 0; /* Reduced bottom padding on mobile */
+    padding: 3.5rem 0 2rem 0;
+    /* Reduced bottom padding on mobile */
   }
-  
+
   .home-leadership-container {
     padding: 0 1.5rem;
   }
-  
+
   .team-pill-card {
     padding: 1.25rem 1.25rem 2rem 1.25rem;
     border-radius: 100px;
   }
-  
+
   .carousel-clip-area {
     padding: 1.5rem 0;
   }
-  
+
   .carousel-nav-controls {
     gap: 1.5rem;
     margin-top: 1rem;
   }
-  
+
   .carousel-nav-btn {
     width: 38px;
     height: 38px;
   }
-  
+
   .leadership-cta-wrap {
     margin-top: 2.5rem;
   }
@@ -315,7 +326,8 @@
 .team-modal-backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(10, 19, 34, 0.65); /* Soft dark overlay */
+  background-color: rgba(10, 19, 34, 0.65);
+  /* Soft dark overlay */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   display: grid;
@@ -326,12 +338,15 @@
 }
 
 .team-modal-content {
-  background-color: #FFFFFF !important; /* Pure crisp white modal card */
-  border: 1px solid rgba(176, 140, 72, 0.25); /* Elegant gold accent border */
+  background-color: #FFFFFF !important;
+  /* Pure crisp white modal card */
+  border: 1px solid rgba(176, 140, 72, 0.25);
+  /* Elegant gold accent border */
   border-radius: 16px;
   width: 100%;
   max-width: 750px;
-  margin: auto; /* Centered in scroll viewport */
+  margin: auto;
+  /* Centered in scroll viewport */
   position: relative;
   box-shadow: 0 25px 60px -10px rgba(18, 31, 52, 0.25), 0 0 30px rgba(176, 140, 72, 0.1);
   scrollbar-width: thin;
@@ -383,7 +398,8 @@
 .team-modal-img {
   width: 200px;
   height: 200px;
-  border-radius: 20px; /* 20px rounded corners */
+  border-radius: 20px;
+  /* 20px rounded corners */
   object-fit: cover;
   border: 3px solid #B08C48;
   box-shadow: 0 10px 25px rgba(18, 31, 52, 0.12);
@@ -400,7 +416,8 @@
   font-family: var(--font-serif);
   font-size: 2.25rem;
   font-weight: 500;
-  color: #121F34 !important; /* Dark navy heading */
+  color: #121F34 !important;
+  /* Dark navy heading */
   line-height: 1.15;
   margin: 0;
 }
@@ -408,7 +425,8 @@
 .team-modal-role {
   font-family: var(--font-sans);
   font-size: 0.75rem;
-  color: #B08C48 !important; /* Warm gold role */
+  color: #B08C48 !important;
+  /* Warm gold role */
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -437,25 +455,39 @@
   font-family: var(--font-sans);
   font-size: 0.9rem;
   line-height: 1.65;
-  color: #4A5568 !important; /* Crisp slate text */
+  color: #4A5568 !important;
+  /* Crisp slate text */
   margin: 0;
 }
 
 .team-modal-expertise-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0.65rem 0 0 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
+  gap: 0.75rem 1.25rem;
 }
 
 .team-modal-expertise-item {
   font-family: var(--font-sans);
   font-size: 0.875rem;
-  color: #4A5568 !important;
+  font-weight: 500;
+  color: #121F34 !important;
+  /* High contrast dark navy text */
   display: flex;
   align-items: center;
+  gap: 0.6rem;
+  line-height: 1.35;
+}
+
+.expertise-gold-bullet {
+  width: 6px;
+  height: 6px;
+  background-color: #B08C48;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(176, 140, 72, 0.4);
+  flex-shrink: 0;
 }
 
 /* Modal Responsive Overrides */

@@ -50,11 +50,12 @@ export const Header: React.FC = () => {
 
 
   const aboutList = [
-    { name: 'About Us', hash: '#overview' },
+    { name: 'Overview', hash: '#overview' },
     { name: 'Our Story', hash: '#story' },
     { name: 'Vision & Mission', hash: '#vision' },
     { name: 'Core Values', hash: '#values' },
-    { name: 'Our Competitive Advantage', hash: '#advantage' }
+    { name: 'Our Competitive Advantage', hash: '#advantage' },
+    { name: 'Our Team', hash: '#team' }
   ];
 
   const isHomeActive = ['#home', '#'].includes(currentHash);

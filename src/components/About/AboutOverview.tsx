@@ -84,7 +84,7 @@ export const AboutOverview: React.FC = () => {
                 const Icon = service.icon;
                 return (
                   <li key={service.name} className="lchm-services-item">
-                    <Icon size={24} strokeWidth={1.3} />
+                    <Icon size={32} strokeWidth={1.5} className="lchm-service-icon" />
                     <span>{service.name}</span>
                   </li>
                 );

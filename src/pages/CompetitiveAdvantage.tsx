@@ -117,7 +117,7 @@ export const CompetitiveAdvantage: React.FC = () => {
                   transition={{ duration: 0.5, delay: idx * 0.06, ease }}
                 >
                   <div className="lchm-adv-icon">
-                    <Icon size={24} strokeWidth={1.5} />
+                    <Icon size={38} strokeWidth={1.5} />
                   </div>
                   <h3 className="lchm-adv-title">{adv.title}</h3>
                   <p className="lchm-adv-desc">{adv.desc}</p>
