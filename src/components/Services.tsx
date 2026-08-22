@@ -1,142 +1,91 @@
 import React from 'react';
 import { motion, type Variants } from 'framer-motion';
 import {
-  Users,
-  Building,
+  Building2,
+  Compass,
   TrendingUp,
-  Megaphone,
-  Share2,
-  Home as HomeIcon,
-  Check,
+  BarChart3,
+  Calculator,
+  Hammer,
   Key,
+  Briefcase,
+  ArrowRight,
+  Calendar,
 } from 'lucide-react';
 
-interface Service {
+interface ServiceItem {
   id: string;
   title: string;
   description: string;
-  icon: React.ComponentType<{ className?: string; size?: number }>;
+  icon: React.ComponentType<{ className?: string; size?: number; strokeWidth?: number }>;
   image: string;
   alt: string;
-  bullets: string[];
-  isFeatured?: boolean;
 }
 
-const servicesData: Service[] = [
+const servicesData: ServiceItem[] = [
   {
     id: 'hotel-management',
     title: 'Hotel Management Services',
-    description:
-      'Comprehensive management solutions covering daily operations, guest experience, and strategic oversight to ensure smooth and efficient hotel performance.',
-    icon: Users,
+    description: 'We provide comprehensive hotel management services designed to maximize profitability, improve operational efficiency, and enhance guest satisfaction.',
+    icon: Building2,
     image: '/images/services-hotel-mgmt.jpg',
-    alt: 'Hotel Management Services',
-    bullets: [
-      'Operations Management',
-      'Guest Experience Excellence',
-      'Staff Training & Development',
-      'Quality Assurance',
-      'Performance Monitoring',
-    ],
+    alt: 'Luxury hotel management',
   },
   {
-    id: 'hotel-project-management',
-    title: 'Hotel Project Management',
-    description:
-      'End-to-end project management services for new hotel constructions, renovations, and rebranding projects delivered on time and within budget.',
-    icon: Building,
+    id: 'hotel-development',
+    title: 'Hotel Development',
+    description: 'Our development team guides projects from concept to completion, delivering hotels that meet brand standards, operational goals, and owner expectations.',
+    icon: Compass,
     image: '/images/services-hotel-dev.jpg',
-    alt: 'Hotel Project Management',
-    bullets: [
-      'Project Planning',
-      'Vendor Management',
-      'Construction Oversight',
-      'Timeline Management',
-      'Cost Control',
-    ],
+    alt: 'Hotel development',
   },
   {
     id: 'asset-management',
     title: 'Asset Management',
-    description:
-      'Maximizing the value of your hotel assets through strategic planning, performance optimization, and long-term asset growth.',
+    description: 'We work alongside owners to maximize long-term investment performance through strategic oversight and disciplined financial management.',
     icon: TrendingUp,
     image: '/images/services-asset-mgmt.jpg',
-    alt: 'Asset Management',
-    bullets: [
-      'Asset Performance Analysis',
-      'Financial Optimization',
-      'Revenue Enhancement',
-      'Risk Management',
-      'ROI Improvement',
-    ],
+    alt: 'Asset management',
   },
   {
     id: 'revenue-management',
     title: 'Revenue Management',
-    description:
-      'Data-driven pricing strategies to optimize occupancy, maximize revenue, and enhance overall profitability.',
-    icon: Megaphone,
+    description: 'Our revenue specialists utilize data-driven pricing strategies to optimize market share and maximize revenue.',
+    icon: BarChart3,
     image: '/images/services-revenue-mgmt.jpg',
-    alt: 'Revenue Management',
-    bullets: [
-      'Rate Strategy',
-      'Market Analysis',
-      'Demand Forecasting',
-      'Competitor Benchmarking',
-      'Revenue Optimization',
-    ],
+    alt: 'Revenue management',
   },
   {
-    id: 'sales-marketing',
-    title: 'Sales & Marketing',
-    description:
-      'Targeted marketing and sales strategies to increase brand visibility, drive direct bookings, and build strong guest loyalty.',
-    icon: Share2,
+    id: 'financial-management',
+    title: 'Financial Management',
+    description: 'Our accounting professionals deliver accurate financial reporting and strategic guidance.',
+    icon: Calculator,
     image: '/images/services-financial-mgmt.jpg',
-    alt: 'Sales & Marketing',
-    bullets: [
-      'Digital Marketing',
-      'Social Media Management',
-      'Brand Positioning',
-      'Campaign Management',
-      'Booking Engine Optimization',
-    ],
+    alt: 'Financial management',
   },
   {
     id: 'hotel-renovation',
-    title: 'Hotel Renovation & Interior Construction',
-    description:
-      'Transforming spaces with modern design and quality construction to enhance guest experience and property value.',
-    icon: HomeIcon,
+    title: 'Hotel Renovation & Project Management',
+    description: 'We oversee renovations, capital improvements, and repositioning projects while maintaining budget, schedule, and quality standards.',
+    icon: Hammer,
     image: '/images/services-renovation.jpg',
-    alt: 'Hotel Renovation & Interior Construction',
-    bullets: [
-      'Interior Design',
-      'Renovation',
-      'Space Planning',
-      'Construction Management',
-      'Quality Assurance',
-    ],
+    alt: 'Hotel renovation',
   },
   {
-    id: 'pre-opening-services',
+    id: 'pre-opening',
     title: 'Pre-Opening Services',
-    description:
-      'We prepare hotels for successful openings through comprehensive operational planning, staff training, and launch support.',
+    description: 'We ensure seamless hotel openings by managing timelines, training staff, and setting up operational systems for day-one readiness.',
     icon: Key,
     image: '/images/services-pre-opening.jpg',
-    alt: 'Pre-Opening Services',
-    isFeatured: true,
-    bullets: [
-      'Recruitment',
-      'Procurement',
-      'Staff Training',
-      'Brand Readiness',
-      'Budget Development',
-      'Grand Opening Support',
-      'SOP Implementation',
-    ],
+    alt: 'Pre-opening services',
+  },
+  {
+    id: 'hospitality-consulting',
+    title: 'Hospitality Consulting',
+    description: 'We provide specialized strategic consulting services to help owners and developers navigate complex business decisions and optimize hospitality assets.',
+    icon: Briefcase,
+    image: '/images/about-hotel.jpg',
+    alt: 'Hospitality consulting',
   },
 ];
 
@@ -145,7 +94,7 @@ export const Services: React.FC = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.08,
         delayChildren: 0.1,
       },
     },
@@ -164,34 +113,54 @@ export const Services: React.FC = () => {
   };
 
   return (
-    <section id="services" className="services-section">
-      <div className="services-container">
-        {/* Section Header */}
+    <section id="services" className="lchm-home-services-section">
+      <div className="lchm-home-services-container">
+        
+        {/* Section Header with Flanked Crest & Watermark */}
         <motion.div
-          className="services-header-top"
-          initial={{ opacity: 0, y: 25 }}
+          className="editorial-header"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="services-badge">
-            <span className="services-badge-diamond">✧</span>
-            <span>SERVICES</span>
-            <span className="services-badge-diamond">✧</span>
+          {/* Central Flanked Crest */}
+          <div className="header-crest-wrapper">
+            <div className="header-crest-line" />
+            <div className="header-crest-icon">
+              <svg viewBox="0 0 100 100" className="header-crest-svg-icon" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="50,10 90,50 50,90 10,50" stroke="#B08C48" strokeWidth="5" />
+                <polygon points="50,18 82,50 50,82 18,50" stroke="#B08C48" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
+                <path d="M50 24 L52.5 30 L58 30 L53.5 34.5 L55 40 L50 36.5 L45 40 L46.5 34.5 L42 30 L47.5 30 Z" fill="#B08C48" />
+                <text x="50" y="66" fontFamily="'Cormorant Garamond', Georgia, serif" fontSize="28" fontWeight="700" fill="#B08C48" textAnchor="middle">LC</text>
+                <path d="M 36 74 Q 50 80 64 74" stroke="#B08C48" strokeWidth="1.5" fill="none" />
+              </svg>
+            </div>
+            <div className="header-crest-line" />
           </div>
 
-          <h2 className="services-main-heading">
-            End-to-End Hospitality Expertise
-          </h2>
+          {/* Heading with Watermark */}
+          <div className="header-title-wrapper">
+            <h2 className="editorial-heading">SERVICES</h2>
+            <div className="header-watermark">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="50,6 94,50 50,94 6,50" stroke="#B08C48" strokeWidth="2" opacity="0.14" />
+                <polygon points="50,14 86,50 50,86 14,50" stroke="#B08C48" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.08" />
+                <path d="M50 20 L53 27 L60 27 L54 32 L56 39 L50 35 L44 39 L46 32 L40 27 L47 27 Z" fill="#B08C48" opacity="0.12" />
+                <text x="50" y="66" fontFamily="'Cormorant Garamond', Georgia, serif" fontSize="30" fontWeight="700" fill="#B08C48" textAnchor="middle" opacity="0.12">LC</text>
+                <path d="M 34 76 Q 50 83 66 76" stroke="#B08C48" strokeWidth="1.5" fill="none" opacity="0.12" />
+              </svg>
+            </div>
+          </div>
 
-          <p className="services-main-description">
-            We offer a complete range of services designed to maximize the value and performance of your hotel. Our 360° approach ensures every aspect of your property is managed with precision, care, and a focus on growth.
+          <p className="editorial-subtext">
+            Operational integrity, disciplined development, and targeted asset optimization. Delivering exceptional performance and cultivating long-term appreciation for hotel owners and investors.
           </p>
         </motion.div>
 
-        {/* Services Grid (3 Columns x 2 Rows) */}
+        {/* 8 Square Cards Grid (4 Columns x 2 Rows) */}
         <motion.div
-          className="services-grid-cards"
+          className="lchm-home-services-grid"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -199,93 +168,63 @@ export const Services: React.FC = () => {
         >
           {servicesData.map((service) => {
             const ServiceIcon = service.icon;
-
             return (
-              <motion.div
+              <motion.a
                 key={service.id}
-                className={`service-card-item ${service.isFeatured ? 'service-card-featured' : ''}`}
+                href="#contact"
+                className="lchm-square-service-card"
                 variants={cardVariants}
               >
-                {service.isFeatured ? (
-                  <>
-                    {/* Left Wide Image for Pre-Opening Services */}
-                    <div className="service-featured-left-image">
-                      <img
-                        src={service.image}
-                        alt={service.alt}
-                        className="service-featured-photo"
-                        loading="lazy"
-                      />
-                    </div>
+                {/* Background Photo (Fades in on hover) */}
+                <div className="lchm-square-card-bg-wrap">
+                  <img
+                    src={service.image}
+                    alt={service.alt}
+                    className="lchm-square-card-bg-img"
+                    loading="lazy"
+                  />
+                  <div className="lchm-square-card-overlay" />
+                </div>
 
-                    {/* Right Content Side for Pre-Opening Services */}
-                    <div className="service-featured-right-content">
-                      <div className="service-icon-circle">
-                        <ServiceIcon size={24} className="service-lucide-icon" />
-                      </div>
+                {/* Inner Gold Border Frame (Appears on hover like Image 2) */}
+                <div className="lchm-square-card-inner-frame" />
 
-                      <h3 className="service-card-heading">{service.title}</h3>
+                {/* Card Content */}
+                <div className="lchm-square-card-content">
+                  {/* Icon Container */}
+                  <div className="lchm-square-icon-ring">
+                    <ServiceIcon size={52} strokeWidth={1.4} className="lchm-square-icon" />
+                  </div>
 
-                      <p className="service-card-text">{service.description}</p>
-
-                      <ul className="service-bullets-list service-bullets-2col">
-                        {service.bullets.map((bullet, idx) => (
-                          <li key={idx} className="service-bullet-item">
-                            <span className="service-bullet-icon">
-                              <Check size={13} strokeWidth={2.8} />
-                            </span>
-                            <span className="service-bullet-text">{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    {/* Left Content Side */}
-                    <div className="service-card-left">
-                      <div className="service-icon-circle">
-                        <ServiceIcon size={24} className="service-lucide-icon" />
-                      </div>
-
-                      <h3 className="service-card-heading">{service.title}</h3>
-
-                      <p className="service-card-text">{service.description}</p>
-
-                      <ul className="service-bullets-list">
-                        {service.bullets.map((bullet, idx) => (
-                          <li key={idx} className="service-bullet-item">
-                            <span className="service-bullet-icon">
-                              <Check size={13} strokeWidth={2.8} />
-                            </span>
-                            <span className="service-bullet-text">{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Right Vertical Image Tile */}
-                    <div className="service-card-right-image">
-                      <img
-                        src={service.image}
-                        alt={service.alt}
-                        className="service-vertical-photo"
-                        loading="lazy"
-                      />
-                    </div>
-                  </>
-                )}
-              </motion.div>
+                  {/* Title Heading (White on hover) */}
+                  <h3 className="lchm-square-card-title">{service.title}</h3>
+                </div>
+              </motion.a>
             );
           })}
         </motion.div>
+
+        {/* Bottom Action CTA Buttons */}
+        <motion.div
+          className="lchm-home-services-cta-wrap"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <a href="#contact" className="btn-gold">
+            <span>Partner With Us</span>
+            <ArrowRight size={15} />
+          </a>
+          <a href="#contact" className="btn-secondary">
+            <Calendar size={15} />
+            <span>Schedule a Consultation</span>
+          </a>
+        </motion.div>
+
       </div>
     </section>
   );
 };
 
 export default Services;
-
-
-
-

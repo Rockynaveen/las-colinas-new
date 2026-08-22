@@ -7,20 +7,14 @@ interface ServicesHeroProps {
   label?: string;
   heading?: string;
   subtext?: string;
-  primaryCtaText?: string;
-  primaryCtaOnClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  secondaryCtaText?: string;
-  secondaryCtaOnClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  imageSrc?: string;
 }
 
 export const ServicesHero: React.FC<ServicesHeroProps> = ({
   label = 'OUR SERVICES',
   heading = 'Comprehensive Hospitality Solutions.',
   subtext = 'We partner with owners and investors to develop, manage, and elevate hotel assets across leading markets.',
-  primaryCtaText,
-  primaryCtaOnClick,
-  secondaryCtaText,
-  secondaryCtaOnClick,
+  imageSrc = '/images/orlando-skyline.png',
 }) => {
   const reduceMotion = useReducedMotion();
 
@@ -31,58 +25,33 @@ export const ServicesHero: React.FC<ServicesHeroProps> = ({
   });
 
   return (
-    <section id="services-hero" className="services-hero">
-      {/* Dallas Skyline Background Image */}
+    <section className="about-hero">
       <motion.img
-        className="services-hero-bg"
-        src="/images/dallas-skyline.jpg"
-        alt="Dallas skyline"
-        initial={reduceMotion ? { scale: 1 } : { scale: 1.06 }}
+        className="about-hero-image"
+        src={imageSrc}
+        alt="Skyline background"
+        initial={reduceMotion ? { scale: 1 } : { scale: 1.15 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 1.4, ease }}
+        transition={{ duration: 1.6, ease }}
+        style={{ objectPosition: 'center 42%' }}
       />
 
-      {/* Dark Transparent Gradient Overlay */}
-      <div className="services-hero-overlay" />
+      <div className="about-overlay" />
 
-      <div className="services-hero-content">
-        <motion.span className="services-hero-label" {...fadeUp(0.15)}>
+      <div className="about-content">
+        <motion.span className="about-label" {...fadeUp(0.15)}>
           {label}
         </motion.span>
 
-        <motion.h1 className="services-hero-heading" {...fadeUp(0.28)}>
+        <motion.h1 className="about-title" {...fadeUp(0.28)}>
           {heading}
         </motion.h1>
 
-        <motion.div className="services-hero-gold-line" {...fadeUp(0.38)} />
+        <motion.div className="gold-line" {...fadeUp(0.38)} />
 
-        <motion.p className="services-hero-subtext" {...fadeUp(0.46)}>
+        <motion.p className="about-desc" {...fadeUp(0.46)}>
           {subtext}
         </motion.p>
-
-        {(primaryCtaText || secondaryCtaText) && (
-          <motion.div className="services-hero-ctas" {...fadeUp(0.54)}>
-            {primaryCtaText && (
-              <button
-                type="button"
-                onClick={primaryCtaOnClick}
-                className="services-hero-btn services-hero-btn--gold"
-              >
-                <span>{primaryCtaText}</span>
-              </button>
-            )}
-
-            {secondaryCtaText && (
-              <button
-                type="button"
-                onClick={secondaryCtaOnClick}
-                className="services-hero-btn services-hero-btn--ghost"
-              >
-                <span>{secondaryCtaText}</span>
-              </button>
-            )}
-          </motion.div>
-        )}
       </div>
     </section>
   );

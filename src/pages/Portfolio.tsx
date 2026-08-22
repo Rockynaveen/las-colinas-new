@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { 
-  Building,
-  TrendingUp,
-  ShieldCheck,
-  DollarSign,
-  Wallet,
-  Award,
-  ArrowRight,
-  MapPin,
+  MapPin, 
   ChevronDown
 } from 'lucide-react';
 import HomeCTA from '../components/HomeCTA';
+import { ServicesHero } from '../components/ServicesHero';
 import { portfolioCategories } from '../utils/portfolioData';
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -22,10 +16,6 @@ export const Portfolio: React.FC = () => {
 
   const displayedCategories = portfolioCategories.slice(0, visibleCount);
 
-  const handlePartnerCTA = () => {
-    window.location.hash = '#contact';
-  };
-
   const fadeUp = (delay: number) => ({
     initial: reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -33,46 +23,15 @@ export const Portfolio: React.FC = () => {
     transition: { duration: 0.8, delay, ease }
   });
 
-  const heroFadeUp = (delay: number) => ({
-    initial: reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 22 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.7, delay, ease },
-  });
-
   return (
     <div className="portfolio-page-wrap">
       
-      {/* 1. HERO SECTION (Dallas Skyline Banner) */}
-      <section id="portfolio-hero" className="about-hero portfolio-hero">
-        <motion.img
-          className="about-hero-image"
-          src="/images/orlando-skyline.png"
-          alt="Orlando skyline"
-          initial={reduceMotion ? { scale: 1 } : { scale: 1.15 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.6, ease }}
-          style={{ objectPosition: 'center 42%' }}
-        />
-
-        <div className="about-overlay" />
-
-        <div className="about-content">
-          <motion.span className="about-label" {...heroFadeUp(0.15)}>
-            OUR PORTFOLIO
-          </motion.span>
-
-          <motion.h1 {...heroFadeUp(0.28)}>
-            Exceptional Properties.<br />
-            Proven Performance.
-          </motion.h1>
-
-          <motion.div className="gold-line" {...heroFadeUp(0.38)} />
-
-          <motion.p {...heroFadeUp(0.46)}>
-            We partner with owners and investors to develop, manage, and elevate hotel assets across leading markets.
-          </motion.p>
-        </div>
-      </section>
+      {/* 1. HERO SECTION */}
+      <ServicesHero
+        label="OUR PORTFOLIO"
+        heading="Exceptional Properties. Proven Performance."
+        subtext="We partner with owners and investors to develop, manage, and elevate hotel assets across leading markets."
+      />
 
       {/* 2. PROPERTIES GRID SECTION (White/cream background) */}
       <section id="portfolio" className="portfolio-grid-section">

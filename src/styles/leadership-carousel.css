@@ -209,9 +209,9 @@
 }
 
 .carousel-nav-btn {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(176, 140, 72, 0.35);
-  color: var(--color-gold-light);
+  background: rgba(176, 140, 72, 0.08);
+  border: 1px solid rgba(176, 140, 72, 0.4);
+  color: #B08C48;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -224,9 +224,9 @@
 
 .carousel-nav-btn:hover {
   background: var(--color-gold);
-  color: var(--color-white);
-  border-color: var(--color-gold-light);
-  box-shadow: 0 0 15px rgba(176, 140, 72, 0.4);
+  color: #ffffff;
+  border-color: var(--color-gold);
+  box-shadow: 0 4px 15px rgba(176, 140, 72, 0.35);
   transform: scale(1.05);
 }
 
@@ -235,22 +235,24 @@
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
   user-select: none;
 }
 
 .current-page {
-  color: var(--color-white);
+  color: #0b132b !important;
+  font-weight: 800 !important;
 }
 
 .page-divider {
-  color: rgba(176, 140, 72, 0.4);
+  color: rgba(176, 140, 72, 0.6) !important;
+  font-weight: 600 !important;
 }
 
 .total-pages {
-  color: var(--color-gold-light);
-  opacity: 0.7;
+  color: #B08C48 !important;
+  opacity: 0.85 !important;
 }
 
 /* CTA styling */

@@ -1,70 +1,87 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { SectionLabel } from './SectionLabel';
 import { TeamModal } from './TeamModal';
-
-interface TeamMember {
-  id: string;
-  name: string;
-  role: string;
-  image: string;
-  description: string;
-  expertise: string[];
-}
-
-const teamMembers: TeamMember[] = [
-  {
-    id: 'nandini-tiwari',
-    name: 'Nandini Tiwari',
-    role: 'President',
-    image: '/images/portfolio/christa-wijendran–regiona-accounting-HR-manager-lchm.webp',
-    description: 'Nandini has over 20 years of hospitality experience, beginning her career in guest relations and advancing to General Manager. She oversees hotel development under LCHM, negotiating Property Improvement Plans (PIPs) and directing design, construction, and property openings.',
-    expertise: ['Property Development', 'PIP Negotiation', 'Construction Management', 'Hotel Openings', 'Brand Compliance']
-  },
-  {
-    id: 'nitin-tiwari',
-    name: 'Nitin Tiwari',
-    role: 'Chief Executive Officer',
-    image: '/images/portfolio/diana-ortiz-director-of-sales-lchm.webp',
-    description: 'Nitin possesses over 20 years of hospitality experience as a Sales Manager, GM, Regional Manager, and owner of multiple hotels. He holds an M.B.A. from the University of Sydney, Australia, with deep brand expertise across Hilton, IHG, Choice Hotels, Wyndham, and La Quinta.',
-    expertise: ['Executive Leadership', 'Strategic Planning', 'Brand Partnerships', 'Regional Management', 'Asset Portfolio Growth']
-  },
-  {
-    id: 'manasa-sharma',
-    name: 'Manasa Sharma',
-    role: 'Chief Financial Officer',
-    image: '/images/portfolio/image.png',
-    description: 'Manasa directs corporate financial planning, capital allocation, and underwriting strategies, aligning investor expectations with asset performance.',
-    expertise: ['Corporate Finance', 'Underwriting Strategies', 'Capital Allocation', 'Asset Performance', 'Investor Relations']
-  },
-  {
-    id: 'jignesh-patel',
-    name: 'Jignesh Patel',
-    role: 'Accounting Manager',
-    image: '/images/portfolio/image1.png',
-    description: "Jignesh manages LCHM's corporate accounting operations, auditing property financials, running accounts payable, and enforcing accounting standards.",
-    expertise: ['Accounting Operations', 'Financial Auditing', 'Accounts Payable', 'Regulatory Compliance', 'Standard Enforcement']
-  },
-  {
-    id: 'jimmy-munoz',
-    name: 'Jimmy Munoz',
-    role: 'Regional Operations Manager',
-    image: '/images/portfolio/image2.png',
-    description: 'Jimmy oversees property operations, ensuring brand compliance, preventative maintenance execution, and high guest satisfaction scores.',
-    expertise: ['Operations Management', 'Brand Compliance', 'Preventative Maintenance', 'Guest Satisfaction', 'Property Audits']
-  },
-  {
-    id: 'christa-wijendran',
-    name: 'Christa Wijendran',
-    role: 'Regional Accounting & HR Manager',
-    image: '/images/portfolio/image3.png',
-    description: 'Christa has 16+ years of finance and HR experience. She holds a BBA from Heriot-Watt University and a PG Business Analysis degree from Purdue.',
-    expertise: ['Human Resources', 'Finance Management', 'Business Analysis', 'Staffing & Recruitment', 'Employee Relations']
-  }
-];
+import { teamMembers, type TeamMember } from '../../utils/teamData';
 
 export const OurTeam: React.FC = () => {
+  const N = teamMembers.length;
+  const tripledMembers = [...teamMembers, ...teamMembers, ...teamMembers];
+  
+  const [currentIndex, setCurrentIndex] = useState(N);
+  const [transitionDuration, setTransitionDuration] = useState(0.6);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isMoving, setIsMoving] = useState(false);
+  
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const autoplayTimer = useRef<any>(null);
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+
+  useEffect(() => {
+    if (isHovered || isMoving || selectedMember) {
+      if (autoplayTimer.current) clearInterval(autoplayTimer.current);
+      return;
+    }
+
+    autoplayTimer.current = setInterval(() => {
+      handleNext();
+    }, 4000);
+
+    return () => {
+      if (autoplayTimer.current) clearInterval(autoplayTimer.current);
+    };
+  }, [isHovered, isMoving, currentIndex, selectedMember]);
+
+  const handleNext = () => {
+    if (isMoving) return;
+    setIsMoving(true);
+    setTransitionDuration(0.6);
+    setCurrentIndex((prev) => prev + 1);
+  };
+
+  const handlePrev = () => {
+    if (isMoving) return;
+    setIsMoving(true);
+    setTransitionDuration(0.6);
+    setCurrentIndex((prev) => prev - 1);
+  };
+
+  const handleAnimationComplete = () => {
+    setIsMoving(false);
+    
+    if (currentIndex >= 2 * N) {
+      setTransitionDuration(0);
+      setCurrentIndex(currentIndex - N);
+    } else if (currentIndex < N) {
+      setTransitionDuration(0);
+      setCurrentIndex(currentIndex + N);
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const minSwipeDistance = 50;
+    if (distance > minSwipeDistance) {
+      handleNext();
+    } else if (distance < -minSwipeDistance) {
+      handlePrev();
+    }
+  };
+
+  const displayIndex = ((currentIndex - N) % N + N) % N + 1;
 
   return (
     <section id="team" className="lchm-section lchm-section--cream lchm-team">
@@ -87,43 +104,88 @@ export const OurTeam: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Static Grid of Home-Page Style Team Cards (NO Carousel) */}
-        <div className="about-team-static-grid">
-          {teamMembers.map((member) => (
-            <motion.div
-              key={member.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="team-card-grid-item"
+        {/* Carousel Component */}
+        <div 
+          className="team-carousel-wrapper"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Carousel Track Area */}
+          <div className="carousel-clip-area">
+            <motion.div 
+              className="carousel-cards-track"
+              animate={{ 
+                x: `calc(-${currentIndex} * (var(--card-width) + var(--card-gap)))` 
+              }}
+              transition={transitionDuration > 0 ? {
+                type: "spring",
+                stiffness: 140,
+                damping: 24,
+                restDelta: 0.01
+              } : { duration: 0 }}
+              onAnimationComplete={handleAnimationComplete}
             >
-              <div
-                className="team-pill-card"
-                onClick={() => setSelectedMember(member)}
-                style={{ cursor: 'pointer', margin: 0, width: '100%' }}
-              >
-                {/* Portrait Frame with gold ring */}
-                <div className="portrait-frame">
-                  <div className="portrait-image-wrapper">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="portrait-image"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="gold-accent-ring" />
-                </div>
+              {tripledMembers.map((member, idx) => (
+                <div 
+                  className={`team-card-container ${idx === currentIndex ? 'active-slide' : ''}`}
+                  key={`${member.id}-${idx}`}
+                >
+                  <div 
+                    className="team-pill-card"
+                    onClick={() => setSelectedMember(member)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {/* Portrait Frame with gold ring */}
+                    <div className="portrait-frame">
+                      <div className="portrait-image-wrapper">
+                        <img 
+                          src={member.image} 
+                          alt={`${member.name} - ${member.role}`} 
+                          className="portrait-image"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="gold-accent-ring" />
+                    </div>
 
-                {/* Member Details */}
-                <div className="member-info">
-                  <h3 className="member-name-text">{member.name}</h3>
-                  <p className="member-role-text">{member.role}</p>
+                    {/* Member Details */}
+                    <div className="member-info">
+                      <h3 className="member-name-text">{member.name}</h3>
+                      <p className="member-role-text">{member.role}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </motion.div>
-          ))}
+          </div>
+
+          {/* Navigation Controls (Centered at bottom) */}
+          <div className="carousel-nav-controls">
+            <button 
+              className="carousel-nav-btn prev-btn" 
+              onClick={handlePrev}
+              aria-label="Previous Team Member"
+            >
+              <ChevronLeft size={20} strokeWidth={2.5} />
+            </button>
+            
+            <div className="carousel-page-indicator">
+              <span className="current-page">{displayIndex}</span>
+              <span className="page-divider">/</span>
+              <span className="total-pages">{N}</span>
+            </div>
+
+            <button 
+              className="carousel-nav-btn next-btn" 
+              onClick={handleNext}
+              aria-label="Next Team Member"
+            >
+              <ChevronRight size={20} strokeWidth={2.5} />
+            </button>
+          </div>
         </div>
       </div>
 

@@ -81,7 +81,7 @@
   font-family: var(--font-serif);
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--color-gold);
+  color: #021631 !important;
   background-color: transparent;
 }
 
@@ -1812,16 +1812,16 @@
 
 .about-page-wrap #advantage .lchm-label {
   display: inline-flex !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  align-self: flex-start !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-self: center !important;
 }
 
 .about-page-wrap #advantage .lchm-heading {
-  text-align: left !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  align-self: flex-start !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-self: center !important;
 }
 
 /* Section 6: Our Team - Beige */
@@ -1866,7 +1866,23 @@
 /* Core Values Cards overrides */
 .about-page-wrap #values .lchm-value-card {
   border-color: rgba(176, 140, 72, 0.4) !important;
-  background-color: rgba(255, 255, 255, 0.5) !important;
+  background-color: #FFFFFF !important;
+}
+
+/* Cards 1, 3, 6, 8 get warm ivory */
+.about-page-wrap #values .lchm-value-card:nth-child(1),
+.about-page-wrap #values .lchm-value-card:nth-child(3),
+.about-page-wrap #values .lchm-value-card:nth-child(6),
+.about-page-wrap #values .lchm-value-card:nth-child(8) {
+  background-color: #FAF4EB !important;
+}
+
+/* Cards 2, 4, 5, 7 get pure white */
+.about-page-wrap #values .lchm-value-card:nth-child(2),
+.about-page-wrap #values .lchm-value-card:nth-child(4),
+.about-page-wrap #values .lchm-value-card:nth-child(5),
+.about-page-wrap #values .lchm-value-card:nth-child(7) {
+  background-color: #FFFFFF !important;
 }
 
 .about-page-wrap #values .lchm-value-card:hover {
@@ -1896,9 +1912,9 @@
   opacity: 0.22 !important;
 }
 
-/* Section label number and text color overrides to gold */
+/* Section label number color to #021631 */
 .about-page-wrap .lchm-label-num {
-  color: #B08C48 !important;
+  color: #021631 !important;
 }
 
 /* Custom Our Team Header Image Ornament Styling */

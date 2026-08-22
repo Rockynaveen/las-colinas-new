@@ -34,18 +34,21 @@
 /* ------------------------------------------
    HEADER STYLES
    ------------------------------------------ */
+.services-header,
 .services-header-top {
-  text-align: center;
-  margin-bottom: 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center !important;
+  margin: 0 auto 4rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
   max-width: 820px;
+  width: 100%;
 }
 
 .services-badge {
-  display: inline-flex;
-  align-items: center;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   gap: 0.75rem;
   font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
   font-size: 0.875rem;
@@ -53,7 +56,8 @@
   letter-spacing: 0.25em;
   color: #A48111;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem !important;
+  align-self: center !important;
 }
 
 .services-badge-diamond {
@@ -180,7 +184,7 @@
   justify-content: space-between;
   gap: 1.25rem;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   min-height: 420px;
   height: auto;
 }
@@ -275,7 +279,8 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem; /* Increased spacing between bullet items */
+  gap: 0.65rem;
+  /* Increased spacing between bullet items */
   margin-top: 0.5rem;
 }
 
@@ -285,7 +290,8 @@
   gap: 0.6rem;
   font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
   font-size: 0.85rem;
-  font-weight: 600; /* Highlighted text */
+  font-weight: 600;
+  /* Highlighted text */
   color: #0A1322;
   line-height: 1.4;
 }
@@ -301,10 +307,13 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #C5A059 0%, #A48111 100%); /* Solid gold gradient badge */
-  color: #FFFFFF !important; /* Crisp white checkmark */
+  background: linear-gradient(135deg, #C5A059 0%, #A48111 100%);
+  /* Solid gold gradient badge */
+  color: #FFFFFF !important;
+  /* Crisp white checkmark */
   flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(164, 129, 17, 0.35); /* Highlighting shadow glow */
+  box-shadow: 0 2px 6px rgba(164, 129, 17, 0.35);
+  /* Highlighting shadow glow */
 }
 
 .service-bullet-text {
@@ -318,7 +327,8 @@
 
 /* RIGHT VERTICAL IMAGE TILE */
 .service-card-right-image {
-  width: 240px; /* Exact 240px width requested */
+  width: 240px;
+  /* Exact 240px width requested */
   height: 100%;
   flex-shrink: 0;
   border-radius: 14px;
@@ -460,4 +470,174 @@
   }
 }
 
+/* ==========================================
+   EXACT IMAGE 1 & IMAGE 2 HOME SERVICES SECTION
+   ========================================== */
+.lchm-home-services-section {
+  background-color: #FAF8F5;
+  padding: 5.5rem 2rem 6rem;
+  position: relative;
+  width: 100%;
+}
 
+.lchm-home-services-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 4 Columns x 2 Rows Square Grid */
+.lchm-home-services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.75rem;
+  width: 100%;
+  margin-bottom: 3.5rem;
+}
+
+/* Square White Card Item */
+.lchm-square-service-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(176, 140, 72, 0.25);
+  border-radius: 4px;
+  aspect-ratio: 1 / 1;
+  min-height: 240px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.75rem 1.25rem;
+  text-decoration: none !important;
+  box-shadow: 0 8px 24px rgba(18, 31, 52, 0.04);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.lchm-square-service-card:hover {
+  transform: translateY(-6px);
+  border-color: #B08C48;
+  box-shadow: 0 16px 40px rgba(10, 19, 34, 0.25);
+}
+
+/* Background Photo (Fades in on hover - Image 2) */
+.lchm-square-card-bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  z-index: 1;
+}
+
+.lchm-square-card-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lchm-square-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 19, 34, 0.82) 0%, rgba(10, 19, 34, 0.88) 100%);
+}
+
+.lchm-square-service-card:hover .lchm-square-card-bg-wrap {
+  opacity: 1;
+}
+
+.lchm-square-service-card:hover .lchm-square-card-bg-img {
+  transform: scale(1.08);
+}
+
+/* Inner Gold Frame Border (Hidden per user request) */
+.lchm-square-card-inner-frame {
+  display: none !important;
+}
+
+/* Card Content Overlay */
+.lchm-square-card-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Gold Icon Wrapper (No circle border, standalone large icon) */
+.lchm-square-icon-ring {
+  width: auto !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  border: none !important;
+  background-color: transparent !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem !important;
+  transition: transform 0.4s ease;
+}
+
+.lchm-square-icon {
+  color: #B08C48;
+  stroke-width: 1.35;
+  transition: color 0.4s ease, transform 0.4s ease;
+}
+
+.lchm-square-service-card:hover .lchm-square-icon-ring {
+  transform: scale(1.1);
+}
+
+.lchm-square-service-card:hover .lchm-square-icon {
+  color: #E3C564;
+}
+
+/* Card Title Heading (Dark Navy default -> Pure White on Hover) */
+.lchm-square-card-title {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #0b132b !important;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  line-height: 1.35;
+  margin: 0;
+  max-width: 200px;
+  transition: color 0.4s ease;
+}
+
+.lchm-square-service-card:hover .lchm-square-card-title {
+  color: #ffffff !important;
+}
+
+.lchm-home-services-cta-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+  .lchm-home-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .lchm-home-services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}

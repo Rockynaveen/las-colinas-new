@@ -59,7 +59,7 @@ export const Header: React.FC = () => {
   ];
 
   const isHomeActive = ['#home', '#'].includes(currentHash);
-  const hasHero = ['#home', '#', '#about', '#overview', '#story', '#vision', '#values', '#advantage', '#contact', '#portfolio'].includes(currentHash);
+  const hasHero = ['#home', '#', '#about', '#overview', '#story', '#vision', '#values', '#advantage', '#team', '#leadership', '#services', '#services-page', '#careers', '#contact', '#portfolio'].includes(currentHash);
 
   return (
     <>
@@ -75,8 +75,8 @@ export const Header: React.FC = () => {
 
           {/* Minimal Navigation Center */}
           <nav className="desktop-nav-menu" aria-label="Main Navigation">
-            <a 
-              href="#home" 
+            <a
+              href="#home"
               className={`nav-item-link ${isHomeActive && currentHash !== '#about' ? 'active' : ''}`}
             >
               HOME
@@ -84,7 +84,7 @@ export const Header: React.FC = () => {
 
             {/* ABOUT US Dropdown */}
             <div className="nav-dropdown-wrapper">
-              <button 
+              <button
                 type="button"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -98,9 +98,9 @@ export const Header: React.FC = () => {
               {activeDropdown === 'about' && (
                 <div className="dropdown-panel">
                   {aboutList.map((item) => (
-                    <a 
-                      key={item.name} 
-                      href={item.hash} 
+                    <a
+                      key={item.name}
+                      href={item.hash}
                       onClick={() => setActiveDropdown(null)}
                       className="dropdown-panel-link"
                     >
@@ -113,23 +113,22 @@ export const Header: React.FC = () => {
 
             {/* SERVICES Dropdown */}
             <div className="nav-dropdown-wrapper">
-              <button 
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setActiveDropdown(activeDropdown === 'services' ? null : 'services');
+              <a
+                href="#services"
+                onClick={() => {
+                  setActiveDropdown(null);
                 }}
                 className={`nav-item-link ${currentHash === '#services' ? 'active' : ''}`}
               >
                 SERVICES
                 <ChevronDown size={12} style={{ opacity: 0.7 }} />
-              </button>
+              </a>
               {activeDropdown === 'services' && (
                 <div className="dropdown-panel">
                   {servicesList.map((item) => (
-                    <a 
-                      key={item.name} 
-                      href={item.hash} 
+                    <a
+                      key={item.name}
+                      href={item.hash}
                       onClick={() => setActiveDropdown(null)}
                       className="dropdown-panel-link"
                     >
@@ -140,22 +139,22 @@ export const Header: React.FC = () => {
               )}
             </div>
 
-            <a 
-              href="#portfolio" 
+            <a
+              href="#portfolio"
               className={`nav-item-link ${currentHash === '#portfolio' ? 'active' : ''}`}
             >
               PORTFOLIO
             </a>
 
-            <a 
-              href="#careers" 
+            <a
+              href="#careers"
               className={`nav-item-link ${currentHash === '#careers' ? 'active' : ''}`}
             >
               CAREERS
             </a>
 
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               className={`nav-item-link ${currentHash === '#contact' ? 'active' : ''}`}
             >
               CONTACT US

@@ -80,11 +80,11 @@ export const Hero: React.FC = () => {
 
           {/* CTA Buttons */}
           <motion.div variants={itemVariants} className="hero-cta-group">
-            <a href="#partner" className="btn-gold">
+            <a href="#contact" className="btn-gold">
               <span>Partner With Us</span>
               <ArrowRight size={15} />
             </a>
-            <a href="#consultation" className="btn-secondary">
+            <a href="#contact" className="btn-secondary">
               <Calendar size={15} />
               <span>Schedule a Consultation</span>
             </a>

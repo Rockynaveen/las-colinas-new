@@ -7,8 +7,9 @@ import {
   Clock,
   Loader2, 
   Check,
-  Send
+  Send,
 } from 'lucide-react';
+import { ServicesHero } from '../components/ServicesHero';
 
 interface FormData {
   name: string;
@@ -72,42 +73,16 @@ export const Contact: React.FC = () => {
     transition: { duration: 0.8, delay, ease }
   });
 
-  const heroFadeUp = (delay: number) => ({
-    initial: reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 22 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.7, delay, ease },
-  });
 
   return (
     <div className="contact-page-wrap">
       
       {/* 1. HERO BANNER */}
-      <section className="about-hero contact-hero-banner">
-        <motion.img
-          className="about-hero-image"
-          src="/images/orlando-skyline.png"
-          alt="Orlando skyline"
-          initial={reduceMotion ? { scale: 1 } : { scale: 1.15 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.6, ease }}
-          style={{ objectPosition: 'center 42%' }}
-        />
-
-        <div className="about-overlay" />
-
-        <div className="about-content">
-          <motion.span className="about-label" {...heroFadeUp(0.15)}>
-            Home &gt; Contact
-          </motion.span>
-          <motion.h1 className="about-title" {...heroFadeUp(0.28)}>
-            Get In Touch With Las Colinas
-          </motion.h1>
-          <motion.div className="gold-line" {...heroFadeUp(0.38)} />
-          <motion.p className="about-desc" {...heroFadeUp(0.46)}>
-            Have questions or want to explore how Las Colinas Hospitality Management can elevate your hotel asset? Reach out to our executive team today.
-          </motion.p>
-        </div>
-      </section>
+      <ServicesHero
+        label="CONTACT US"
+        heading="Get In Touch With Las Colinas"
+        subtext="Have questions or want to explore how Las Colinas Hospitality Management can elevate your hotel asset? Reach out to our executive team today."
+      />
 
       {/* 2. GET IN TOUCH SECTION HEADER + ALTERNATING 4 INFO CARDS */}
       <section className="contact-info-cards-section">

@@ -643,10 +643,13 @@ html, body {
 }
 
 .light-theme .lchm-vm-title,
-.light-theme .lchm-value-title,
 .light-theme .lchm-adv-title,
 .light-theme .lchm-team .team-static-card-role {
   color: #c5a059 !important;
+}
+
+.light-theme .lchm-value-title {
+  color: #021631 !important;
 }
 
 .light-theme .lchm-vm-text,

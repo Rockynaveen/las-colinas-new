@@ -10,11 +10,7 @@
   padding-top: 0;
 }
 
-/* Contact Hero Zoomed Out View */
-.contact-hero-banner {
-  min-height: min(65vh, 520px) !important;
-}
-
+/* Contact Hero Banner */
 .contact-hero-banner .about-hero-image {
   object-fit: cover !important;
   object-position: center 42% !important;
