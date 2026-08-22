@@ -58,16 +58,21 @@
 
 /* Stylized Brand Logo SVG */
 .brand-logo-svg {
-  height: 38px;
-  width: auto;
-  color: #FFFFFF;
-  opacity: 0.75;
+  height: 38px !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 80px !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+  color: #FFFFFF !important;
+  fill: currentColor !important;
+  opacity: 0.85;
   transition: opacity 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .brand-logo-item:hover .brand-logo-svg {
   opacity: 1;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   transform: scale(1.03);
 }
 
