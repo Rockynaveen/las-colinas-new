@@ -106,33 +106,38 @@ body {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(176, 140, 72, 0.15);
 }
 
-/* Gold Button Glow Effect */
+/* Gold Button Design */
 .btn-gold {
-  background-color: var(--color-gold);
-  color: var(--color-white);
+  background-color: #B08C48 !important;
+  color: #0A1322 !important;
   font-family: var(--font-sans);
-  font-weight: 600;
+  font-weight: 700 !important;
   font-size: 0.875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 1.125rem 2.25rem;
-  border-radius: 2px;
-  border: 1px solid var(--color-gold);
+  border-radius: 4px;
+  border: 1px solid #B08C48 !important;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
   transition: all var(--transition-smooth);
-  box-shadow: 0 4px 20px rgba(176, 140, 72, 0.35);
+  box-shadow: 0 8px 25px rgba(176, 140, 72, 0.35) !important;
   text-decoration: none;
 }
 
+.btn-gold svg {
+  color: #0A1322 !important;
+}
+
 .btn-gold:hover {
-  background-color: var(--color-gold-hover);
-  border-color: var(--color-gold-light);
+  background-color: #99783B !important;
+  border-color: #99783B !important;
+  color: #0A1322 !important;
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(176, 140, 72, 0.55), 0 0 20px rgba(223, 190, 122, 0.4);
+  box-shadow: 0 12px 30px rgba(176, 140, 72, 0.5) !important;
 }
 
 .btn-secondary {
@@ -807,6 +812,29 @@ svg {
     font-size: 0.8rem;
   }
 
+  .hero-cta-group {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.85rem !important;
+  }
+
+  .hero-cta-group .btn-gold,
+  .hero-cta-group .btn-secondary {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0.95rem 1.25rem !important;
+    font-size: 0.825rem !important;
+    letter-spacing: 0.08em !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    border-radius: 4px !important;
+    white-space: nowrap !important;
+    box-sizing: border-box !important;
+  }
+
   .light-theme .team-pill-card {
     aspect-ratio: auto !important;
     max-width: 270px !important;
@@ -842,6 +870,14 @@ svg {
     max-width: 340px !important;
     margin: 0 auto !important;
     border-radius: 14px !important;
+  }
+
+  .port-card-name {
+    font-size: clamp(0.78rem, 3.6vw, 0.9rem) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
   }
 
   .contact-map-col {

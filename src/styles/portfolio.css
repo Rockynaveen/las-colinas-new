@@ -1311,24 +1311,31 @@
     gap: 1.5rem;
   }
 
-  .port-card {
-    flex: none !important;
+  .portfolio-properties-grid .port-card {
     width: 100% !important;
     max-width: 340px !important;
     margin: 0 auto !important;
     height: 320px !important;
-    aspect-ratio: 4 / 3.8 !important;
+    border-radius: 14px !important;
+  }
+
+  .port-slider-container .port-card {
+    height: 360px !important;
     border-radius: 14px !important;
   }
 
   .port-card-content {
-    padding: 1.75rem 1.25rem 1.5rem 1.25rem !important;
+    padding: 1.5rem 1rem 1.25rem 1rem !important;
   }
 
   .port-card-name {
-    font-size: 0.9rem !important;
-    letter-spacing: 0.08em !important;
+    font-size: clamp(0.78rem, 3.6vw, 0.9rem) !important;
+    letter-spacing: 0.06em !important;
+    white-space: nowrap !important;
     margin-bottom: 0.35rem !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
   .port-card-location {
