@@ -128,7 +128,7 @@ const AppContent: React.FC = () => {
   const memoizedVideo = useMemo(() => (
     <video
       ref={videoRef}
-      src="/videos/lc-video-8.mp4"
+      src="/videos/video 2.mp4"
       autoPlay
       muted
       loop
