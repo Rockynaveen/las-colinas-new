@@ -659,17 +659,39 @@
 }
 
 @media (max-width: 640px) {
+  .lchm-home-services-section {
+    padding: 3rem 0.85rem 4rem;
+    scroll-margin-top: 90px;
+  }
+
   .lchm-home-services-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem 0.75rem;
+    gap: 0.85rem 0.65rem;
+    margin-bottom: 2.5rem;
   }
 
   .lchm-square-service-card {
-    min-height: 180px;
-    padding: 1.25rem 0.75rem;
+    min-height: 185px;
+    height: 100%;
+    aspect-ratio: auto;
+    padding: 1.25rem 0.5rem 1.1rem;
+    border-radius: 6px;
+  }
+
+  .lchm-square-icon-ring {
+    margin-bottom: 0.65rem !important;
+  }
+
+  .lchm-square-icon {
+    width: 30px !important;
+    height: 30px !important;
   }
 
   .lchm-square-card-title {
-    font-size: 0.85rem;
+    font-size: 0.75rem !important;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.05em;
+    max-width: 100%;
   }
 }
