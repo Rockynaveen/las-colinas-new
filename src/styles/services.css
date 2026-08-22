@@ -444,7 +444,7 @@
 
 @media (max-width: 768px) {
   .services-section {
-    padding: 60px 1.25rem;
+    padding: 50px 1.25rem;
   }
 
   .services-grid-cards {
@@ -453,43 +453,103 @@
   }
 
   .service-card-item {
-    padding: 0px;
-    min-height: auto;
+    flex-direction: column-reverse !important;
+    padding: 1.5rem 1.25rem !important;
+    min-height: auto !important;
+    background-color: #FAF8F5 !important;
+    border: 1px solid rgba(176, 140, 72, 0.22) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 10px 30px rgba(18, 31, 52, 0.05) !important;
+  }
+
+  .service-card-left {
+    width: 100% !important;
+    padding: 0.5rem 0 0 0 !important;
+    align-items: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  .service-card-heading {
+    text-align: center !important;
+    font-size: clamp(1.35rem, 5vw, 1.75rem) !important;
+    color: #0A1322 !important;
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .service-card-text {
+    text-align: center !important;
+    font-size: 0.875rem !important;
+    color: rgba(18, 31, 52, 0.75) !important;
+    max-width: 100% !important;
+    margin-bottom: 1.25rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .service-bullets-list {
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
   }
 
   .service-card-right-image {
-    width: 140px;
+    width: 100% !important;
+    height: 180px !important;
+    min-height: 180px !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    margin-bottom: 1rem !important;
   }
 
   .service-card-featured {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
+    padding: 1.5rem 1.25rem !important;
   }
 
   .service-featured-left-image {
-    min-height: 220px;
-    height: 220px;
+    min-height: 180px;
+    height: 180px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .service-featured-right-content {
+    align-items: center !important;
+    text-align: center !important;
   }
 
   .service-bullets-2col {
     grid-template-columns: 1fr !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
   }
 
   .service-icon-circle {
     margin-left: auto !important;
     margin-right: auto !important;
+    margin-bottom: 1rem !important;
   }
 }
 
 @media (max-width: 480px) {
   .service-card-item {
-    flex-direction: column-reverse;
+    padding: 1.25rem 1rem !important;
   }
 
   .service-card-right-image {
-    width: 100%;
-    height: 200px;
-    min-height: 200px;
+    width: 100% !important;
+    height: 160px !important;
+    min-height: 160px !important;
   }
 }
 
@@ -651,47 +711,91 @@
 }
 
 /* Responsive Grid */
-@media (max-width: 1024px) {
-  .lchm-home-services-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 640px) {
+@media (max-width: 991px) {
   .lchm-home-services-section {
-    padding: 3rem 0.85rem 4rem;
+    padding: 3.5rem 1rem 4rem;
     scroll-margin-top: 90px;
   }
 
   .lchm-home-services-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.85rem 0.65rem;
-    margin-bottom: 2.5rem;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.85rem 0.65rem !important;
+    margin-bottom: 2.5rem !important;
   }
 
   .lchm-square-service-card {
-    min-height: 185px;
-    height: 100%;
-    aspect-ratio: auto;
-    padding: 1.25rem 0.5rem 1.1rem;
-    border-radius: 6px;
+    min-height: 180px !important;
+    height: 100% !important;
+    aspect-ratio: auto !important;
+    padding: 1.35rem 0.6rem 1.15rem !important;
+    border-radius: 8px !important;
+    background-color: #ffffff !important;
+    border: 1px solid rgba(18, 31, 52, 0.08) !important;
+    box-shadow: 0 4px 15px rgba(18, 31, 52, 0.03) !important;
   }
 
   .lchm-square-icon-ring {
-    margin-bottom: 0.65rem !important;
+    margin-bottom: 0.75rem !important;
   }
 
   .lchm-square-icon {
-    width: 30px !important;
-    height: 30px !important;
+    width: 36px !important;
+    height: 36px !important;
+    color: #B08C48 !important;
   }
 
   .lchm-square-card-title {
-    font-size: 0.75rem !important;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: 0.05em;
-    max-width: 100%;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    color: #0b132b !important;
+    line-height: 1.25 !important;
+    letter-spacing: 0.06em !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+
+  .lchm-home-services-cta-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.85rem !important;
+  }
+
+  .lchm-home-services-cta-wrap .btn-gold,
+  .lchm-home-services-cta-wrap .btn-secondary {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0.95rem 1.25rem !important;
+    font-size: 0.825rem !important;
+    letter-spacing: 0.08em !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    border-radius: 6px !important;
+    white-space: nowrap !important;
+    box-sizing: border-box !important;
+  }
+
+  .lchm-home-services-cta-wrap .btn-gold {
+    background-color: #B08C48 !important;
+    color: #0A1322 !important;
+    border: 1px solid #B08C48 !important;
+    box-shadow: 0 8px 22px rgba(176, 140, 72, 0.28) !important;
+  }
+
+  .lchm-home-services-cta-wrap .btn-gold svg {
+    color: #0A1322 !important;
+  }
+
+  .lchm-home-services-cta-wrap .btn-secondary {
+    background-color: #FFFFFF !important;
+    color: #0A1322 !important;
+    border: 1px solid rgba(18, 31, 52, 0.12) !important;
+    box-shadow: 0 4px 15px rgba(18, 31, 52, 0.04) !important;
+  }
+
+  .lchm-home-services-cta-wrap .btn-secondary svg {
+    color: #0A1322 !important;
   }
 }
