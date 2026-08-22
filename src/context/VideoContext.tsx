@@ -12,7 +12,7 @@ export const SCENES: VideoScene[] = [
     id: 'video-2',
     name: 'Las Colinas Video',
     src: '/videos/video 2.mp4',
-    poster: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=85'
+    poster: '/images/templete 1.webp'
   }
 ];
 
@@ -23,6 +23,10 @@ interface VideoContextType {
   setIsMuted: (muted: boolean) => void;
   videoRef: React.RefObject<HTMLVideoElement | null>;
   activeScene: VideoScene;
+  hasVideoError: boolean;
+  setHasVideoError: (hasError: boolean) => void;
+  isVideoLoaded: boolean;
+  setIsVideoLoaded: (isLoaded: boolean) => void;
 }
 
 const VideoContext = createContext<VideoContextType | undefined>(undefined);
@@ -30,6 +34,8 @@ const VideoContext = createContext<VideoContextType | undefined>(undefined);
 export const VideoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [activeSceneIndex, setActiveSceneIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
+  const [hasVideoError, setHasVideoError] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const activeScene = SCENES[activeSceneIndex];
@@ -50,16 +56,19 @@ export const VideoProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       if (lastSrcRef.current !== activeScene.src) {
         lastSrcRef.current = activeScene.src;
         videoRef.current.src = activeScene.src;
-        if (activeScene.poster) {
-          videoRef.current.poster = activeScene.poster;
-        }
+        videoRef.current.poster = activeScene.poster || '/images/templete 1.webp';
+        setHasVideoError(false);
+        setIsVideoLoaded(false);
         videoRef.current.load();
       }
 
       // Call play only if the video is currently paused
       if (videoRef.current.paused) {
         videoRef.current.play().catch(() => {
-          // Silent catch for browser autoplay restrictions
+          if (videoRef.current?.error) {
+            setHasVideoError(true);
+            setIsVideoLoaded(false);
+          }
         });
       }
     }
@@ -73,7 +82,11 @@ export const VideoProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         isMuted,
         setIsMuted,
         videoRef,
-        activeScene
+        activeScene,
+        hasVideoError,
+        setHasVideoError,
+        isVideoLoaded,
+        setIsVideoLoaded
       }}
     >
       {children}
@@ -88,3 +101,4 @@ export const useVideo = () => {
   }
   return context;
 };
+

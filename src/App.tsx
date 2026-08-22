@@ -37,7 +37,9 @@ import './styles/about-lchm.css';
 
 const AppContent: React.FC = () => {
   const [currentHash, setCurrentHash] = useState(window.location.hash || '#home');
-  const { videoRef } = useVideo();
+  const { videoRef, hasVideoError, setHasVideoError, isVideoLoaded, setIsVideoLoaded } = useVideo();
+
+
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -126,18 +128,34 @@ const AppContent: React.FC = () => {
 
   // Memoize the video tag so React never diffs it on state changes / re-renders
   const memoizedVideo = useMemo(() => (
-    <video
-      ref={videoRef}
-      src="/videos/video 2.mp4"
-      autoPlay
-      muted
-      loop
-      playsInline
-      className="hero-video"
-    >
-      Your browser does not support HTML5 video.
-    </video>
-  ), [videoRef]);
+    <>
+      {/* Backup Image: Always visible while video is loading / late or has error */}
+      <img
+        src="/images/templete 1.webp"
+        alt="Las Colinas Hospitality Hero Background"
+        className={`hero-fallback-image ${isVideoLoaded && !hasVideoError ? 'loaded-fade-out' : 'visible'}`}
+      />
+      <video
+        ref={videoRef}
+        src="/videos/video 2.mp4"
+        poster="/images/templete 1.webp"
+        autoPlay
+        muted
+        loop
+        playsInline
+        className={`hero-video ${hasVideoError ? 'hidden' : isVideoLoaded ? 'video-ready' : 'video-loading'}`}
+        onError={() => {
+          setHasVideoError(true);
+          setIsVideoLoaded(false);
+        }}
+        onCanPlay={() => setIsVideoLoaded(true)}
+        onPlaying={() => setIsVideoLoaded(true)}
+        onWaiting={() => setIsVideoLoaded(false)}
+      >
+        Your browser does not support HTML5 video.
+      </video>
+    </>
+  ), [videoRef, hasVideoError, setHasVideoError, isVideoLoaded, setIsVideoLoaded]);
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-[#121F34] relative overflow-hidden font-sans light-theme">
