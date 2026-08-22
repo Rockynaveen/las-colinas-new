@@ -156,8 +156,50 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .services-hero {
-    height: 50vh;
-    min-height: 380px;
-    padding-top: 70px;
+    height: 350px;
+    min-height: 350px;
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-hero {
+    height: 330px;
+    min-height: 330px;
+    padding-top: 55px;
+  }
+
+  .services-hero-content {
+    padding: 0 1.15rem;
+  }
+
+  .services-hero-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 0.4rem;
+  }
+
+  .services-hero-heading,
+  .light-theme .services-hero-heading {
+    font-size: 1.45rem !important;
+    line-height: 1.18 !important;
+  }
+
+  .services-hero-gold-line {
+    width: 28px;
+    height: 2px;
+    margin: 0.65rem 0;
+  }
+
+  .services-hero-subtext,
+  .light-theme .services-hero-subtext {
+    font-size: 0.8125rem !important;
+    line-height: 1.55 !important;
+    max-width: 320px;
+  }
+
+  .services-hero-btn {
+    font-size: 0.72rem;
+    padding: 0.7rem 1.2rem;
   }
 }

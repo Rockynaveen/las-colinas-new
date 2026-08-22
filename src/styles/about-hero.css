@@ -191,14 +191,14 @@
 
 
 /* Mobile */
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .about-hero {
-    height: 380px !important;
-    min-height: 380px !important;
-    max-height: 380px !important;
+    height: 340px !important;
+    min-height: 340px !important;
+    max-height: 340px !important;
     align-items: center;
     justify-content: center;
-    padding-top: 70px;
+    padding-top: 60px;
   }
 
   .about-hero-image {
@@ -214,23 +214,35 @@
   }
 
   .about-content {
-    padding: 40px 25px 55px;
+    padding: 25px 16px 25px;
   }
 
   .about-label {
-    font-size: 12px;
-    margin-bottom: 14px;
+    font-size: 0.625rem !important;
+    padding: 4px 14px !important;
+    margin-bottom: 10px !important;
+    gap: 5px !important;
   }
 
   .about-hero .about-content h1,
   .light-theme .about-hero .about-content h1 {
-    font-size: 30px;
-    line-height: 1.12;
+    font-size: 1.45rem !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.02em !important;
+    margin: 0 !important;
+  }
+
+  .gold-line {
+    width: 28px;
+    height: 2px;
+    margin: 8px 0 10px;
   }
 
   .about-hero .about-content p,
   .light-theme .about-hero .about-content p {
-    font-size: 14px;
-    line-height: 1.7;
+    font-size: 0.8125rem !important;
+    line-height: 1.55 !important;
+    margin: 0 !important;
+    max-width: 320px;
   }
 }
