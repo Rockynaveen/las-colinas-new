@@ -29,16 +29,7 @@ export const MobileNavDrawer: React.FC<MobileNavDrawerProps> = ({ isOpen, onClos
         { label: 'Our Team', href: '#team' }
       ]
     },
-    {
-      label: 'SERVICES',
-      href: '#',
-      submenu: [
-        { label: 'Hotel Management', href: '#services' },
-        { label: 'Asset Management', href: '#services' },
-        { label: 'Development & Acquisition', href: '#services' },
-        { label: 'Revenue Optimization', href: '#services' }
-      ]
-    },
+    { label: 'SERVICES', href: '#services' },
     { label: 'PORTFOLIO', href: '#portfolio' },
     { label: 'CAREERS', href: '#careers' },
     { label: 'CONTACT US', href: '#contact' }

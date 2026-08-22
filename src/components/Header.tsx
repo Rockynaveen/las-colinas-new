@@ -41,14 +41,6 @@ export const Header: React.FC = () => {
     };
   }, []);
 
-  const servicesList = [
-    { name: 'Hotel Management', hash: '#services' },
-    { name: 'Asset Management', hash: '#services' },
-    { name: 'Development & Acquisition', hash: '#services' },
-    { name: 'Revenue Optimization', hash: '#services' }
-  ];
-
-
   const aboutList = [
     { name: 'Overview', hash: '#overview' },
     { name: 'Our Story', hash: '#story' },
@@ -111,33 +103,12 @@ export const Header: React.FC = () => {
               )}
             </div>
 
-            {/* SERVICES Dropdown */}
-            <div className="nav-dropdown-wrapper">
-              <a
-                href="#services"
-                onClick={() => {
-                  setActiveDropdown(null);
-                }}
-                className={`nav-item-link ${currentHash === '#services' ? 'active' : ''}`}
-              >
-                SERVICES
-                <ChevronDown size={12} style={{ opacity: 0.7 }} />
-              </a>
-              {activeDropdown === 'services' && (
-                <div className="dropdown-panel">
-                  {servicesList.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.hash}
-                      onClick={() => setActiveDropdown(null)}
-                      className="dropdown-panel-link"
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
+            <a
+              href="#services"
+              className={`nav-item-link ${currentHash === '#services' ? 'active' : ''}`}
+            >
+              SERVICES
+            </a>
 
             <a
               href="#portfolio"
@@ -160,8 +131,6 @@ export const Header: React.FC = () => {
               CONTACT US
             </a>
           </nav>
-
-
 
           {/* Mobile Hamburger Toggle */}
           <button

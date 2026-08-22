@@ -745,5 +745,45 @@ html, body {
   color: rgba(245, 242, 234, 0.45) !important;
 }
 
+/* ==========================================================================
+   GLOBAL RESPONSIVE HELPERS & TOUCH FIXES
+   ========================================================================== */
+img, video, iframe, svg {
+  max-width: 100%;
+  height: auto;
+}
 
+@media (max-width: 768px) {
+  .btn-gold, .btn-secondary {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.8rem;
+  }
 
+  .editorial-header {
+    margin-bottom: clamp(30px, 8vw, 60px);
+  }
+
+  .header-crest-wrapper {
+    max-width: 280px;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-padding-top: 60px;
+    --section-padding-bottom: 60px;
+    --section-padding-top-large: 70px;
+    --section-padding-bottom-large: 70px;
+    --section-gap: 40px;
+  }
+
+  .editorial-heading {
+    font-size: 1.65rem;
+    letter-spacing: 0.1em;
+  }
+
+  .editorial-subtext {
+    font-size: 0.875rem;
+  }
+}
