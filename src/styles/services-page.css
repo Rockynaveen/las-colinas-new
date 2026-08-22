@@ -369,6 +369,7 @@
 @media (max-width: 1024px) {
   .svc-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
   }
 
   .svc-hero-photo {
@@ -380,6 +381,14 @@
     width: 52px;
     left: -16px;
   }
+
+  .svc-core {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .svc-why {
+    padding: 3.5rem 0;
+  }
 }
 
 @media (max-width: 800px) {
@@ -389,7 +398,7 @@
     grid-template-columns: 1fr;
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
+    gap: 2rem;
   }
 
   .svc-hero-visual,
@@ -400,8 +409,8 @@
 
   .svc-hero-photo,
   .svc-why-photo {
-    height: 240px;
-    border-radius: 4px;
+    height: 260px;
+    border-radius: 12px;
   }
 
   .svc-hero-curve {
@@ -425,7 +434,7 @@
 
 @media (max-width: 640px) {
   .svc-inner {
-    padding: 0 1.15rem;
+    padding: 0 1.25rem;
   }
 
   .svc-page {
@@ -433,7 +442,29 @@
   }
 
   .svc-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 0.75rem;
+  }
+
+  .svc-card {
+    padding: 1.5rem 0.85rem 1.25rem;
+  }
+
+  .svc-card-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.85rem;
+  }
+
+  .svc-card-title {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .svc-card-desc {
+    font-size: 0.785rem;
+    line-height: 1.5;
+    margin-bottom: 0.85rem;
   }
 
   .svc-hero,
@@ -442,6 +473,10 @@
   .svc-cta {
     padding-top: 2.5rem;
     padding-bottom: 2.75rem;
+  }
+
+  .svc-section-title {
+    font-size: 1.65rem;
   }
 }
 

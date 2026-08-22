@@ -637,7 +637,16 @@
 
 @media (max-width: 640px) {
   .lchm-home-services-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 0.75rem;
+  }
+
+  .lchm-square-service-card {
+    min-height: 180px;
+    padding: 1.25rem 0.75rem;
+  }
+
+  .lchm-square-card-title {
+    font-size: 0.85rem;
   }
 }

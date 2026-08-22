@@ -257,9 +257,10 @@
 /* Responsive Breakpoints */
 @media (max-width: 900px) {
   .about-counter-grid {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 3rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.25rem;
+    width: 100%;
   }
 
   .about-counter-divider {
@@ -267,17 +268,26 @@
   }
 
   .about-counter-item {
-    flex: 0 0 calc(50% - 1.5rem);
+    flex: none;
+    width: 100%;
   }
 }
 
 @media (max-width: 500px) {
   .about-counter-section {
-    padding: 3.5rem 1.5rem 4.5rem;
+    padding: 2.5rem 1rem 3rem;
+  }
+
+  .about-counter-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 0.75rem;
+    width: 100%;
   }
 
   .about-counter-item {
-    flex: 0 0 100%;
-    margin-bottom: 1rem;
+    flex: none;
+    width: 100%;
+    margin-bottom: 0;
   }
 }

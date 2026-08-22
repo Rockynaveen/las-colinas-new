@@ -28,7 +28,8 @@
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  background-color: #FAF8F5; /* subtle beige background for inner area */
+  background-color: #FAF8F5;
+  /* subtle beige background for inner area */
   position: relative;
   overflow: hidden;
   min-height: 480px;
@@ -639,7 +640,7 @@
     width: 60%;
     padding: 3.5rem;
   }
-  
+
   .contact-hero-img-col {
     left: 45%;
   }
@@ -700,6 +701,7 @@
 }
 
 @media (max-width: 600px) {
+
   .contact-hero-section,
   .contact-cards-section,
   .contact-form-section,
@@ -724,7 +726,8 @@
    4. NATIONWIDE OPERATIONS MAP (Full Width US Map)
    ========================================================================== */
 .us-presence-section {
-  background-color: #FAF8F5; /* Matches the luxury cream background */
+  background-color: #FAF8F5;
+  /* Matches the luxury cream background */
   padding: 6rem 0;
   width: 100%;
   border-top: 1px solid rgba(176, 140, 72, 0.15);
@@ -800,7 +803,8 @@
 .us-map-inner-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 959 / 593; /* Perfectly maintains aspect ratio of Wikimedia map coordinates */
+  aspect-ratio: 959 / 593;
+  /* Perfectly maintains aspect ratio of Wikimedia map coordinates */
 }
 
 .us-map-svg-base {
@@ -838,6 +842,7 @@
     transform: scale(0.65);
     opacity: 0.8;
   }
+
   100% {
     transform: scale(2.4);
     opacity: 0;
@@ -942,6 +947,7 @@
   .us-presence-section {
     padding: 4.5rem 0;
   }
+
   .us-map-layout-wrapper {
     padding: 1.5rem 1rem;
   }
@@ -951,16 +957,20 @@
   .us-presence-header {
     margin-bottom: 2.5rem;
   }
+
   .us-presence-section {
     padding: 3.5rem 0;
   }
+
   .us-marker-tooltip-card {
     width: 200px;
     padding: 0.85rem;
   }
+
   .us-tooltip-city {
     font-size: 1rem;
   }
+
   .us-tooltip-details {
     font-size: 0.65rem;
   }

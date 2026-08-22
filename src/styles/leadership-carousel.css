@@ -50,14 +50,15 @@
 
 @media (min-width: 768px) and (max-width: 991px) {
   .team-carousel-wrapper {
-    --visible-cards: 2.5;
+    --visible-cards: 2;
+    --card-gap: 20px;
   }
 }
 
 @media (max-width: 767px) {
   .team-carousel-wrapper {
-    --visible-cards: 1.2;
-    --card-gap: 16px;
+    --visible-cards: 1;
+    --card-gap: 0px;
   }
 }
 
