@@ -422,6 +422,24 @@
   .service-card-right-image {
     width: 180px;
   }
+
+  .service-icon-circle {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .service-card-left {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .service-card-heading {
+    text-align: center !important;
+  }
+
+  .service-card-text {
+    text-align: center !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -455,6 +473,11 @@
 
   .service-bullets-2col {
     grid-template-columns: 1fr !important;
+  }
+
+  .service-icon-circle {
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }
 
