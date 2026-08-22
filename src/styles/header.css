@@ -336,6 +336,19 @@
   margin-bottom: 2rem;
 }
 
+.mobile-drawer .logo-brand-container {
+  width: 170px !important;
+  max-width: 170px !important;
+}
+
+.mobile-drawer .logo-img-white {
+  display: block !important;
+}
+
+.mobile-drawer .logo-img-dark {
+  display: none !important;
+}
+
 .mobile-nav-list {
   list-style: none;
   padding: 0;

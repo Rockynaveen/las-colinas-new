@@ -1309,7 +1309,8 @@
   }
 
   .contact-map-col {
-    min-height: 380px;
+    min-height: 320px;
+    height: 320px;
   }
 
   .contact-form-col {
@@ -1318,11 +1319,32 @@
 }
 
 @media (max-width: 640px) {
+  .contact-split-section {
+    padding: 2rem 1rem 4rem 1rem !important;
+  }
+
+  .contact-map-col {
+    min-height: 260px !important;
+    height: 260px !important;
+  }
+
+  .contact-form-col {
+    padding: 2rem 1.25rem !important;
+  }
+
+  .contact-form-heading {
+    font-size: clamp(1.35rem, 5vw, 1.75rem) !important;
+    white-space: nowrap !important;
+    line-height: 1.25 !important;
+  }
+
   .contact-info-grid-4 {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 1.15rem !important;
   }
 
   .contact-pill-submit-btn {
-    width: 100%;
+    width: 100% !important;
+    justify-content: center !important;
   }
 }

@@ -164,7 +164,7 @@ export const Contact: React.FC = () => {
                 src="https://maps.google.com/maps?q=450%20E%20John%20Carpenter%20Freeway,%20Irving,%20TX%2075062&t=&z=14&ie=UTF8&iwloc=&output=embed" 
                 width="100%" 
                 height="100%" 
-                style={{ border: 0, minHeight: '520px' }} 
+                style={{ border: 0 }} 
                 allowFullScreen={true} 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade"

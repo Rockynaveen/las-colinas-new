@@ -1298,8 +1298,41 @@
     padding-right: 1.25rem;
   }
 
+  .portfolio-grid-title {
+    font-size: clamp(1.55rem, 5vw, 2.15rem) !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    margin: 0 0 1rem 0 !important;
+  }
+
   .portfolio-properties-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .port-card {
+    flex: none !important;
+    width: 100% !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
+    height: 320px !important;
+    aspect-ratio: 4 / 3.8 !important;
+    border-radius: 14px !important;
+  }
+
+  .port-card-content {
+    padding: 1.75rem 1.25rem 1.5rem 1.25rem !important;
+  }
+
+  .port-card-name {
+    font-size: 0.9rem !important;
+    letter-spacing: 0.08em !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .port-card-location {
+    margin-bottom: 0.75rem !important;
   }
 
   .portfolio-stats-row {

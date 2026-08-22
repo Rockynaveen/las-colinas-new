@@ -96,8 +96,8 @@ export const OurTeam: React.FC = () => {
           style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', marginBottom: '3.5rem' }}
         >
           <SectionLabel number="06" label="OUR TEAM" tone="light" />
-          <h2 className="lchm-heading" style={{ color: '#0b132b', fontSize: '2.5rem', letterSpacing: '0.15em', marginTop: '0.5rem', marginBottom: '1rem', textTransform: 'uppercase' }}>
-            O U R &nbsp; T E A M
+          <h2 className="lchm-heading lchm-team-heading">
+            OUR TEAM
           </h2>
           <p className="lchm-body" style={{ textAlign: 'center', maxWidth: '620px', color: '#3d4658' }}>
             Our experienced professionals are dedicated to delivering excellence, innovation, and outstanding results for our clients.

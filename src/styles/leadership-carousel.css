@@ -302,8 +302,11 @@
   }
 
   .team-pill-card {
-    padding: 1.25rem 1.25rem 2rem 1.25rem;
-    border-radius: 100px;
+    aspect-ratio: auto !important;
+    max-width: 270px !important;
+    margin: 0 auto !important;
+    padding: 1.25rem 1.25rem 1.5rem 1.25rem !important;
+    border-radius: 36px !important;
   }
 
   .carousel-clip-area {
