@@ -12,7 +12,7 @@ export const SCENES: VideoScene[] = [
     id: 'lc-8',
     name: 'Las Colinas Video',
     src: '/videos/lc-video-8.mp4',
-    poster: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=85'
+    poster: '/images/lc-video-4.jpg'
   }
 ];
 

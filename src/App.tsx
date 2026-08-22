@@ -133,6 +133,7 @@ const AppContent: React.FC = () => {
       muted
       loop
       playsInline
+      poster="/images/lc-video-4.jpg"
       className="hero-video"
     >
       Your browser does not support HTML5 video.
@@ -146,6 +147,7 @@ const AppContent: React.FC = () => {
 
       {/* Global persistent background video */}
       <div className={`global-hero-video-container ${isHomePage ? 'visible' : 'hidden'}`}>
+        <img src="/images/lc-video-4.jpg" alt="Las Colinas Hospitality" className="hero-video-fallback" />
         {memoizedVideo}
       </div>
 
