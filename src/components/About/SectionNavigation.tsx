@@ -2,28 +2,29 @@ import React, { useState, useEffect } from 'react';
 
 interface Section {
   id: string;
+  hash: string;
   num: string;
   name: string;
 }
 
 const sections: Section[] = [
-  { id: 'about-overview', num: '01', name: 'OVERVIEW' },
-  { id: 'story', num: '02', name: 'OUR STORY' },
-  { id: 'vision', num: '03', name: 'VISION & MISSION' },
-  { id: 'values', num: '04', name: 'CORE VALUES' },
-  { id: 'advantage', num: '05', name: 'COMPETITIVE ADVANTAGE' },
-  { id: 'team', num: '06', name: 'OUR TEAM' },
+  { id: 'overview', hash: 'aboutus/overview', num: '01', name: 'OVERVIEW' },
+  { id: 'story', hash: 'aboutus/our-story', num: '02', name: 'OUR STORY' },
+  { id: 'vision', hash: 'aboutus/vision-mission', num: '03', name: 'VISION & MISSION' },
+  { id: 'values', hash: 'aboutus/core-values', num: '04', name: 'CORE VALUES' },
+  { id: 'advantage', hash: 'aboutus/competitive-advantage', num: '05', name: 'COMPETITIVE ADVANTAGE' },
+  { id: 'team', hash: 'aboutus/our-team', num: '06', name: 'OUR TEAM' },
 ];
 
 export const SectionNavigation: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string>('about-overview');
+  const [activeSection, setActiveSection] = useState<string>('overview');
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight / 3;
 
       for (const section of sections) {
-        const el = document.getElementById(section.id);
+        const el = document.getElementById(section.id) || (section.id === 'overview' ? document.getElementById('about-overview') : null);
         if (el) {
           const top = el.offsetTop;
           const height = el.offsetHeight;
@@ -40,14 +41,14 @@ export const SectionNavigation: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleSectionClick = (id: string, e: React.MouseEvent) => {
+  const handleSectionClick = (sec: Section, e: React.MouseEvent) => {
     e.preventDefault();
-    const el = document.getElementById(id);
+    const el = document.getElementById(sec.id) || (sec.id === 'overview' ? document.getElementById('about-overview') : null);
     if (el) {
-      const offset = 80; // height of header
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      const offset = 90; // height of header + 10px breathing room
+      const top = Math.max(0, el.getBoundingClientRect().top + window.scrollY - offset);
       window.scrollTo({ top, behavior: 'smooth' });
-      window.history.pushState(null, '', `#${id === 'about-overview' ? 'about' : id}`);
+      window.history.pushState(null, '', `#${sec.hash}`);
     }
   };
 
@@ -61,8 +62,8 @@ export const SectionNavigation: React.FC = () => {
             return (
               <a
                 key={sec.id}
-                href={`#${sec.id}`}
-                onClick={(e) => handleSectionClick(sec.id, e)}
+                href={`#${sec.hash}`}
+                onClick={(e) => handleSectionClick(sec, e)}
                 className={`sec-nav-item ${isActive ? 'active' : ''}`}
               >
                 {/* Active Indicator dot */}
@@ -85,8 +86,8 @@ export const SectionNavigation: React.FC = () => {
             return (
               <a
                 key={sec.id}
-                href={`#${sec.id}`}
-                onClick={(e) => handleSectionClick(sec.id, e)}
+                href={`#${sec.hash}`}
+                onClick={(e) => handleSectionClick(sec, e)}
                 className={`sec-nav-horizontal-link ${isActive ? 'active' : ''}`}
               >
                 {sec.num} {sec.name.split(' ')[0]}

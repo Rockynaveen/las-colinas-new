@@ -13,13 +13,13 @@ export const Logo: React.FC<LogoProps> = ({ className = '' }) => {
     >
       <div className="logo-brand-container">
         <img 
-          src="/images/las-colinas-logo-white.png" 
-          alt="Las Colinas Hospitality Management Logo" 
-          className="logo-brand-image logo-img-white"
+          src="/images/gold color logo .webp" 
+          alt="Las Colinas Hospitality Management Gold Logo" 
+          className="logo-brand-image logo-img-gold"
         />
         <img 
           src="/images/las-colinas-logo-dark.png" 
-          alt="Las Colinas Hospitality Management Logo" 
+          alt="Las Colinas Hospitality Management Dark Logo" 
           className="logo-brand-image logo-img-dark"
         />
       </div>

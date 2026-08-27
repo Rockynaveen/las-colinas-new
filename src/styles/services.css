@@ -11,7 +11,7 @@
 .services-section {
   position: relative;
   background-color: #FFFFFF;
-  padding: 100px 2rem;
+  padding: 50px 2rem 20px !important;
   overflow: hidden;
   width: 100%;
 }
@@ -192,26 +192,79 @@
 /* Specific Card Background Colors per user configuration */
 .service-card-item:nth-child(1),
 .light-theme .service-card-item:nth-child(1),
+.service-card-item:nth-child(3),
+.light-theme .service-card-item:nth-child(3),
 .service-card-item:nth-child(4),
 .light-theme .service-card-item:nth-child(4),
-.service-card-item:nth-child(5),
-.light-theme .service-card-item:nth-child(5) {
-  background-color: #FFFFFF !important;
+.service-card-item:nth-child(7),
+.light-theme .service-card-item:nth-child(7),
+#recruitment-support,
+#quality-audits {
+  background-color: #F5F2EA !important;
 }
 
 .service-card-item:nth-child(2),
 .light-theme .service-card-item:nth-child(2),
-.service-card-item:nth-child(3),
-.light-theme .service-card-item:nth-child(3),
+.service-card-item:nth-child(5),
+.light-theme .service-card-item:nth-child(5),
 .service-card-item:nth-child(6),
 .light-theme .service-card-item:nth-child(6),
-.service-card-item:nth-child(7),
-.light-theme .service-card-item:nth-child(7) {
+.service-card-item:nth-child(8),
+.light-theme .service-card-item:nth-child(8) {
+  background-color: #FFFFFF !important;
+}
+
+/* A La Carte Grid Card Colors */
+.ala-carte-grid-cards .service-card-item:nth-child(1),
+.ala-carte-grid-cards .service-card-item:nth-child(4),
+.ala-carte-grid-cards .service-card-item:nth-child(7),
+.ala-carte-grid-cards .service-card-item:nth-child(10),
+.ala-carte-grid-cards .service-card-item:nth-child(13),
+.ala-carte-grid-cards .service-card-item:nth-child(16) {
   background-color: #F5F2EA !important;
+}
+
+.ala-carte-grid-cards .service-card-item:nth-child(2),
+.ala-carte-grid-cards .service-card-item:nth-child(3),
+.ala-carte-grid-cards .service-card-item:nth-child(5),
+.ala-carte-grid-cards .service-card-item:nth-child(6),
+.ala-carte-grid-cards .service-card-item:nth-child(8),
+.ala-carte-grid-cards .service-card-item:nth-child(9),
+.ala-carte-grid-cards .service-card-item:nth-child(11),
+.ala-carte-grid-cards .service-card-item:nth-child(12),
+.ala-carte-grid-cards .service-card-item:nth-child(14),
+.ala-carte-grid-cards .service-card-item:nth-child(15),
+.ala-carte-grid-cards .service-card-item:nth-child(17),
+.ala-carte-grid-cards .service-card-item:nth-child(18) {
+  background-color: #FFFFFF !important;
+}
+
+/* Explicit A La Carte Colored Cards per user specification */
+#ota-management-distribution,
+#quality-assurance-readiness,
+#hotel-pre-opening-services,
+#hospitality-project-management,
+#daily-sales-performance-monitoring,
+#competitive-benchmarking-market-analysis {
+  background-color: #F5F2EA !important;
+}
+
+/* Explicit A La Carte White Cards per user specification */
+#brand-selection-planning-review,
+#daily-rate-strategy-yield-management {
+  background-color: #FFFFFF !important;
 }
 
 .service-card-item:hover {
   transform: translateY(-3px);
+}
+
+/* Centered Card in Middle */
+.service-card-centered-middle {
+  grid-column: 1 / -1 !important;
+  max-width: 680px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
 }
 
 /* LEFT CONTENT COLUMN */
@@ -444,7 +497,7 @@
 
 @media (max-width: 768px) {
   .services-section {
-    padding: 50px 1.25rem;
+    padding: 35px 1.25rem 15px !important;
   }
 
   .services-grid-cards {

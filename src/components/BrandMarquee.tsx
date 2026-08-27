@@ -7,14 +7,6 @@ const MarriottLogo = () => (
   </svg>
 );
 
-const HiltonLogo = () => (
-  <svg viewBox="0 0 115 40" width="115" height="40" className="brand-logo-svg" fill="currentColor" style={{ height: '38px', width: '109px', flexShrink: 0 }}>
-    <path d="M10,10 L16,10 L16,18 L24,18 L24,10 L30,10 L30,30 L24,30 L24,23 L16,23 L16,30 L10,30 Z" fill="currentColor" />
-    <path d="M20,6 A 12,12 0 0,0 8,18 A 12,12 0 0,0 20,30 A 12,12 0 0,0 32,18 A 12,12 0 0,0 20,6" fill="none" stroke="currentColor" strokeWidth="1.5" opacity="0.4" />
-    <text x="38" y="24" fontFamily="var(--font-sans)" fontSize="11" fontWeight="800" letterSpacing="0.22em" fill="currentColor">HILTON</text>
-  </svg>
-);
-
 const HyattLogo = () => (
   <svg viewBox="0 0 100 40" width="100" height="40" className="brand-logo-svg" fill="currentColor" style={{ height: '38px', width: '95px', flexShrink: 0 }}>
     <path d="M10,8 L16,8 L16,18 L22,18 L22,8 L28,8 L28,32 L22,32 L22,23 L16,23 L16,32 L10,32 Z" fill="currentColor" />
@@ -46,28 +38,11 @@ const IhgLogo = () => (
   </svg>
 );
 
-const WestinLogo = () => (
-  <svg viewBox="0 0 100 40" width="100" height="40" className="brand-logo-svg" fill="currentColor" style={{ height: '38px', width: '95px', flexShrink: 0 }}>
-    <text x="5" y="24" fontFamily="var(--font-serif)" fontSize="14" fontWeight="600" letterSpacing="0.2em" fill="currentColor">WESTIN</text>
-  </svg>
-);
-
-const RitzLogo = () => (
-  <svg viewBox="0 0 160 40" width="160" height="40" className="brand-logo-svg" fill="currentColor" style={{ height: '38px', width: '152px', flexShrink: 0 }}>
-    <path d="M10,26 L10,14 L16,11 L22,14 L22,26 Z" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.6" />
-    <path d="M16,7 L17.5,10.5 L14.5,10.5 Z" fill="currentColor" />
-    <text x="30" y="23" fontFamily="var(--font-serif)" fontSize="9" fontWeight="600" letterSpacing="0.18em" fill="currentColor">RITZ-CARLTON</text>
-  </svg>
-);
-
 const brands = [
   { name: 'Marriott', logo: <MarriottLogo /> },
-  { name: 'Hilton', logo: <HiltonLogo /> },
   { name: 'IHG', logo: <IhgLogo /> },
   { name: 'Hyatt', logo: <HyattLogo /> },
   { name: 'Wyndham', logo: <WyndhamLogo /> },
-  { name: 'Westin', logo: <WestinLogo /> },
-  { name: 'Ritz-Carlton', logo: <RitzLogo /> },
   { name: 'Sheraton', logo: <SheratonLogo /> }
 ];
 

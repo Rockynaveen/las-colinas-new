@@ -7,12 +7,12 @@ export const AboutOverviewTop: React.FC = () => {
   const reduceMotion = useReducedMotion();
 
   const handleLearnMore = () => {
-    const el = document.getElementById('overview');
+    const el = document.getElementById('overview') || document.getElementById('about-overview');
     if (el) {
-      const offset = 80;
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      const offset = 90;
+      const top = Math.max(0, el.getBoundingClientRect().top + window.scrollY - offset);
       window.scrollTo({ top, behavior: 'smooth' });
-      window.location.hash = '#overview';
+      window.location.hash = '#aboutus/overview';
     }
   };
 

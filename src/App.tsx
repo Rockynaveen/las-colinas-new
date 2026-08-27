@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { VideoProvider, useVideo } from './context/VideoContext';
+import { VideoProvider } from './context/VideoContext';
 
 // Pages
 import { Home } from './pages/Home';
@@ -37,54 +37,44 @@ import './styles/about-lchm.css';
 
 const AppContent: React.FC = () => {
   const [currentHash, setCurrentHash] = useState(window.location.hash || '#home');
-  const { videoRef, hasVideoError, setHasVideoError, isVideoLoaded, setIsVideoLoaded } = useVideo();
-
-
 
   useEffect(() => {
+    const isAboutHash = (h: string): boolean => {
+      const clean = h.replace('#', '').toLowerCase();
+      return (
+        clean.startsWith('about') ||
+        ['overview', 'story', 'vision', 'values', 'advantage', 'team', 'leadership'].some(k => clean.includes(k))
+      );
+    };
+
+    const getAboutTargetId = (h: string): string => {
+      const clean = h.replace('#', '').toLowerCase();
+      if (clean === 'about' || clean === 'aboutus' || clean === 'about-us') return 'about-hero';
+      if (clean.includes('overview')) return 'overview';
+      if (clean.includes('story')) return 'story';
+      if (clean.includes('vision') || clean.includes('mission')) return 'vision';
+      if (clean.includes('values')) return 'values';
+      if (clean.includes('advantage')) return 'advantage';
+      if (clean.includes('team') || clean.includes('leadership')) return 'team';
+      return clean;
+    };
+
     const handleHashChange = () => {
       const hash = window.location.hash || '#home';
       setCurrentHash(hash);
 
-      const aboutHashes = ['#about', '#overview', '#story', '#vision', '#values', '#advantage', '#team', '#leadership'];
-
       // Handle scrolling behaviors
       if (hash === '#home' || hash === '#') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (aboutHashes.includes(hash)) {
+      } else if (isAboutHash(hash)) {
         // Allow time for the AboutPage component to mount/render before scrolling
         setTimeout(() => {
-          let targetId = hash.replace('#', '');
-          if (hash === '#about') targetId = 'about-hero';
-          if (hash === '#leadership') targetId = 'team';
-          const el = document.getElementById(targetId);
+          const targetId = getAboutTargetId(hash);
+          const el = document.getElementById(targetId) || (targetId === 'overview' ? document.getElementById('about-overview') : null);
           if (el) {
-            const targetPosition = el.getBoundingClientRect().top + window.scrollY - 80;
-            const startPosition = window.scrollY;
-            const distance = targetPosition - startPosition;
-            const duration = 2000; // Slower speed (2.0 seconds) for elegant feel
-            let startTime: number | null = null;
-
-            const easeInOutCubic = (t: number, b: number, c: number, d: number) => {
-              t /= d / 2;
-              if (t < 1) return (c / 2) * t * t * t + b;
-              t -= 2;
-              return (c / 2) * (t * t * t + 2) + b;
-            };
-
-            const animation = (currentTime: number) => {
-              if (startTime === null) startTime = currentTime;
-              const timeElapsed = currentTime - startTime;
-              const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
-              window.scrollTo(0, run);
-              if (timeElapsed < duration) {
-                requestAnimationFrame(animation);
-              } else {
-                window.scrollTo(0, targetPosition);
-              }
-            };
-
-            requestAnimationFrame(animation);
+            const offset = 90; // Header height + 10px breathing room
+            const targetPosition = el.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: Math.max(0, targetPosition), behavior: 'smooth' });
           }
         }, 150);
       } else {
@@ -100,62 +90,54 @@ const AppContent: React.FC = () => {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  const isHome2Check = currentHash === '#home-2' || currentHash === '#home-page-2';
+  const isHome3Check = currentHash === '#home-3' || currentHash === '#home-page-3';
+  const isAboutCheck = currentHash.startsWith('#about') || ['#overview', '#story', '#vision', '#values', '#advantage', '#team', '#leadership'].some(k => currentHash.toLowerCase().includes(k));
+  const isServicesHash = currentHash.startsWith('#services') || currentHash === '#a-la-carte-services';
+  const isHomePage = !isAboutCheck && !isServicesHash && !['#portfolio', '#careers', '#contact'].includes(currentHash);
+
   const renderContent = () => {
+    if (isAboutCheck) {
+      return <AboutPage />;
+    }
+
+    if (isServicesHash) {
+      return <ServicesPage currentHash={currentHash} />;
+    }
+
     switch (currentHash) {
-      case '#about':
-      case '#overview':
-      case '#story':
-      case '#vision':
-      case '#values':
-      case '#advantage':
-      case '#team':
-      case '#leadership':
-        return <AboutPage />;
-      case '#services':
-        return <ServicesPage />;
       case '#portfolio':
         return <Portfolio />;
       case '#careers':
         return <Careers />;
       case '#contact':
         return <Contact />;
+      case '#home-2':
+      case '#home-page-2':
+        return <Home isHome2={true} />;
+      case '#home-3':
+      case '#home-page-3':
+        return <Home isHome3={true} />;
       default:
-        return <Home />;
+        return <Home isHome2={false} />;
     }
   };
 
-  const isHomePage = !['#about', '#overview', '#story', '#vision', '#values', '#advantage', '#leadership', '#team', '#services', '#portfolio', '#careers', '#contact'].includes(currentHash);
+  // Dynamic Hero Background Image: Home 01 (/hero img.png) vs Home 02 (/hero dark  theme.png) vs Home 03 (/hero white theme.png)
+  const heroImageSrc = isHome3Check
+    ? '/hero white theme.png'
+    : isHome2Check
+      ? '/hero dark  theme.png'
+      : '/hero img.png';
 
-  // Memoize the video tag so React never diffs it on state changes / re-renders
-  const memoizedVideo = useMemo(() => (
-    <>
-      {/* Backup Image: Always visible while video is loading / late or has error */}
-      <img
-        src="/images/templete 1.webp"
-        alt="Las Colinas Hospitality Hero Background"
-        className={`hero-fallback-image ${isVideoLoaded && !hasVideoError ? 'loaded-fade-out' : 'visible'}`}
-      />
-      <video
-        ref={videoRef}
-        src="/videos/video 2.mp4"
-        poster="/images/templete 1.webp"
-        autoPlay
-        muted
-        loop
-        playsInline
-        className={`hero-video ${hasVideoError ? 'hidden' : isVideoLoaded ? 'video-ready' : 'video-loading'}`}
-        onError={() => {
-          setHasVideoError(true);
-          setIsVideoLoaded(false);
-        }}
-        onCanPlay={() => setIsVideoLoaded(true)}
-        onPlaying={() => setIsVideoLoaded(true)}
-        onWaiting={() => setIsVideoLoaded(false)}
-      >
-        Your browser does not support HTML5 video.
-      </video>
-    </>
-  ), [videoRef, hasVideoError, setHasVideoError, isVideoLoaded, setIsVideoLoaded]);
+  const memoizedHeroImage = useMemo(() => (
+    <img
+      key={heroImageSrc}
+      src={heroImageSrc}
+      alt="Las Colinas Hospitality Hero Background"
+      className="hero-fallback-image visible"
+    />
+  ), [heroImageSrc]);
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-[#121F34] relative overflow-hidden font-sans light-theme">
@@ -164,7 +146,7 @@ const AppContent: React.FC = () => {
 
       {/* Global persistent background video */}
       <div className={`global-hero-video-container ${isHomePage ? 'visible' : 'hidden'}`}>
-        {memoizedVideo}
+        {memoizedHeroImage}
       </div>
 
       <main>

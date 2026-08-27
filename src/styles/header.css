@@ -27,6 +27,7 @@
   .site-header {
     padding: 0.75rem 3.5rem;
   }
+
   .site-header:not(.scrolled) {
     padding-top: 1.45rem !important;
   }
@@ -103,16 +104,20 @@
   height: auto;
 }
 
-.logo-img-white {
+.logo-img-gold {
   display: block;
+  width: 100%;
+  height: auto;
 }
 
 .logo-img-dark {
   display: none;
+  width: 100%;
+  height: auto;
 }
 
-/* When header is scrolled down, toggle white and dark logos */
-.site-header.scrolled .logo-img-white {
+/* Scrolled Header: Show dark logo and hide gold logo */
+.site-header.scrolled .logo-img-gold {
   display: none !important;
 }
 
@@ -120,8 +125,8 @@
   display: block !important;
 }
 
-/* Footer always uses white logo */
-.site-footer .logo-img-white {
+/* Footer: Always show gold logo */
+.site-footer .logo-img-gold {
   display: block !important;
 }
 

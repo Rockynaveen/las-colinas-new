@@ -16,20 +16,35 @@ export const MobileNavDrawer: React.FC<MobileNavDrawerProps> = ({ isOpen, onClos
   };
 
   const navItems = [
-    { label: 'HOME', href: '#home' },
+    {
+      label: 'HOME',
+      href: '#',
+      submenu: [
+        { label: 'Home 01', href: '#home' },
+        { label: 'Home 02', href: '#home-2' },
+        { label: 'Home 03', href: '#home-3' }
+      ]
+    },
     {
       label: 'ABOUT US',
       href: '#',
       submenu: [
-        { label: 'Overview', href: '#overview' },
-        { label: 'Our Story', href: '#story' },
-        { label: 'Vision & Mission', href: '#vision' },
-        { label: 'Core Values', href: '#values' },
-        { label: 'Our Competitive Advantage', href: '#advantage' },
-        { label: 'Our Team', href: '#team' }
+        { label: 'Overview', href: '#aboutus/overview' },
+        { label: 'Our Story', href: '#aboutus/our-story' },
+        { label: 'Vision & Mission', href: '#aboutus/vision-mission' },
+        { label: 'Core Values', href: '#aboutus/core-values' },
+        { label: 'Our Competitive Advantage', href: '#aboutus/competitive-advantage' },
+        { label: 'Our Team', href: '#aboutus/our-team' }
       ]
     },
-    { label: 'SERVICES', href: '#services' },
+    {
+      label: 'SERVICES',
+      href: '#',
+      submenu: [
+        { label: 'Hotel Management Services', href: '#services/hotel-management' },
+        { label: 'A La Carte Services', href: '#services/a-la-carte' }
+      ]
+    },
     { label: 'PORTFOLIO', href: '#portfolio' },
     { label: 'CAREERS', href: '#careers' },
     { label: 'CONTACT US', href: '#contact' }

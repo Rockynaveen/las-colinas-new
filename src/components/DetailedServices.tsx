@@ -2,12 +2,13 @@ import React from 'react';
 import { motion, type Variants } from 'framer-motion';
 import {
   Building2,
-  Compass,
-  TrendingUp,
-  BarChart3,
-  Calculator,
-  Hammer,
-  Key,
+  GraduationCap,
+  UserCheck,
+  ShieldCheck,
+  DollarSign,
+  ClipboardList,
+  Truck,
+  Award,
   Check,
 } from 'lucide-react';
 
@@ -20,107 +21,129 @@ interface ServiceItem {
   image: string;
   alt: string;
   isFeatured?: boolean;
+  isCentered?: boolean;
 }
 
 const detailedServicesData: ServiceItem[] = [
+  /* Featured Hotel Management Operations Card at Top */
   {
-    id: 'hotel-management',
-    title: 'Hotel Management Services',
-    description: 'We provide comprehensive hotel management services designed to maximize profitability, improve operational efficiency, and enhance guest satisfaction.',
+    id: 'hotel-operations-management',
+    title: 'Hotel Operations Management',
+    description: 'We provide hands-on operational support across all departments, including front office, housekeeping, food and beverage, maintenance, and guest services.',
     bullets: [
-      'Day-to-day hotel operations management',
-      'Staff recruitment, training, and leadership',
-      'Guest experience & quality assurance',
-      'Cost control & profitability enhancement',
+      'Staff training',
+      'Recruitment support',
+      'Financial controls',
+      'Budgeting',
+      'SOP implementation',
+      'Vendor management',
+      'Quality audits',
     ],
     icon: Building2,
     image: '/images/services-hotel-mgmt.jpg',
-    alt: 'Luxury hotel management',
-  },
-  {
-    id: 'hotel-development',
-    title: 'Hotel Development',
-    description: 'Our development team guides projects from concept to completion, delivering hotels that meet brand standards, operational goals, and owner expectations.',
-    bullets: [
-      'Site selection & feasibility analysis',
-      'Brand selection & PIP negotiation',
-      'Architectural & design coordination',
-      'Construction & timeline oversight',
-    ],
-    icon: Compass,
-    image: '/images/services-hotel-dev.jpg',
-    alt: 'Hotel development',
-  },
-  {
-    id: 'asset-management',
-    title: 'Asset Management',
-    description: 'We work alongside owners to maximize long-term investment performance through strategic oversight and disciplined financial management.',
-    bullets: [
-      'Portfolio performance evaluation',
-      'Capital expenditure planning',
-      'Financial auditing & benchmarking',
-      'Owner representation & advisory',
-    ],
-    icon: TrendingUp,
-    image: '/images/services-asset-mgmt.jpg',
-    alt: 'Asset management',
-  },
-  {
-    id: 'revenue-management',
-    title: 'Revenue Management',
-    description: 'Our revenue specialists utilize data-driven pricing strategies to optimize market share and maximize revenue.',
-    bullets: [
-      'Dynamic pricing & yield management',
-      'Channel & OTA optimization',
-      'Competitive market analysis',
-      'Demand forecasting & inventory control',
-    ],
-    icon: BarChart3,
-    image: '/images/services-revenue-mgmt.jpg',
-    alt: 'Revenue management',
-  },
-  {
-    id: 'financial-management',
-    title: 'Financial Management',
-    description: 'Our accounting professionals deliver accurate financial reporting and strategic guidance.',
-    bullets: [
-      'Comprehensive monthly reporting',
-      'Budgeting & cash flow forecasting',
-      'Payroll & accounts payable management',
-      'Internal controls & compliance',
-    ],
-    icon: Calculator,
-    image: '/images/services-financial-mgmt.jpg',
-    alt: 'Financial management',
-  },
-  {
-    id: 'hotel-renovation',
-    title: 'Hotel Renovation & Project Management',
-    description: 'We oversee renovations, capital improvements, and repositioning projects while maintaining budget, schedule, and quality standards.',
-    bullets: [
-      'PIP compliance & execution',
-      'Vendor & contractor management',
-      'Procurement & FF&E installation',
-      'Budget & timeline control',
-    ],
-    icon: Hammer,
-    image: '/images/services-renovation.jpg',
-    alt: 'Hotel renovation',
-  },
-  {
-    id: 'pre-opening',
-    title: 'Pre-Opening Services',
-    description: 'We ensure seamless hotel openings by managing timelines, training staff, and setting up operational systems for day-one readiness.',
-    bullets: [
-      'Operational setup & SOP implementation',
-      'Staff hiring & brand training',
-      'Sales & marketing launch strategy',
-      'Systems integration & test opening',
-    ],
-    icon: Key,
-    image: '/images/services-pre-opening.jpg',
-    alt: 'Pre-opening services',
+    alt: 'Hotel operations management',
     isFeatured: true,
+  },
+  /* Core Hotel Management Services Cards */
+  {
+    id: 'staff-training',
+    title: 'Staff Training',
+    description: 'Building high-performing teams through continuous skills development, service standard training, and leadership coaching across operational departments.',
+    bullets: [
+      'Comprehensive service standard orientation',
+      'Departmental skill certification',
+      'Leadership & supervisory coaching',
+      'Guest satisfaction & service recovery training',
+    ],
+    icon: GraduationCap,
+    image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&q=80&w=800',
+    alt: 'Staff training',
+  },
+  {
+    id: 'recruitment-support',
+    title: 'Recruitment Support',
+    description: 'Streamlined recruitment support ensuring key operational roles are filled with qualified, passionate hospitality professionals.',
+    bullets: [
+      'Executive & key position recruitment',
+      'Staff vetting & background screening',
+      'Onboarding & orientation frameworks',
+      'Retention & team engagement strategies',
+    ],
+    icon: UserCheck,
+    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=800',
+    alt: 'Recruitment support',
+  },
+  {
+    id: 'financial-controls',
+    title: 'Financial Controls',
+    description: 'Implementing strict financial governance, daily revenue reconciliation, and expense controls to safeguard asset value and boost net profitability.',
+    bullets: [
+      'Daily revenue & cashiering reconciliation',
+      'Labor cost control & scheduling audits',
+      'Inventory & purchasing audit systems',
+      'Internal fraud prevention controls',
+    ],
+    icon: ShieldCheck,
+    image: '/images/services-financial-mgmt.jpg',
+    alt: 'Financial controls',
+  },
+  {
+    id: 'budgeting',
+    title: 'Budgeting',
+    description: 'Developing precise annual operating budgets and monthly forecasts that align operational expenditure with ownership financial goals.',
+    bullets: [
+      'Annual operating budget creation',
+      'Monthly P&L forecasting & variance analysis',
+      'CapEx planning & reserve oversight',
+      'Owner financial reporting',
+    ],
+    icon: DollarSign,
+    image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800',
+    alt: 'Budgeting',
+  },
+  {
+    id: 'sop-implementation',
+    title: 'SOP Implementation',
+    description: 'Customizing and deploying standardized operating procedures (SOPs) across departments to maintain brand integrity and service consistency.',
+    bullets: [
+      'Custom SOP manual development',
+      'Departmental execution checklists',
+      'Compliance monitoring & audits',
+      'Continuous operational refinement',
+    ],
+    icon: ClipboardList,
+    image: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&q=80&w=800',
+    alt: 'SOP implementation',
+  },
+  {
+    id: 'vendor-management',
+    title: 'Vendor Management',
+    description: 'Leveraging group purchasing relationships and vendor oversight to secure optimal pricing on operational supplies, food, and contracted services.',
+    bullets: [
+      'Group purchasing power leverage',
+      'Supplier contract negotiations',
+      'Quality assurance on deliverables',
+      'Cost-efficient supply chain management',
+    ],
+    icon: Truck,
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800',
+    alt: 'Vendor management',
+  },
+  /* Quality Audits Card Centered in the Middle without altering internal layout */
+  {
+    id: 'quality-audits',
+    title: 'Quality Audits',
+    description: 'Conducting thorough unannounced quality audits and inspection readiness evaluations to maintain high brand standards and guest review scores.',
+    bullets: [
+      'Mystery shopper & quality evaluations',
+      'Brand standards compliance verification',
+      'Actionable corrective performance plans',
+      'Cleanliness & maintenance scoring',
+    ],
+    icon: Award,
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800',
+    alt: 'Quality audits',
+    isCentered: true,
   },
 ];
 
@@ -159,16 +182,18 @@ export const DetailedServices: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="services-badge">
-            <span className="services-badge-text">OUR SERVICES</span>
+            <span className="services-badge-text">
+              <span style={{ color: '#041831', fontWeight: 800 }}>01</span> SERVICE
+            </span>
             <span className="services-badge-diamond">✧</span>
           </div>
 
           <h2 className="services-main-heading">
-            End-to-End Hospitality Expertise
+            Hotel Management Services
           </h2>
 
           <p className="services-main-description">
-            We offer a complete range of services designed to maximize the value and performance of your hotel. Our 360° approach ensures every aspect of your property is managed with precision, care, and a focus on growth.
+            We provide hands-on operational support across all departments, including front office, housekeeping, food and beverage, maintenance, and guest services, ensuring efficient and seamless hotel operations.
           </p>
         </motion.div>
 
@@ -182,11 +207,13 @@ export const DetailedServices: React.FC = () => {
         >
           {detailedServicesData.map((service) => {
             const ServiceIcon = service.icon;
+            const itemClassName = `service-card-item ${service.isFeatured ? 'service-card-featured' : ''} ${service.isCentered ? 'service-card-centered-middle' : ''}`;
 
             return (
               <motion.div
                 key={service.id}
-                className={`service-card-item ${service.isFeatured ? 'service-card-featured' : ''}`}
+                id={service.id}
+                className={itemClassName}
                 variants={cardVariants}
               >
                 {service.isFeatured ? (

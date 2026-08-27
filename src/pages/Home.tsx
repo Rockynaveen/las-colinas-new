@@ -9,10 +9,15 @@ import { PortfolioHome } from '../components/PortfolioHome';
 import { LeadershipCarousel } from '../components/LeadershipCarousel';
 import { HomeCTA } from '../components/HomeCTA';
 
-export const Home: React.FC = () => {
+interface HomeProps {
+  isHome2?: boolean;
+  isHome3?: boolean;
+}
+
+export const Home: React.FC<HomeProps> = ({ isHome2, isHome3 }) => {
   return (
     <>
-      <Hero />
+      <Hero isHome2={isHome2} isHome3={isHome3} />
       <BrandMarquee />
       <About />
       <AboutCounter />

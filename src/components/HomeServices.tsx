@@ -140,16 +140,16 @@ export const HomeServices: React.FC = () => {
         >
           <div className="services-badge">
             <span className="services-badge-diamond">✧</span>
-            <span>SERVICES</span>
+            <span><span style={{ color: '#041831', fontWeight: 800 }}>01</span> SERVICE</span>
             <span className="services-badge-diamond">✧</span>
           </div>
 
           <h2 className="services-main-heading">
-            End-to-End Hospitality Expertise
+            Hotel Management Services
           </h2>
 
           <p className="services-main-description">
-            We offer a complete range of services designed to maximize the value and performance of your hotel. Our 360° approach ensures every aspect of your property is managed with precision, care, and a focus on growth.
+            We provide hands-on operational support across all departments, including front office, housekeeping, food and beverage, maintenance, and guest services, ensuring efficient and seamless hotel operations.
           </p>
         </motion.div>
 

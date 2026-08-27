@@ -49,11 +49,11 @@ export const teamMembers: TeamMember[] = [
     expertise: ['Operations Management', 'Guest Satisfaction', 'Team Leadership', 'Service Excellence', 'Brand Performance']
   },
   {
-    id: 'christa-wijendran',
-    name: 'Christa Wijendran',
+    id: 'christa-noel',
+    name: 'Christa Noel',
     role: 'Regional Accounting & HR Manager',
     image: '/images/team/christa_wijendran.jpg',
-    description: "Christa Wijendran is an accomplished hospitality professional with more than 16 years of industry experience, progressing from front-line operations to senior leadership through a proven commitment to operational excellence and organizational performance. Christa combines her operational expertise with strategic insight to support financial performance, human resources, and organizational success across the company's portfolio.",
+    description: "Christa Noel is an accomplished hospitality professional with more than 16 years of industry experience, progressing from front-line operations to senior leadership through a proven commitment to operational excellence and organizational performance. Christa combines her operational expertise with strategic insight to support financial performance, human resources, and organizational success across the company's portfolio.",
     expertise: ['Human Resources', 'Financial Performance', 'Operational Excellence', 'Organizational Strategy', 'Staff Development']
   },
   {

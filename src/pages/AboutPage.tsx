@@ -15,15 +15,25 @@ export const AboutPage: React.FC = () => {
   useEffect(() => {
     // Handle scrolling to internal hashes when mounting/navigating
     const hash = window.location.hash;
-    if (hash && hash !== '#about') {
-      const id = hash.replace('#', '');
-      const element = document.getElementById(id === 'overview' ? 'overview' : id === 'leadership' ? 'team' : id);
+    if (hash && !['#about', '#aboutus', '#about-us'].includes(hash.toLowerCase())) {
+      const getTargetId = (h: string) => {
+        const clean = h.replace('#', '').toLowerCase();
+        if (clean.includes('overview')) return 'overview';
+        if (clean.includes('story')) return 'story';
+        if (clean.includes('vision') || clean.includes('mission')) return 'vision';
+        if (clean.includes('values')) return 'values';
+        if (clean.includes('advantage')) return 'advantage';
+        if (clean.includes('team') || clean.includes('leadership')) return 'team';
+        return clean;
+      };
+      const targetId = getTargetId(hash);
+      const element = document.getElementById(targetId) || (targetId === 'overview' ? document.getElementById('about-overview') : null);
       if (element) {
         setTimeout(() => {
-          const offset = 80;
-          const top = element.getBoundingClientRect().top + window.scrollY - offset;
+          const offset = 90;
+          const top = Math.max(0, element.getBoundingClientRect().top + window.scrollY - offset);
           window.scrollTo({ top, behavior: 'smooth' });
-        }, 200);
+        }, 150);
       }
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });

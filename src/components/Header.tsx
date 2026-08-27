@@ -42,16 +42,23 @@ export const Header: React.FC = () => {
   }, []);
 
   const aboutList = [
-    { name: 'Overview', hash: '#overview' },
-    { name: 'Our Story', hash: '#story' },
-    { name: 'Vision & Mission', hash: '#vision' },
-    { name: 'Core Values', hash: '#values' },
-    { name: 'Our Competitive Advantage', hash: '#advantage' },
-    { name: 'Our Team', hash: '#team' }
+    { name: 'Overview', hash: '#aboutus/overview' },
+    { name: 'Our Story', hash: '#aboutus/our-story' },
+    { name: 'Vision & Mission', hash: '#aboutus/vision-mission' },
+    { name: 'Core Values', hash: '#aboutus/core-values' },
+    { name: 'Our Competitive Advantage', hash: '#aboutus/competitive-advantage' },
+    { name: 'Our Team', hash: '#aboutus/our-team' }
   ];
 
-  const isHomeActive = ['#home', '#'].includes(currentHash);
-  const hasHero = ['#home', '#', '#about', '#overview', '#story', '#vision', '#values', '#advantage', '#team', '#leadership', '#services', '#services-page', '#careers', '#contact', '#portfolio'].includes(currentHash);
+  const homeList = [
+    { name: 'Home 01', hash: '#home' },
+    { name: 'Home 02', hash: '#home-2' },
+    { name: 'Home 03', hash: '#home-3' }
+  ];
+
+  const isHomeActive = ['#home', '#', '#home-1', '#home-2', '#home-page-2', '#home-3', '#home-page-3'].includes(currentHash);
+  const isAboutHash = currentHash.startsWith('#about') || ['#overview', '#story', '#vision', '#values', '#advantage', '#team', '#leadership'].includes(currentHash);
+  const hasHero = isAboutHash || ['#home', '#', '#home-1', '#home-2', '#home-page-2', '#home-3', '#home-page-3', '#services', '#services-page', '#careers', '#contact', '#portfolio'].includes(currentHash);
 
   return (
     <>
@@ -67,12 +74,34 @@ export const Header: React.FC = () => {
 
           {/* Minimal Navigation Center */}
           <nav className="desktop-nav-menu" aria-label="Main Navigation">
-            <a
-              href="#home"
-              className={`nav-item-link ${isHomeActive && currentHash !== '#about' ? 'active' : ''}`}
-            >
-              HOME
-            </a>
+            {/* HOME Dropdown */}
+            <div className="nav-dropdown-wrapper">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveDropdown(activeDropdown === 'home' ? null : 'home');
+                }}
+                className={`nav-item-link ${isHomeActive ? 'active' : ''}`}
+              >
+                HOME
+                <ChevronDown size={12} style={{ opacity: 0.7 }} />
+              </button>
+              {activeDropdown === 'home' && (
+                <div className="dropdown-panel">
+                  {homeList.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.hash}
+                      onClick={() => setActiveDropdown(null)}
+                      className="dropdown-panel-link"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* ABOUT US Dropdown */}
             <div className="nav-dropdown-wrapper">
@@ -82,7 +111,11 @@ export const Header: React.FC = () => {
                   e.stopPropagation();
                   setActiveDropdown(activeDropdown === 'about' ? null : 'about');
                 }}
-                className={`nav-item-link ${['#about', '#about-overview', '#overview', '#story', '#vision', '#values', '#advantage', '#team', '#leadership'].includes(currentHash) ? 'active' : ''}`}
+                className={`nav-item-link ${currentHash.startsWith('#about') ||
+                  ['#overview', '#story', '#vision', '#values', '#advantage', '#team', '#leadership'].includes(currentHash)
+                  ? 'active'
+                  : ''
+                  }`}
               >
                 ABOUT US
                 <ChevronDown size={12} style={{ opacity: 0.7 }} />
@@ -103,12 +136,38 @@ export const Header: React.FC = () => {
               )}
             </div>
 
-            <a
-              href="#services"
-              className={`nav-item-link ${currentHash === '#services' ? 'active' : ''}`}
-            >
-              SERVICES
-            </a>
+            {/* SERVICES Dropdown */}
+            <div className="nav-dropdown-wrapper">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveDropdown(activeDropdown === 'services' ? null : 'services');
+                }}
+                className={`nav-item-link ${currentHash.startsWith('#services') || currentHash === '#a-la-carte-services' ? 'active' : ''}`}
+              >
+                SERVICES
+                <ChevronDown size={12} style={{ opacity: 0.7 }} />
+              </button>
+              {activeDropdown === 'services' && (
+                <div className="dropdown-panel">
+                  <a
+                    href="#services/hotel-management"
+                    onClick={() => setActiveDropdown(null)}
+                    className="dropdown-panel-link"
+                  >
+                    Hotel Management Services
+                  </a>
+                  <a
+                    href="#services/a-la-carte"
+                    onClick={() => setActiveDropdown(null)}
+                    className="dropdown-panel-link"
+                  >
+                    A La Carte Services
+                  </a>
+                </div>
+              )}
+            </div>
 
             <a
               href="#portfolio"

@@ -95,6 +95,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translate3d(-50%, 0, 0);
   }
@@ -114,15 +115,15 @@
   .brand-marquee-section {
     padding: 1.5rem 0;
   }
-  
+
   .brand-marquee-track {
     gap: 3rem;
   }
-  
+
   .brand-logo-svg {
     height: 28px;
   }
-  
+
   .brand-marquee-container::before,
   .brand-marquee-container::after {
     width: 60px;

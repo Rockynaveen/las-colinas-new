@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { 
   Hotel, 
   Sparkles, 
@@ -8,6 +8,7 @@ import {
   Mail, 
   ArrowRight 
 } from 'lucide-react';
+import { CareersApplyModal } from './CareersApplyModal';
 
 interface JobOpening {
   title: string;
@@ -44,8 +45,53 @@ const jobOpenings: JobOpening[] = [
 ];
 
 export const CareersOpportunities: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedJobTitle, setSelectedJobTitle] = useState('General Application');
+  const [preselectedFile, setPreselectedFile] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleOpenModal = (title: string, file?: File | null) => {
+    setSelectedJobTitle(title);
+    setPreselectedFile(file || null);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setPreselectedFile(null);
+  };
+
+  const handleResumeButtonClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleDirectFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert('File size exceeds the 5MB limit. Please select a smaller file.');
+      e.target.value = '';
+      return;
+    }
+
+    handleOpenModal('General Application', file);
+    e.target.value = '';
+  };
+
   return (
     <section id="open-positions" className="careers-jobs-section">
+      {/* Hidden File Input for Direct Resume Upload */}
+      <input
+        type="file"
+        ref={fileInputRef}
+        accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        onChange={handleDirectFileSelect}
+        style={{ display: 'none' }}
+      />
+
       <div className="careers-inner-container">
         
         <div className="careers-categories-header" style={{ marginBottom: '3rem' }}>
@@ -64,7 +110,7 @@ export const CareersOpportunities: React.FC = () => {
         
         <div className="careers-jobs-grid">
           
-          {/* Left Column: Job Openings List or Empty State Fallback */}
+          {/* Left Column: Job Openings List */}
           <div className="careers-jobs-list-col">
             {jobOpenings.length > 0 ? (
               <>
@@ -81,10 +127,14 @@ export const CareersOpportunities: React.FC = () => {
                           <span className="job-location-text">{job.location}</span>
                         </div>
                       </div>
-                      <a href="#contact" className="btn-job-apply">
+                      <button
+                        type="button"
+                        className="btn-job-apply"
+                        onClick={() => handleOpenModal(job.title)}
+                      >
                         <span>APPLY NOW</span>
                         <span className="apply-chevron">&gt;</span>
-                      </a>
+                      </button>
                     </div>
                   );
                 })}
@@ -95,10 +145,14 @@ export const CareersOpportunities: React.FC = () => {
                 <p className="no-jobs-desc">
                   Don't see the right opportunity today? Submit your resume and we'll keep you in mind for future positions.
                 </p>
-                <a href="#contact" className="btn-navy-careers">
+                <button
+                  type="button"
+                  className="btn-navy-careers"
+                  onClick={handleResumeButtonClick}
+                >
                   <span>SUBMIT YOUR RESUME</span>
                   <ArrowRight size={15} />
-                </a>
+                </button>
               </div>
             )}
           </div>
@@ -114,16 +168,28 @@ export const CareersOpportunities: React.FC = () => {
               <p className="resume-card-desc">
                 We’re always looking for exceptional hospitality professionals. Submit your resume and we'll keep you in mind for future positions.
               </p>
-              <a href="#contact" className="btn-navy-careers-full">
+              <button
+                type="button"
+                className="btn-navy-careers-full"
+                onClick={handleResumeButtonClick}
+              >
                 <span>SUBMIT YOUR RESUME</span>
                 <ArrowRight size={15} />
-              </a>
+              </button>
             </div>
           </div>
           
         </div>
         
       </div>
+
+      {/* Application Popup Modal */}
+      <CareersApplyModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        jobTitle={selectedJobTitle}
+        initialFile={preselectedFile}
+      />
     </section>
   );
 };

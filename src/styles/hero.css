@@ -24,8 +24,8 @@ main {
   height: var(--hero-height, 100vh);
   z-index: 1;
   overflow: hidden;
-  background-color: var(--color-navy-dark);
-  background-image: url('/images/templete 1.webp');
+  background-color: #FAF8F5;
+  background-image: url('/hero img.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -102,14 +102,18 @@ main {
   opacity: 0;
 }
 
-/* Subtle Dark Navy Gradient Overlay — Allows Video to be Clearly Visible */
-.hero-subtle-overlay {
+/* Ultra Light Minimal Neutral Mask (rgba(0, 0, 0, 0.18)) */
+.hero-subtle-overlay,
+.hero-dark-theme-overlay {
+  display: block !important;
   position: absolute;
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(180deg, rgba(18, 31, 52, 0.42) 0%, rgba(18, 31, 52, 0.22) 50%, rgba(18, 31, 52, 0.58) 100%),
-    linear-gradient(90deg, rgba(18, 31, 52, 0.55) 0%, rgba(18, 31, 52, 0.25) 60%, rgba(18, 31, 52, 0.1) 100%);
+    linear-gradient(180deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.12) 50%, rgba(0, 0, 0, 0.28) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.14) 60%, rgba(0, 0, 0, 0.05) 100%) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   pointer-events: none;
 }
 
