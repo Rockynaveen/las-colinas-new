@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Upload, CheckCircle2, AlertCircle, FileText, Send } from 'lucide-react';
+import { X, Upload, CheckCircle2, AlertCircle, FileText, Send, Loader2 } from 'lucide-react';
+import { jobApplicationService } from '../../services/jobApplicationService';
+import { resumeService } from '../../services/resumeService';
 
 interface CareersApplyModalProps {
   isOpen: boolean;
   onClose: () => void;
   jobTitle: string;
+  opportunityId?: number | string | null;
   initialFile?: File | null;
 }
 
@@ -14,6 +17,7 @@ export const CareersApplyModal: React.FC<CareersApplyModalProps> = ({
   isOpen,
   onClose,
   jobTitle,
+  opportunityId,
   initialFile,
 }) => {
   const [fullName, setFullName] = useState('');
@@ -76,18 +80,22 @@ export const CareersApplyModal: React.FC<CareersApplyModalProps> = ({
     setResumeFile(file);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormError(null);
 
-    if (!fullName.trim()) {
-      setFormError('Please enter your full name.');
-      return;
-    }
+    const isGeneralResume = jobTitle === 'General Application';
 
-    if (!email.trim() || !/\S+@\S+\.\S+/.test(email)) {
-      setFormError('Please enter a valid email address.');
-      return;
+    if (!isGeneralResume) {
+      if (!fullName.trim()) {
+        setFormError('Please enter your full name.');
+        return;
+      }
+
+      if (!email.trim() || !/\S+@\S+\.\S+/.test(email)) {
+        setFormError('Please enter a valid email address.');
+        return;
+      }
     }
 
     if (!resumeFile) {
@@ -102,11 +110,38 @@ export const CareersApplyModal: React.FC<CareersApplyModalProps> = ({
 
     setIsSubmitting(true);
 
-    // Simulate submission request
-    setTimeout(() => {
+    try {
+      let res;
+      if (isGeneralResume) {
+        // Submit via Resume API endpoint
+        res = await resumeService.storeResume({
+          file: resumeFile,
+          ...(fullName.trim() ? { full_name: fullName } : {}),
+          ...(email.trim() ? { email: email } : {}),
+        });
+      } else {
+        // Submit via Job Application API endpoint
+        res = await jobApplicationService.storeJobApplication({
+          full_name: fullName,
+          email: email,
+          job_title: jobTitle,
+          opportunity_id: opportunityId || undefined,
+          message: message,
+          resume: resumeFile,
+        });
+      }
+
       setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 1200);
+
+      if (res.success) {
+        setIsSuccess(true);
+      } else {
+        setFormError(res.message || 'Failed to submit application. Please verify backend service and try again.');
+      }
+    } catch (err: any) {
+      setIsSubmitting(false);
+      setFormError(err?.message || 'An unexpected error occurred during submission.');
+    }
   };
 
   const isGeneralResume = jobTitle === 'General Application';
@@ -182,35 +217,38 @@ export const CareersApplyModal: React.FC<CareersApplyModalProps> = ({
                   </div>
                 )}
 
-                {/* Full Name */}
-                <div className="careers-form-group">
-                  <label className="careers-form-label">
-                    Full Name <span className="required-star">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Enter your full name"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    className="careers-form-input"
-                  />
-                </div>
+                {/* Full Name & Email Address (Only shown for specific job applications) */}
+                {!isGeneralResume && (
+                  <>
+                    <div className="careers-form-group">
+                      <label className="careers-form-label">
+                        Full Name <span className="required-star">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Enter your full name"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        className="careers-form-input"
+                      />
+                    </div>
 
-                {/* Email Address */}
-                <div className="careers-form-group">
-                  <label className="careers-form-label">
-                    Email Address <span className="required-star">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="your.email@example.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="careers-form-input"
-                  />
-                </div>
+                    <div className="careers-form-group">
+                      <label className="careers-form-label">
+                        Email Address <span className="required-star">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="your.email@example.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="careers-form-input"
+                      />
+                    </div>
+                  </>
+                )}
 
                 {/* Cover Letter / Message (Only shown for specific job applications) */}
                 {!isGeneralResume && (
@@ -286,7 +324,10 @@ export const CareersApplyModal: React.FC<CareersApplyModalProps> = ({
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
-                      <span>Submitting...</span>
+                      <>
+                        <Loader2 size={15} className="animate-spin" />
+                        <span>Submitting...</span>
+                      </>
                     ) : (
                       <>
                         <span>Submit Application</span>

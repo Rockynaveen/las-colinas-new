@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { 
   MapPin, 
@@ -8,6 +9,9 @@ import {
   Loader2, 
   Check,
   Send,
+  CheckCircle2,
+  AlertCircle,
+  X
 } from 'lucide-react';
 import { ServicesHero } from '../components/ServicesHero';
 
@@ -32,6 +36,22 @@ export const Contact: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const reduceMotion = useReducedMotion();
+
+  // Prevent background scroll when success popup modal is open
+  useEffect(() => {
+    if (status === 'success') {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
+  }, [status]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm(prev => ({
@@ -266,22 +286,19 @@ export const Contact: React.FC = () => {
                 <AnimatePresence mode="wait">
                   {status === 'error' && (
                     <motion.div 
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
+                      initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                       className="contact-feedback-msg error"
                     >
-                      {errorMsg}
-                    </motion.div>
-                  )}
-                  {status === 'success' && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="contact-feedback-msg success"
-                    >
-                      Thank you. Your message has been sent successfully. Our team will contact you shortly.
+                      <div className="contact-feedback-icon-wrap error">
+                        <AlertCircle size={20} />
+                      </div>
+                      <div className="contact-feedback-content">
+                        <h5 className="contact-feedback-title">Submission Error</h5>
+                        <p className="contact-feedback-desc">{errorMsg}</p>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -293,6 +310,52 @@ export const Contact: React.FC = () => {
 
         </div>
       </section>
+
+      {/* SUCCESS POPUP MODAL */}
+      {ReactDOM.createPortal(
+        <AnimatePresence>
+          {status === 'success' && (
+            <div className="contact-modal-backdrop" onClick={() => setStatus('idle')}>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.92, y: 20 }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                className="contact-modal-panel"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  className="contact-modal-close-btn"
+                  onClick={() => setStatus('idle')}
+                  aria-label="Close modal"
+                >
+                  <X size={20} />
+                </button>
+
+                <div className="contact-modal-content">
+                  <div className="contact-modal-icon-ring">
+                    <CheckCircle2 size={44} className="contact-modal-check-icon" />
+                  </div>
+                  <span className="contact-modal-eyebrow">MESSAGE RECEIVED</span>
+                  <h3 className="contact-modal-title">Thank You!</h3>
+                  <p className="contact-modal-desc">
+                    Your message has been sent successfully. Our executive team has received your inquiry and will reach out to you shortly.
+                  </p>
+                  <button
+                    type="button"
+                    className="contact-modal-action-btn"
+                    onClick={() => setStatus('idle')}
+                  >
+                    <span>CLOSE WINDOW</span>
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
 
     </div>
   );

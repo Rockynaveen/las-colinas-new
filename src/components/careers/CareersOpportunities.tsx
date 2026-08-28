@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Hotel, 
   Sparkles, 
@@ -6,58 +6,64 @@ import {
   Coins, 
   Wrench, 
   Mail, 
-  ArrowRight 
+  ArrowRight,
+  Loader2
 } from 'lucide-react';
 import { CareersApplyModal } from './CareersApplyModal';
+import { opportunityService, type OpportunityResource } from '../../services/opportunityService';
 
-interface JobOpening {
-  title: string;
-  location: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
-}
-
-const jobOpenings: JobOpening[] = [
-  {
-    title: 'Front Office Manager',
-    location: 'Irving, Texas',
-    icon: Hotel
-  },
-  {
-    title: 'Director of Housekeeping',
-    location: 'Irving, Texas',
-    icon: Sparkles
-  },
-  {
-    title: 'Sales & Marketing Manager',
-    location: 'Irving, Texas',
-    icon: BarChart3
-  },
-  {
-    title: 'Revenue Manager',
-    location: 'Irving, Texas',
-    icon: Coins
-  },
-  {
-    title: 'Maintenance Supervisor',
-    location: 'Irving, Texas',
-    icon: Wrench
-  }
-];
+const getJobIcon = (title: string = '', department: string = '') => {
+  const t = (title + ' ' + department).toLowerCase();
+  if (t.includes('housekeeping') || t.includes('clean') || t.includes('sparkle')) return Sparkles;
+  if (t.includes('sales') || t.includes('marketing') || t.includes('chart')) return BarChart3;
+  if (t.includes('revenue') || t.includes('finance') || t.includes('accounting') || t.includes('coin')) return Coins;
+  if (t.includes('maintenance') || t.includes('engineer') || t.includes('wrench')) return Wrench;
+  return Hotel;
+};
 
 export const CareersOpportunities: React.FC = () => {
+  const [opportunities, setOpportunities] = useState<OpportunityResource[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedJobTitle, setSelectedJobTitle] = useState('General Application');
+  const [selectedOpportunityId, setSelectedOpportunityId] = useState<number | string | null>(null);
   const [preselectedFile, setPreselectedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleOpenModal = (title: string, file?: File | null) => {
+  useEffect(() => {
+    let isMounted = true;
+    const fetchOpportunities = async () => {
+      setLoading(true);
+      setError(null);
+      const res = await opportunityService.getOpportunities();
+      if (isMounted) {
+        if (res.success && Array.isArray(res.data)) {
+          setOpportunities(res.data);
+        } else {
+          setError(res.message || 'Unable to load opportunities.');
+        }
+        setLoading(false);
+      }
+    };
+
+    fetchOpportunities();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const handleOpenModal = (title: string, opportunityId?: number | string | null, file?: File | null) => {
     setSelectedJobTitle(title);
+    setSelectedOpportunityId(opportunityId || null);
     setPreselectedFile(file || null);
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    setSelectedOpportunityId(null);
     setPreselectedFile(null);
   };
 
@@ -77,7 +83,7 @@ export const CareersOpportunities: React.FC = () => {
       return;
     }
 
-    handleOpenModal('General Application', file);
+    handleOpenModal('General Application', null, file);
     e.target.value = '';
   };
 
@@ -112,25 +118,43 @@ export const CareersOpportunities: React.FC = () => {
           
           {/* Left Column: Job Openings List */}
           <div className="careers-jobs-list-col">
-            {jobOpenings.length > 0 ? (
+            {loading ? (
+              <div className="careers-loading-state" style={{ textAlign: 'center', padding: '3rem 1.5rem', color: '#121F34' }}>
+                <Loader2 size={28} className="animate-spin" style={{ margin: '0 auto 0.75rem auto', color: '#B08C48' }} />
+                <p style={{ margin: 0, fontSize: '0.95rem', fontWeight: 500 }}>Loading available opportunities...</p>
+              </div>
+            ) : error ? (
+              <div className="careers-error-state" style={{ textAlign: 'center', padding: '2.5rem 1.5rem', background: 'rgba(217, 56, 58, 0.05)', borderRadius: '8px', border: '1px solid rgba(217, 56, 58, 0.2)' }}>
+                <p style={{ color: '#D9383A', margin: 0, fontSize: '0.95rem', fontWeight: 600 }}>{error}</p>
+                <button
+                  type="button"
+                  className="btn-navy-careers"
+                  style={{ marginTop: '1rem', display: 'inline-flex', alignItems: 'center' }}
+                  onClick={() => window.location.reload()}
+                >
+                  <span>RETRY FETCHING</span>
+                </button>
+              </div>
+            ) : opportunities.length > 0 ? (
               <>
-                {jobOpenings.map((job, idx) => {
-                  const JobIcon = job.icon;
+                {opportunities.map((job) => {
+                  const jobTitle = job.name || job.title || 'Position';
+                  const JobIcon = getJobIcon(jobTitle, job.department);
                   return (
-                    <div key={idx} className="careers-job-row">
+                    <div key={job.id} className="careers-job-row">
                       <div className="job-row-left">
                         <div className="job-icon-circle">
                           <JobIcon size={18} />
                         </div>
                         <div className="job-meta-info">
-                          <h3 className="job-title-text">{job.title}</h3>
+                          <h3 className="job-title-text">{jobTitle}</h3>
                           <span className="job-location-text">{job.location}</span>
                         </div>
                       </div>
                       <button
                         type="button"
                         className="btn-job-apply"
-                        onClick={() => handleOpenModal(job.title)}
+                        onClick={() => handleOpenModal(jobTitle, job.id)}
                       >
                         <span>APPLY NOW</span>
                         <span className="apply-chevron">&gt;</span>
@@ -141,9 +165,9 @@ export const CareersOpportunities: React.FC = () => {
               </>
             ) : (
               <div className="careers-no-jobs-card">
-                <h3 className="no-jobs-title">We’re always looking for exceptional hospitality professionals.</h3>
+                <h3 className="no-jobs-title">No opportunities currently listed.</h3>
                 <p className="no-jobs-desc">
-                  Don't see the right opportunity today? Submit your resume and we'll keep you in mind for future positions.
+                  We’re always looking for exceptional hospitality professionals. Submit your resume and we'll keep you in mind for future positions.
                 </p>
                 <button
                   type="button"
@@ -188,6 +212,7 @@ export const CareersOpportunities: React.FC = () => {
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         jobTitle={selectedJobTitle}
+        opportunityId={selectedOpportunityId}
         initialFile={preselectedFile}
       />
     </section>
@@ -195,3 +220,4 @@ export const CareersOpportunities: React.FC = () => {
 };
 
 export default CareersOpportunities;
+
