@@ -42,17 +42,13 @@ export const VideoProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const lastSrcRef = useRef('');
 
-  // 1. Handle sound toggling in isolation without loading/playing
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.muted = isMuted;
     }
   }, [isMuted]);
-
-  // 2. Handle scene source changes and initial loading
   useEffect(() => {
     if (videoRef.current) {
-      // If the source URL actually changed, load the new source
       if (lastSrcRef.current !== activeScene.src) {
         lastSrcRef.current = activeScene.src;
         videoRef.current.src = activeScene.src;
@@ -62,7 +58,6 @@ export const VideoProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         videoRef.current.load();
       }
 
-      // Call play only if the video is currently paused
       if (videoRef.current.paused) {
         videoRef.current.play().catch(() => {
           if (videoRef.current?.error) {
@@ -101,4 +96,3 @@ export const useVideo = () => {
   }
   return context;
 };
-

@@ -35,19 +35,15 @@ export const Footer: React.FC = () => {
   const quickLinks = [
     { label: 'Home', href: '#home' },
     { label: 'About Us', href: '#about' },
-    { label: 'Our Services', href: '#services' },
-    { label: 'Our Team', href: '#leadership' },
+    { label: 'Services', href: '#services' },
+    { label: 'Portfolio', href: '#portfolio' },
     { label: 'Careers', href: '#careers' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Contact Us', href: '#contact' },
   ];
 
   const servicesLinks = [
-    { label: 'Hotel Management', href: '#services' },
-    { label: 'Hotel Development', href: '#services' },
-    { label: 'Asset Management', href: '#services' },
-    { label: 'Revenue Management', href: '#services' },
-    { label: 'Financial Management', href: '#services' },
-    { label: 'Project Renovation', href: '#services' },
+    { label: 'Hotel Management Services', href: '#services/hotel-management' },
+    { label: 'A La Carte Services', href: '#services/a-la-carte' },
   ];
 
 
@@ -68,6 +64,14 @@ export const Footer: React.FC = () => {
       title: 'BUSINESS HOTELS',
       description: 'Maximizing operating models and yields.',
       location: 'Miami, Florida, USA'
+    },
+    {
+      id: 3,
+      image: '/images/portfolio-extended.jpg',
+      category: 'EXTENDED STAY',
+      title: 'BOUTIQUE HOTELS',
+      description: 'Residential comfort and premium margins.',
+      location: 'Austin, Texas, USA'
     }
   ];
 

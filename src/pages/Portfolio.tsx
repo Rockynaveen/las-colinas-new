@@ -12,7 +12,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export const Portfolio: React.FC = () => {
   const reduceMotion = useReducedMotion();
-  const [visibleCount, setVisibleCount] = useState<number>(8); // Initially show 8 items (2 rows of 4)
+  const [visibleCount, setVisibleCount] = useState<number>(8); // Initially show 8 items (2 rows of 4) with LOAD MORE button
 
   const displayedCategories = portfolioCategories.slice(0, visibleCount);
 
