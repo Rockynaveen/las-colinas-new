@@ -27,9 +27,42 @@ const mapResourceToCategory = (res: PortfolioResource): PortfolioCategory => {
   };
 };
 
+const defaultPortfolioItems: PortfolioCategory[] = [
+  {
+    id: '1',
+    name: 'LUXURY RESORTS',
+    tagline: 'Premium Hospitality',
+    description: 'Building exceptional guest experiences.',
+    image: '/images/portfolio-branded.jpg',
+    alt: 'LUXURY RESORTS',
+    location: 'Dallas, Texas, USA',
+    link: '#portfolio'
+  },
+  {
+    id: '2',
+    name: 'BUSINESS HOTELS',
+    tagline: 'Operational Excellence',
+    description: 'Maximizing operating models and yields.',
+    image: '/images/portfolio-select.jpg',
+    alt: 'BUSINESS HOTELS',
+    location: 'Miami, Florida, USA',
+    link: '#portfolio'
+  },
+  {
+    id: '3',
+    name: 'BOUTIQUE HOTELS',
+    tagline: 'Curated Guest Comfort',
+    description: 'Residential comfort and premium margins.',
+    image: '/images/portfolio-extended.jpg',
+    alt: 'BOUTIQUE HOTELS',
+    location: 'Austin, Texas, USA',
+    link: '#portfolio'
+  }
+];
+
 export const Portfolio: React.FC = () => {
   const reduceMotion = useReducedMotion();
-  const [categories, setCategories] = useState<PortfolioCategory[]>([]);
+  const [categories, setCategories] = useState<PortfolioCategory[]>(defaultPortfolioItems);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState<number>(8); // Initially show 8 items
@@ -41,11 +74,11 @@ export const Portfolio: React.FC = () => {
       setError(null);
       const res = await portfolioService.getPortfolios();
       if (isMounted) {
-        if (res.success && Array.isArray(res.data)) {
+        if (res.success && Array.isArray(res.data) && res.data.length > 0) {
           const mapped = res.data.map(mapResourceToCategory);
           setCategories(mapped);
         } else {
-          setError(res.message || 'Unable to load portfolio properties.');
+          setCategories(defaultPortfolioItems);
         }
         setLoading(false);
       }

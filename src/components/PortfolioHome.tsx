@@ -4,6 +4,39 @@ import { ArrowRight, ChevronLeft, ChevronRight, MapPin, Loader2 } from 'lucide-r
 import type { PortfolioCategory } from '../utils/portfolioData';
 import { portfolioService, type PortfolioResource } from '../services/portfolioService';
 
+const defaultHomePortfolio: PortfolioCategory[] = [
+  {
+    id: '1',
+    name: 'LUXURY RESORTS',
+    tagline: 'Premium Hospitality',
+    description: 'Building exceptional guest experiences.',
+    image: '/images/portfolio-branded.jpg',
+    alt: 'LUXURY RESORTS',
+    location: 'Dallas, Texas, USA',
+    link: '#portfolio'
+  },
+  {
+    id: '2',
+    name: 'BUSINESS HOTELS',
+    tagline: 'Operational Excellence',
+    description: 'Maximizing operating models and yields.',
+    image: '/images/portfolio-select.jpg',
+    alt: 'BUSINESS HOTELS',
+    location: 'Miami, Florida, USA',
+    link: '#portfolio'
+  },
+  {
+    id: '3',
+    name: 'BOUTIQUE HOTELS',
+    tagline: 'Curated Guest Comfort',
+    description: 'Residential comfort and premium margins.',
+    image: '/images/portfolio-extended.jpg',
+    alt: 'BOUTIQUE HOTELS',
+    location: 'Austin, Texas, USA',
+    link: '#portfolio'
+  }
+];
+
 const mapResourceToCategory = (res: PortfolioResource): PortfolioCategory => {
   const name = res.heading || res.name || res.title || 'HOSPITALITY PROPERTY';
   const location = res.location_name || res.location || '';
@@ -25,7 +58,7 @@ export const PortfolioHome: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  const [categories, setCategories] = useState<PortfolioCategory[]>([]);
+  const [categories, setCategories] = useState<PortfolioCategory[]>(defaultHomePortfolio);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -36,10 +69,11 @@ export const PortfolioHome: React.FC = () => {
       setError(null);
       const res = await portfolioService.getPortfolios();
       if (isMounted) {
-        if (res.success && Array.isArray(res.data)) {
+        if (res.success && Array.isArray(res.data) && res.data.length > 0) {
           setCategories(res.data.map(mapResourceToCategory));
         } else {
-          setError(res.message || 'Unable to load portfolio.');
+          // If API returns empty or fails, use fallback default properties
+          setCategories(defaultHomePortfolio);
         }
         setLoading(false);
       }
@@ -52,27 +86,42 @@ export const PortfolioHome: React.FC = () => {
   }, []);
 
   // Show up to 10 portfolio cards
-  const activeCategories = categories.slice(0, 10);
+  const activeCategories = categories.length > 0 ? categories.slice(0, 10) : defaultHomePortfolio;
 
-  // Track viewport width dynamically
+  // Track viewport width dynamically & update when loading finishes
   useEffect(() => {
-    if (viewportRef.current) {
-      setViewportWidth(viewportRef.current.clientWidth);
+    const handleResize = () => {
+      if (viewportRef.current) {
+        setViewportWidth(viewportRef.current.clientWidth);
+      } else if (typeof window !== 'undefined') {
+        setViewportWidth(Math.min(window.innerWidth - 32, 1200));
+      }
+    };
 
-      const observer = new ResizeObserver((entries) => {
+    handleResize();
+
+    let observer: ResizeObserver | null = null;
+    if (viewportRef.current) {
+      observer = new ResizeObserver((entries) => {
         if (entries[0]) {
           setViewportWidth(entries[0].contentRect.width);
         }
       });
       observer.observe(viewportRef.current);
-      return () => observer.disconnect();
     }
-  }, []);
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      if (observer) observer.disconnect();
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [loading]);
 
   // Compute cards in view responsively
   const getCardsPerView = (width: number) => {
     const w = width || (typeof window !== 'undefined' ? window.innerWidth : 1200);
-    if (w <= 768) return 1;  // Mobile
+    if (w <= 640) return 1;  // Mobile
     if (w <= 1024) return 2; // Tablet
     return 4;                // Desktop
   };
@@ -94,23 +143,23 @@ export const PortfolioHome: React.FC = () => {
     setActiveIndex(Math.min(index, maxIndex));
   };
 
-  // Auto-play scroll effect loop (slides every 3.5 seconds unless hovered, only if there is overflow)
+  // Auto-play scroll effect loop
   useEffect(() => {
     if (isHovered || maxIndex <= 0) return;
 
     const timer = setInterval(() => {
       setActiveIndex(prev => {
         if (prev >= maxIndex) {
-          return 0; // Loop back to the start
+          return 0;
         }
         return prev + 1;
       });
-    }, 3500); // 3.5 seconds delay
+    }, 3500);
 
     return () => clearInterval(timer);
   }, [isHovered, maxIndex]);
 
-  // Helper to format card names matching the reference screenshot exactly
+  // Helper to format card names
   const getCardDisplayName = (name: string) => {
     return name.toUpperCase();
   };
@@ -138,7 +187,10 @@ export const PortfolioHome: React.FC = () => {
   };
 
   // Compute translation X offset based on pixel card width and gap (24px)
-  const cardWidth = cardsPerView > 0 ? (viewportWidth - 24 * (cardsPerView - 1)) / cardsPerView : 280;
+  const measuredWidth = viewportWidth > 0 ? viewportWidth : (typeof window !== 'undefined' ? Math.min(window.innerWidth - 32, 1200) : 320);
+  const cardWidth = cardsPerView === 1 
+    ? Math.max(260, measuredWidth) 
+    : Math.max(240, (measuredWidth - 24 * (cardsPerView - 1)) / cardsPerView);
   const translateX = -activeIndex * (cardWidth + 24);
 
   return (

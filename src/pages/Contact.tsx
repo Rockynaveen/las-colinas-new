@@ -14,6 +14,7 @@ import {
   X
 } from 'lucide-react';
 import { ServicesHero } from '../components/ServicesHero';
+import { contactService } from '../services/contactService';
 
 interface FormData {
   name: string;
@@ -61,29 +62,39 @@ export const Contact: React.FC = () => {
     if (status === 'error') setStatus('idle');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!form.name || !form.email || !form.subject || !form.message) {
+    if (!form.name.trim() || !form.email.trim() || !form.subject.trim() || !form.message.trim()) {
       setStatus('error');
       setErrorMsg('Please complete all required fields.');
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(form.email)) {
+    if (!emailRegex.test(form.email.trim())) {
       setStatus('error');
       setErrorMsg('Please enter a valid email address.');
       return;
     }
 
     setStatus('submitting');
+    setErrorMsg('');
 
-    setTimeout(() => {
-      setStatus('success');
-      setForm(initialFormState);
-      setErrorMsg('');
-    }, 1500);
+    try {
+      const response = await contactService.storeContact(form);
+      if (response.success) {
+        setStatus('success');
+        setForm(initialFormState);
+        setErrorMsg('');
+      } else {
+        setStatus('error');
+        setErrorMsg(response.message || 'Unable to send your message at this time. Please try again later.');
+      }
+    } catch (err: any) {
+      setStatus('error');
+      setErrorMsg(err?.message || 'An unexpected error occurred while sending your message.');
+    }
   };
 
   const fadeUp = (delay: number) => ({

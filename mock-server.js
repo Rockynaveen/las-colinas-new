@@ -46,6 +46,12 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  if (req.method === 'POST' && (url.pathname === '/api/contact' || url.pathname === '/api/v1/contact')) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, message: 'Your message has been sent successfully.' }));
+    return;
+  }
+
   res.writeHead(404, { 'Content-Type': 'application/json' });
   res.end(JSON.stringify({ success: false, message: 'Endpoint not found.' }));
 });

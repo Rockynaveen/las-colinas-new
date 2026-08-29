@@ -1,12 +1,76 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Check, MapPin, Phone, Mail } from 'lucide-react';
 import { Logo } from './Logo';
+import { portfolioService, type PortfolioResource } from '../services/portfolioService';
+
+interface RecentPortfolioItem {
+  id: string | number;
+  title: string;
+  location: string;
+  image: string;
+  link?: string;
+}
+
+const defaultBlogPosts: RecentPortfolioItem[] = [
+  {
+    id: 1,
+    image: '/images/portfolio-branded.jpg',
+    title: 'LUXURY RESORTS',
+    location: 'Dallas, Texas, USA',
+    link: '#portfolio'
+  },
+  {
+    id: 2,
+    image: '/images/portfolio-select.jpg',
+    title: 'BUSINESS HOTELS',
+    location: 'Miami, Florida, USA',
+    link: '#portfolio'
+  },
+  {
+    id: 3,
+    image: '/images/portfolio-extended.jpg',
+    title: 'BOUTIQUE HOTELS',
+    location: 'Austin, Texas, USA',
+    link: '#portfolio'
+  }
+];
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+
+  const [portfolioItems, setPortfolioItems] = useState<RecentPortfolioItem[]>(defaultBlogPosts);
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchRecentPortfolio = async () => {
+      try {
+        const res = await portfolioService.getPortfolios();
+        if (isMounted && res.success && Array.isArray(res.data) && res.data.length > 0) {
+          const mapped: RecentPortfolioItem[] = res.data.slice(0, 3).map((item: PortfolioResource, index: number) => {
+            const fallbackImg = defaultBlogPosts[index % defaultBlogPosts.length].image;
+            return {
+              id: item.id,
+              title: (item.heading || item.name || item.title || 'PORTFOLIO PROPERTY').toUpperCase(),
+              location: item.location_name || item.location || '',
+              image: item.image || item.image_url || fallbackImg,
+              link: item.link || '#portfolio',
+            };
+          });
+          setPortfolioItems(mapped);
+        }
+      } catch (err) {
+        console.error('Failed to fetch recent portfolio for footer:', err);
+      }
+    };
+
+    fetchRecentPortfolio();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,8 +94,6 @@ export const Footer: React.FC = () => {
     }, 1200);
   };
 
-
-
   const quickLinks = [
     { label: 'Home', href: '#home' },
     { label: 'About Us', href: '#about' },
@@ -44,35 +106,6 @@ export const Footer: React.FC = () => {
   const servicesLinks = [
     { label: 'Hotel Management Services', href: '#services/hotel-management' },
     { label: 'A La Carte Services', href: '#services/a-la-carte' },
-  ];
-
-
-
-  const blogPosts = [
-    {
-      id: 1,
-      image: '/images/portfolio-branded.jpg',
-      category: 'PREMIUM BRANDED',
-      title: 'LUXURY RESORTS',
-      description: 'Building exceptional guest experiences.',
-      location: 'Dallas, Texas, USA'
-    },
-    {
-      id: 2,
-      image: '/images/portfolio-select.jpg',
-      category: 'SELECT SERVICE',
-      title: 'BUSINESS HOTELS',
-      description: 'Maximizing operating models and yields.',
-      location: 'Miami, Florida, USA'
-    },
-    {
-      id: 3,
-      image: '/images/portfolio-extended.jpg',
-      category: 'EXTENDED STAY',
-      title: 'BOUTIQUE HOTELS',
-      description: 'Residential comfort and premium margins.',
-      location: 'Austin, Texas, USA'
-    }
   ];
 
   return (
@@ -200,8 +233,14 @@ export const Footer: React.FC = () => {
           <div className="footer-links-column">
             <h4 className="column-title">RECENT PORTFOLIO</h4>
             <div className="footer-blog-list">
-              {blogPosts.map((post) => (
-                <a href={`#blog-${post.id}`} className="footer-blog-post-link" key={post.id}>
+              {portfolioItems.map((post) => (
+                <a
+                  href={post.link || '#portfolio'}
+                  target={post.link?.startsWith('http') ? '_blank' : undefined}
+                  rel={post.link?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="footer-blog-post-link"
+                  key={post.id}
+                >
                   <div className="footer-blog-thumb-container">
                     <img
                       src={post.image}
@@ -212,10 +251,12 @@ export const Footer: React.FC = () => {
                   <div className="footer-blog-info">
                     <span className="footer-blog-title">{post.title}</span>
                     <div className="footer-blog-meta">
-                      <div className="footer-blog-location">
-                        <MapPin size={10} className="footer-blog-location-icon" />
-                        <span className="footer-blog-location-text">{post.location}</span>
-                      </div>
+                      {post.location && (
+                        <div className="footer-blog-location">
+                          <MapPin size={10} className="footer-blog-location-icon" />
+                          <span className="footer-blog-location-text">{post.location}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </a>
