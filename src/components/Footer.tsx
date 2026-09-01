@@ -107,17 +107,17 @@ export const Footer: React.FC = () => {
   };
 
   const quickLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'About Us', href: '#about' },
-    { label: 'Services', href: '#services' },
-    { label: 'Portfolio', href: '#portfolio' },
-    { label: 'Careers', href: '#careers' },
-    { label: 'Contact Us', href: '#contact' },
+    { label: 'Home', href: '/' },
+    { label: 'About Us', href: '/aboutus' },
+    { label: 'Services', href: '/services' },
+    { label: 'Portfolio', href: '/portfolio' },
+    { label: 'Careers', href: '/careers' },
+    { label: 'Contact Us', href: '/contact' },
   ];
 
   const servicesLinks = [
-    { label: 'Hotel Management Services', href: '#services/hotel-management' },
-    { label: 'A La Carte Services', href: '#services/a-la-carte' },
+    { label: 'Hotel Management Services', href: '/services/hotel-management' },
+    { label: 'A La Carte Services', href: '/services/a-la-carte' },
   ];
 
   return (

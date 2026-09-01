@@ -35,20 +35,34 @@ import './styles/footer.css';
 import './styles/about-page.css';
 import './styles/about-lchm.css';
 
+const getNormalizedRoute = (): string => {
+  const path = window.location.pathname.replace(/\/$/, '') || '/';
+  const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
+
+  // If hash is present (legacy or bookmarks), convert to clean path URL
+  if (hash) {
+    const cleanPath = '/' + hash;
+    window.history.replaceState(null, '', cleanPath);
+    return cleanPath;
+  }
+
+  return path.toLowerCase();
+};
+
 const AppContent: React.FC = () => {
-  const [currentHash, setCurrentHash] = useState(window.location.hash || '#home');
+  const [currentPath, setCurrentPath] = useState(getNormalizedRoute());
 
   useEffect(() => {
-    const isAboutHash = (h: string): boolean => {
-      const clean = h.replace('#', '').toLowerCase();
+    const isAboutPath = (p: string): boolean => {
+      const clean = p.replace(/^\//, '').toLowerCase();
       return (
         clean.startsWith('about') ||
         ['overview', 'story', 'vision', 'values', 'advantage', 'team', 'leadership'].some(k => clean.includes(k))
       );
     };
 
-    const getAboutTargetId = (h: string): string => {
-      const clean = h.replace('#', '').toLowerCase();
+    const getAboutTargetId = (p: string): string => {
+      const clean = p.replace(/^\//, '').toLowerCase();
       if (clean === 'about' || clean === 'aboutus' || clean === 'about-us') return 'about-hero';
       if (clean.includes('overview')) return 'overview';
       if (clean.includes('story')) return 'story';
@@ -59,17 +73,16 @@ const AppContent: React.FC = () => {
       return clean;
     };
 
-    const handleHashChange = () => {
-      const hash = window.location.hash || '#home';
-      setCurrentHash(hash);
+    const handleLocationChange = () => {
+      const route = getNormalizedRoute();
+      setCurrentPath(route);
 
       // Handle scrolling behaviors
-      if (hash === '#home' || hash === '#') {
+      if (route === '/' || route === '/home') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (isAboutHash(hash)) {
-        // Allow time for the AboutPage component to mount/render before scrolling
+      } else if (isAboutPath(route)) {
         setTimeout(() => {
-          const targetId = getAboutTargetId(hash);
+          const targetId = getAboutTargetId(route);
           const el = document.getElementById(targetId) || (targetId === 'overview' ? document.getElementById('about-overview') : null);
           if (el) {
             const offset = 90; // Header height + 10px breathing room
@@ -82,41 +95,67 @@ const AppContent: React.FC = () => {
       }
     };
 
-    window.addEventListener('hashchange', handleHashChange);
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement).closest('a');
+      if (!target) return;
 
-    // Check hash on mount
-    handleHashChange();
+      const href = target.getAttribute('href');
+      if (!href) return;
 
-    return () => window.removeEventListener('hashchange', handleHashChange);
+      // Handle internal relative paths starting with / or #
+      if (href.startsWith('/') || href.startsWith('#')) {
+        e.preventDefault();
+        const cleanPath = href.startsWith('#') ? '/' + href.replace(/^#\/?/, '') : href;
+        if (window.location.pathname !== cleanPath) {
+          window.history.pushState(null, '', cleanPath);
+          handleLocationChange();
+        } else {
+          handleLocationChange();
+        }
+      }
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    document.addEventListener('click', handleAnchorClick);
+
+    // Check path on mount
+    handleLocationChange();
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+      document.removeEventListener('click', handleAnchorClick);
+    };
   }, []);
 
-  const isHome2Check = currentHash === '#home-2' || currentHash === '#home-page-2';
-  const isHome3Check = currentHash === '#home-3' || currentHash === '#home-page-3';
-  const isAboutCheck = currentHash.startsWith('#about') || ['#overview', '#story', '#vision', '#values', '#advantage', '#team', '#leadership'].some(k => currentHash.toLowerCase().includes(k));
-  const isServicesHash = currentHash.startsWith('#services') || currentHash === '#a-la-carte-services';
-  const isHomePage = !isAboutCheck && !isServicesHash && !['#portfolio', '#careers', '#contact'].includes(currentHash);
+  const isHome2Check = currentPath === '/home-2' || currentPath === '/home-page-2';
+  const isHome3Check = currentPath === '/home-3' || currentPath === '/home-page-3';
+  const isAboutCheck = currentPath.startsWith('/about') || ['/overview', '/story', '/vision', '/values', '/advantage', '/team', '/leadership'].some(k => currentPath.includes(k));
+  const isServicesPath = currentPath.startsWith('/services') || currentPath === '/a-la-carte-services' || currentPath === '/a-la-carte';
+  const isHomePage = !isAboutCheck && !isServicesPath && !['/portfolio', '/careers', '/contact'].includes(currentPath);
 
   const renderContent = () => {
     if (isAboutCheck) {
       return <AboutPage />;
     }
 
-    if (isServicesHash) {
-      return <ServicesPage currentHash={currentHash} />;
+    if (isServicesPath) {
+      return <ServicesPage currentHash={currentPath} />;
     }
 
-    switch (currentHash) {
-      case '#portfolio':
+    switch (currentPath) {
+      case '/portfolio':
         return <Portfolio />;
-      case '#careers':
+      case '/careers':
         return <Careers />;
-      case '#contact':
+      case '/contact':
         return <Contact />;
-      case '#home-2':
-      case '#home-page-2':
+      case '/home-2':
+      case '/home-page-2':
         return <Home isHome2={true} />;
-      case '#home-3':
-      case '#home-page-3':
+      case '/home-3':
+      case '/home-page-3':
         return <Home isHome3={true} />;
       default:
         return <Home isHome2={false} />;

@@ -48,7 +48,7 @@ export const SectionNavigation: React.FC = () => {
       const offset = 90; // height of header + 10px breathing room
       const top = Math.max(0, el.getBoundingClientRect().top + window.scrollY - offset);
       window.scrollTo({ top, behavior: 'smooth' });
-      window.history.pushState(null, '', `#${sec.hash}`);
+      window.history.pushState(null, '', `/${sec.hash}`);
     }
   };
 
@@ -62,7 +62,7 @@ export const SectionNavigation: React.FC = () => {
             return (
               <a
                 key={sec.id}
-                href={`#${sec.hash}`}
+                href={`/${sec.hash}`}
                 onClick={(e) => handleSectionClick(sec, e)}
                 className={`sec-nav-item ${isActive ? 'active' : ''}`}
               >
@@ -86,7 +86,7 @@ export const SectionNavigation: React.FC = () => {
             return (
               <a
                 key={sec.id}
-                href={`#${sec.hash}`}
+                href={`/${sec.hash}`}
                 onClick={(e) => handleSectionClick(sec, e)}
                 className={`sec-nav-horizontal-link ${isActive ? 'active' : ''}`}
               >

@@ -18,36 +18,36 @@ export const MobileNavDrawer: React.FC<MobileNavDrawerProps> = ({ isOpen, onClos
   const navItems = [
     {
       label: 'HOME',
-      href: '#',
+      href: '/',
       submenu: [
-        { label: 'Home 01', href: '#home' },
-        { label: 'Home 02', href: '#home-2' },
-        { label: 'Home 03', href: '#home-3' }
+        { label: 'Home 01', href: '/' },
+        { label: 'Home 02', href: '/home-2' },
+        { label: 'Home 03', href: '/home-3' }
       ]
     },
     {
       label: 'ABOUT US',
-      href: '#',
+      href: '/aboutus',
       submenu: [
-        { label: 'Overview', href: '#aboutus/overview' },
-        { label: 'Our Story', href: '#aboutus/our-story' },
-        { label: 'Vision & Mission', href: '#aboutus/vision-mission' },
-        { label: 'Core Values', href: '#aboutus/core-values' },
-        { label: 'Our Competitive Advantage', href: '#aboutus/competitive-advantage' },
-        { label: 'Our Team', href: '#aboutus/our-team' }
+        { label: 'Overview', href: '/aboutus/overview' },
+        { label: 'Our Story', href: '/aboutus/our-story' },
+        { label: 'Vision & Mission', href: '/aboutus/vision-mission' },
+        { label: 'Core Values', href: '/aboutus/core-values' },
+        { label: 'Our Competitive Advantage', href: '/aboutus/competitive-advantage' },
+        { label: 'Our Team', href: '/aboutus/our-team' }
       ]
     },
     {
       label: 'SERVICES',
-      href: '#',
+      href: '/services',
       submenu: [
-        { label: 'Hotel Management Services', href: '#services/hotel-management' },
-        { label: 'A La Carte Services', href: '#services/a-la-carte' }
+        { label: 'Hotel Management Services', href: '/services/hotel-management' },
+        { label: 'A La Carte Services', href: '/services/a-la-carte' }
       ]
     },
-    { label: 'PORTFOLIO', href: '#portfolio' },
-    { label: 'CAREERS', href: '#careers' },
-    { label: 'CONTACT US', href: '#contact' }
+    { label: 'PORTFOLIO', href: '/portfolio' },
+    { label: 'CAREERS', href: '/careers' },
+    { label: 'CONTACT US', href: '/contact' }
   ];
 
   return (

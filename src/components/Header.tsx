@@ -17,7 +17,9 @@ export const Header: React.FC = () => {
     };
 
     const handleHashChange = () => {
-      setCurrentHash(window.location.hash || '#home');
+      const p = window.location.pathname.replace(/\/$/, '') || '/';
+      const h = window.location.hash.replace(/^#\/?/, '');
+      setCurrentHash(h ? '/' + h : p);
     };
 
     const handleOutsideClick = (e: MouseEvent) => {
@@ -31,35 +33,37 @@ export const Header: React.FC = () => {
     handleScroll();
 
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('popstate', handleHashChange);
     window.addEventListener('hashchange', handleHashChange);
     document.addEventListener('click', handleOutsideClick);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('popstate', handleHashChange);
       window.removeEventListener('hashchange', handleHashChange);
       document.removeEventListener('click', handleOutsideClick);
     };
   }, []);
 
   const aboutList = [
-    { name: 'Overview', hash: '#aboutus/overview' },
-    { name: 'Our Story', hash: '#aboutus/our-story' },
-    { name: 'Vision & Mission', hash: '#aboutus/vision-mission' },
-    { name: 'Core Values', hash: '#aboutus/core-values' },
-    { name: 'Our Competitive Advantage', hash: '#aboutus/competitive-advantage' },
-    { name: 'Our Team', hash: '#aboutus/our-team' }
+    { name: 'Overview', hash: '/aboutus/overview' },
+    { name: 'Our Story', hash: '/aboutus/our-story' },
+    { name: 'Vision & Mission', hash: '/aboutus/vision-mission' },
+    { name: 'Core Values', hash: '/aboutus/core-values' },
+    { name: 'Our Competitive Advantage', hash: '/aboutus/competitive-advantage' },
+    { name: 'Our Team', hash: '/aboutus/our-team' }
   ];
 
   const homeList = [
-    { name: 'Home 01', hash: '#home' },
-    { name: 'Home 02', hash: '#home-2' },
-    { name: 'Home 03', hash: '#home-3' }
+    { name: 'Home 01', hash: '/' },
+    { name: 'Home 02', hash: '/home-2' },
+    { name: 'Home 03', hash: '/home-3' }
   ];
 
-  const isHomeActive = ['#home', '#', '#home-1', '#home-2', '#home-page-2', '#home-3', '#home-page-3'].includes(currentHash);
-  const isAboutHash = currentHash.startsWith('#about') || ['#overview', '#story', '#vision', '#values', '#advantage', '#team', '#leadership'].some(k => currentHash.toLowerCase().includes(k));
-  const isServicesHash = currentHash.startsWith('#services') || ['#services', '#services-page', '#a-la-carte-services', '#a-la-carte'].some(k => currentHash.toLowerCase().includes(k));
-  const hasHero = isAboutHash || isServicesHash || ['#home', '#', '#home-1', '#home-2', '#home-page-2', '#home-3', '#home-page-3', '#careers', '#contact', '#portfolio'].includes(currentHash);
+  const isHomeActive = ['/', '/home', '/home-1', '/home-2', '/home-page-2', '/home-3', '/home-page-3', '#home', '#'].includes(currentHash);
+  const isAboutHash = currentHash.includes('about') || ['overview', 'story', 'vision', 'values', 'advantage', 'team', 'leadership'].some(k => currentHash.toLowerCase().includes(k));
+  const isServicesHash = currentHash.includes('services') || ['services', 'services-page', 'a-la-carte-services', 'a-la-carte'].some(k => currentHash.toLowerCase().includes(k));
+  const hasHero = isAboutHash || isServicesHash || ['/', '/home', '/home-1', '/home-2', '/home-page-2', '/home-3', '/home-page-3', '/careers', '/contact', '/portfolio', '#home', '#'].includes(currentHash);
 
   return (
     <>
@@ -112,11 +116,7 @@ export const Header: React.FC = () => {
                   e.stopPropagation();
                   setActiveDropdown(activeDropdown === 'about' ? null : 'about');
                 }}
-                className={`nav-item-link ${currentHash.startsWith('#about') ||
-                  ['#overview', '#story', '#vision', '#values', '#advantage', '#team', '#leadership'].includes(currentHash)
-                  ? 'active'
-                  : ''
-                  }`}
+                className={`nav-item-link ${isAboutHash ? 'active' : ''}`}
               >
                 ABOUT US
                 <ChevronDown size={12} style={{ opacity: 0.7 }} />
@@ -145,7 +145,7 @@ export const Header: React.FC = () => {
                   e.stopPropagation();
                   setActiveDropdown(activeDropdown === 'services' ? null : 'services');
                 }}
-                className={`nav-item-link ${currentHash.startsWith('#services') || currentHash === '#a-la-carte-services' ? 'active' : ''}`}
+                className={`nav-item-link ${isServicesHash ? 'active' : ''}`}
               >
                 SERVICES
                 <ChevronDown size={12} style={{ opacity: 0.7 }} />
@@ -153,14 +153,14 @@ export const Header: React.FC = () => {
               {activeDropdown === 'services' && (
                 <div className="dropdown-panel">
                   <a
-                    href="#services/hotel-management"
+                    href="/services/hotel-management"
                     onClick={() => setActiveDropdown(null)}
                     className="dropdown-panel-link"
                   >
                     Hotel Management Services
                   </a>
                   <a
-                    href="#services/a-la-carte"
+                    href="/services/a-la-carte"
                     onClick={() => setActiveDropdown(null)}
                     className="dropdown-panel-link"
                   >
@@ -171,22 +171,22 @@ export const Header: React.FC = () => {
             </div>
 
             <a
-              href="#portfolio"
-              className={`nav-item-link ${currentHash === '#portfolio' ? 'active' : ''}`}
+              href="/portfolio"
+              className={`nav-item-link ${currentHash.includes('portfolio') ? 'active' : ''}`}
             >
               PORTFOLIO
             </a>
 
             <a
-              href="#careers"
-              className={`nav-item-link ${currentHash === '#careers' ? 'active' : ''}`}
+              href="/careers"
+              className={`nav-item-link ${currentHash.includes('careers') ? 'active' : ''}`}
             >
               CAREERS
             </a>
 
             <a
-              href="#contact"
-              className={`nav-item-link ${currentHash === '#contact' ? 'active' : ''}`}
+              href="/contact"
+              className={`nav-item-link ${currentHash.includes('contact') ? 'active' : ''}`}
             >
               CONTACT US
             </a>

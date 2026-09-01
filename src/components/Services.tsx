@@ -171,7 +171,7 @@ export const Services: React.FC = () => {
             return (
               <motion.a
                 key={service.id}
-                href="#contact"
+                href="/services/hotel-management"
                 className="lchm-square-service-card"
                 variants={cardVariants}
               >
@@ -212,11 +212,11 @@ export const Services: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
-          <a href="#contact" className="btn-gold">
+          <a href="/contact" className="btn-gold">
             <span>Partner With Us</span>
             <ArrowRight size={15} />
           </a>
-          <a href="#contact" className="btn-secondary">
+          <a href="/contact" className="btn-secondary">
             <Calendar size={15} />
             <span>Schedule a Consultation</span>
           </a>

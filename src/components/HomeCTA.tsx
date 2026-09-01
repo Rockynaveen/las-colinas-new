@@ -29,12 +29,12 @@ export const HomeCTA: React.FC = () => {
               </p>
 
               <div className="cta-banner-buttons">
-                <a href="#contact" className="cta-btn-gold-rect">
+                <a href="/contact" className="cta-btn-gold-rect">
                   <span>Partner With Us</span>
                   <ArrowRight size={16} />
                 </a>
 
-                <a href="#contact" className="cta-btn-outline-rect">
+                <a href="/contact" className="cta-btn-outline-rect">
                   <span>Schedule a Consultation</span>
                   <Calendar size={16} className="gold-icon" />
                 </a>
