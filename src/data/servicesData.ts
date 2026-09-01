@@ -205,7 +205,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Property repositioning & modernization',
     ],
     icon: Hammer,
-    image: '/images/services-renovation.jpg',
+    image: '/A la Carte service/hotel-renovation-and-development.webp',
     alt: 'Hotel renovation and development',
   },
   {
@@ -222,7 +222,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Direct booking conversion enhancement',
     ],
     icon: Globe,
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+    image: '/A la Carte service/ota-management-distribution-strategy.webp',
     alt: 'OTA management and distribution strategy',
   },
   {
@@ -239,7 +239,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Valuation & disposition support',
     ],
     icon: TrendingUp,
-    image: '/images/services-asset-mgmt.jpg',
+    image: '/A la Carte service/hospitality-investment-asset-management.webp',
     alt: 'Hospitality investment and asset management',
   },
   {
@@ -256,7 +256,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Service culture transformation',
     ],
     icon: Users,
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800',
+    image: '/A la Carte service/staff-training-leadership-development.webp',
     alt: 'Staff training and leadership development',
   },
   {
@@ -273,7 +273,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Cash flow management & forecasting',
     ],
     icon: Calculator,
-    image: '/images/services-financial-mgmt.jpg',
+    image: '/A la Carte service/financial-accounting-management.webp',
     alt: 'Financial and accounting management',
   },
   {
@@ -290,7 +290,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Competitive set monitoring',
     ],
     icon: BarChart3,
-    image: '/images/services-revenue-mgmt.jpg',
+    image: '/A la Carte service/revenue-management-optimization.webp',
     alt: 'Revenue management and optimization',
   },
   {
@@ -307,7 +307,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Post-inspection corrective action plans',
     ],
     icon: ShieldCheck,
-    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800',
+    image: '/A la Carte service/quality-assurance-readiness.webp',
     alt: 'Quality assurance readiness',
   },
   {
@@ -324,7 +324,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'On-site installation supervision',
     ],
     icon: Package,
-    image: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=80&w=800',
+    image: '/A la Carte service/ffe-procurement-asset-planning.webp',
     alt: 'FF&E procurement and asset planning',
   },
   {
@@ -341,7 +341,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Independent vs brand conversion strategy',
     ],
     icon: Star,
-    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800',
+    image: '/A la Carte service/brand-selection-planning-review.webp',
     alt: 'Brand selection planning and review',
   },
   {
@@ -358,7 +358,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Dry-run testing & grand opening readiness',
     ],
     icon: Key,
-    image: '/images/services-pre-opening.jpg',
+    image: '/A la Carte service/hotel-pre-opening-services.webp',
     alt: 'Hotel pre-opening services',
     isFeatured: true,
   },
@@ -376,7 +376,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Risk mitigation & milestone tracking',
     ],
     icon: Briefcase,
-    image: '/images/services-hotel-dev.jpg',
+    image: '/A la Carte service/hospitality-project-management.webp',
     alt: 'Hospitality project management',
   },
   {
@@ -393,7 +393,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Cancellation & deposit policy strategy',
     ],
     icon: Target,
-    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800',
+    image: '/A la Carte service/daily-rate-strategy-yield-management.webp',
     alt: 'Daily rate strategy and yield management',
   },
   {
@@ -410,7 +410,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Total revenue per room (TRevPAR) focus',
     ],
     icon: Percent,
-    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800',
+    image: '/A la Carte service/price-optimization.webp',
     alt: 'Price optimization',
   },
   {
@@ -427,7 +427,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Revenue strategy alignment checks',
     ],
     icon: Activity,
-    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800',
+    image: '/A la Carte service/daily-sales-performance-monitoring.webp',
     alt: 'Daily sales performance monitoring',
   },
   {
@@ -444,7 +444,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Group & event sales strategy',
     ],
     icon: Megaphone,
-    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800',
+    image: '/A la Carte service/sales-marketing-strategy.webp',
     alt: 'Sales and marketing strategy',
   },
   {
@@ -461,7 +461,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Crisis leadership & rapid deployment',
     ],
     icon: UserPlus,
-    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800',
+    image: '/A la Carte service/task-force-management.webp',
     alt: 'Task force management',
   },
   {
@@ -478,7 +478,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Opportunity gap identification',
     ],
     icon: Search,
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800',
+    image: '/A la Carte service/competitive-benchmarking-market-analysis.webp',
     alt: 'Competitive benchmarking and market analysis',
   },
 ];

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Check, MapPin, Phone, Mail } from 'lucide-react';
+import { Send, Check, MapPin, Phone, Mail, CheckCircle2, X } from 'lucide-react';
 import { Logo } from './Logo';
+import { subscriberService } from '../services/subscriberService';
 import { portfolioService, type PortfolioResource } from '../services/portfolioService';
 
 interface RecentPortfolioItem {
@@ -85,13 +87,23 @@ export const Footer: React.FC = () => {
     }
 
     setStatus('submitting');
+    setErrorMessage('');
 
-    // Simulate API call
-    setTimeout(() => {
-      setStatus('success');
-      setEmail('');
-      setErrorMessage('');
-    }, 1200);
+    try {
+      const res = await subscriberService.subscribe(email.trim());
+
+      if (res.success) {
+        setStatus('success');
+        setEmail('');
+        setErrorMessage('');
+      } else {
+        setStatus('error');
+        setErrorMessage(res.message || 'Subscription failed. Please try again.');
+      }
+    } catch (err: any) {
+      setStatus('error');
+      setErrorMessage('Subscription failed. Please try again.');
+    }
   };
 
   const quickLinks = [
@@ -338,6 +350,52 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* LUXURY NEWSLETTER SUCCESS POPUP MODAL */}
+      {typeof document !== 'undefined' && ReactDOM.createPortal(
+        <AnimatePresence>
+          {status === 'success' && (
+            <div className="footer-modal-backdrop" onClick={() => setStatus('idle')}>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.92, y: 20 }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                className="footer-modal-panel"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  className="footer-modal-close-btn"
+                  onClick={() => setStatus('idle')}
+                  aria-label="Close modal"
+                >
+                  <X size={20} />
+                </button>
+
+                <div className="footer-modal-content">
+                  <div className="footer-modal-icon-ring">
+                    <CheckCircle2 size={42} className="footer-modal-check-icon" />
+                  </div>
+                  <span className="footer-modal-eyebrow">INSIGHTS SUBSCRIPTION</span>
+                  <h3 className="footer-modal-title">Welcome to Our Network!</h3>
+                  <p className="footer-modal-desc">
+                    Thank you for subscribing to Las Colinas Hospitality Management. You will now receive our exclusive hospitality insights, market updates, and portfolio news.
+                  </p>
+                  <button
+                    type="button"
+                    className="footer-modal-action-btn"
+                    onClick={() => setStatus('idle')}
+                  >
+                    <span>CONTINUE EXPLORING</span>
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </footer>
   );
 };

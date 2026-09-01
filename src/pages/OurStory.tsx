@@ -41,7 +41,7 @@ export const OurStory: React.FC = () => {
           >
             <div className="lchm-photo-frame lchm-photo-frame--story">
               <img
-                src="/images/cta-hotel-night.jpg"
+                src="/our-story.webp"
                 alt="Upscale hotel lounge"
                 className="lchm-photo"
               />

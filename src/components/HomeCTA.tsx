@@ -45,7 +45,7 @@ export const HomeCTA: React.FC = () => {
             <div className="cta-right-column">
               <div className="cta-image-wrapper">
                 <img 
-                  src="/images/cta-hotel-night.jpg" 
+                  src="/cta-bg.webp" 
                   alt="Luxury Modern Hotel at Night" 
                   className="cta-hotel-img"
                   loading="lazy"
