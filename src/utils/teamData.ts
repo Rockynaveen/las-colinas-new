@@ -57,6 +57,14 @@ export const teamMembers: TeamMember[] = [
     expertise: ['Human Resources', 'Financial Performance', 'Operational Excellence', 'Organizational Strategy', 'Staff Development']
   },
   {
+    id: 'tanishq-tiwari',
+    name: 'Tanishq Tiwari',
+    role: 'Director of HR Operations',
+    image: '/images/team/tanishq-tiwari.webp',
+    description: 'Tanishq is a distinguished hospitality professional with a strong generational legacy in hotel operations. He brings a strategic, people-centric approach to leadership, with a focus on building high-performing teams, developing future leaders, and cultivating a strong workplace culture while aligning HR strategy with broader business and operational objectives.',
+    expertise: ['HR Operations', 'Leadership Development', 'Workplace Culture', 'Team Building', 'Strategic HR']
+  },
+  {
     id: 'tanmay-patel',
     name: 'Tanmay Patel (CHO)',
     role: 'Acquisition Manager',
