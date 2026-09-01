@@ -25,6 +25,14 @@ export const teamMembers: TeamMember[] = [
     expertise: ['Strategic Direction', 'Asset Management', 'Hotel Development', 'Business Growth', 'Industry Partnerships']
   },
   {
+    id: 'tanishq-tiwari',
+    name: 'Tanishq Tiwari',
+    role: 'Director of HR Operations',
+    image: '/images/team/tanishq-tiwari.webp',
+    description: 'Tanishq is a distinguished hospitality professional with a strong generational legacy in hotel operations. He brings a strategic, people-centric approach to leadership, with a focus on building high-performing teams, developing future leaders, and cultivating a strong workplace culture while aligning HR strategy with broader business and operational objectives.',
+    expertise: ['HR Operations', 'Leadership Development', 'Workplace Culture', 'Team Building', 'Strategic HR']
+  },
+  {
     id: 'jignesh-patel',
     name: 'Jignesh Patel',
     role: 'Accounting Manager',
@@ -55,14 +63,6 @@ export const teamMembers: TeamMember[] = [
     image: '/images/team/christa_wijendran.jpg',
     description: "Christa Noel is an accomplished hospitality professional with more than 16 years of industry experience, progressing from front-line operations to senior leadership through a proven commitment to operational excellence and organizational performance. Christa combines her operational expertise with strategic insight to support financial performance, human resources, and organizational success across the company's portfolio.",
     expertise: ['Human Resources', 'Financial Performance', 'Operational Excellence', 'Organizational Strategy', 'Staff Development']
-  },
-  {
-    id: 'tanishq-tiwari',
-    name: 'Tanishq Tiwari',
-    role: 'Director of HR Operations',
-    image: '/images/team/tanishq-tiwari.webp',
-    description: 'Tanishq is a distinguished hospitality professional with a strong generational legacy in hotel operations. He brings a strategic, people-centric approach to leadership, with a focus on building high-performing teams, developing future leaders, and cultivating a strong workplace culture while aligning HR strategy with broader business and operational objectives.',
-    expertise: ['HR Operations', 'Leadership Development', 'Workplace Culture', 'Team Building', 'Strategic HR']
   },
   {
     id: 'tanmay-patel',

@@ -57,8 +57,9 @@ export const Header: React.FC = () => {
   ];
 
   const isHomeActive = ['#home', '#', '#home-1', '#home-2', '#home-page-2', '#home-3', '#home-page-3'].includes(currentHash);
-  const isAboutHash = currentHash.startsWith('#about') || ['#overview', '#story', '#vision', '#values', '#advantage', '#team', '#leadership'].includes(currentHash);
-  const hasHero = isAboutHash || ['#home', '#', '#home-1', '#home-2', '#home-page-2', '#home-3', '#home-page-3', '#services', '#services-page', '#careers', '#contact', '#portfolio'].includes(currentHash);
+  const isAboutHash = currentHash.startsWith('#about') || ['#overview', '#story', '#vision', '#values', '#advantage', '#team', '#leadership'].some(k => currentHash.toLowerCase().includes(k));
+  const isServicesHash = currentHash.startsWith('#services') || ['#services', '#services-page', '#a-la-carte-services', '#a-la-carte'].some(k => currentHash.toLowerCase().includes(k));
+  const hasHero = isAboutHash || isServicesHash || ['#home', '#', '#home-1', '#home-2', '#home-page-2', '#home-3', '#home-page-3', '#careers', '#contact', '#portfolio'].includes(currentHash);
 
   return (
     <>

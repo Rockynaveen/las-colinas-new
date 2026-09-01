@@ -66,7 +66,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Guest experience & satisfaction optimization',
     ],
     icon: Building2,
-    image: '/images/services-hotel-mgmt.jpg',
+    image: '/services imgs/hotel-operations-management.webp',
     alt: 'Hotel operations management',
   },
   {
@@ -83,7 +83,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Guest satisfaction & service recovery training',
     ],
     icon: GraduationCap,
-    image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&q=80&w=800',
+    image: '/services imgs/staff-training.webp',
     alt: 'Staff training',
   },
   {
@@ -100,7 +100,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Retention & team engagement strategies',
     ],
     icon: UserCheck,
-    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=800',
+    image: '/services imgs/recruitment-support.webp',
     alt: 'Recruitment support',
   },
   {
@@ -117,7 +117,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Internal fraud prevention controls',
     ],
     icon: ShieldCheck,
-    image: '/images/services-financial-mgmt.jpg',
+    image: '/services imgs/financial-controls.webp',
     alt: 'Financial controls',
   },
   {
@@ -134,7 +134,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Owner financial reporting',
     ],
     icon: DollarSign,
-    image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800',
+    image: '/services imgs/budgeting.webp',
     alt: 'Budgeting',
   },
   {
@@ -151,7 +151,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Continuous operational refinement',
     ],
     icon: ClipboardList,
-    image: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&q=80&w=800',
+    image: '/services imgs/SOP-Implementation.webp',
     alt: 'SOP implementation',
   },
   {
@@ -168,7 +168,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Cost-efficient supply chain management',
     ],
     icon: Truck,
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800',
+    image: '/services imgs/vendor-management.webp',
     alt: 'Vendor management',
   },
   {
@@ -185,7 +185,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Cleanliness & maintenance scoring',
     ],
     icon: Award,
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800',
+    image: '/services imgs/quality-audits.webp',
     alt: 'Quality audits',
   },
 ];

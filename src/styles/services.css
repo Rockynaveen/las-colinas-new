@@ -185,7 +185,7 @@
   gap: 1.25rem;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  min-height: 420px;
+  min-height: 280px;
   height: auto;
 }
 
@@ -380,14 +380,15 @@
 
 /* RIGHT VERTICAL IMAGE TILE */
 .service-card-right-image {
-  width: 240px;
-  /* Exact 240px width requested */
+  width: 260px;
+  max-width: 42%;
   height: 100%;
+  min-height: 100%;
   flex-shrink: 0;
   border-radius: 14px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .service-vertical-photo {
@@ -395,12 +396,12 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: 12px;
+  border-radius: 14px;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .service-card-item:hover .service-vertical-photo {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 /* ------------------------------------------
@@ -413,7 +414,7 @@
   gap: 2.25rem;
   align-items: center;
   padding: 1.25rem;
-  min-height: 360px;
+  min-height: 340px;
 }
 
 .service-featured-left-image {
@@ -423,7 +424,7 @@
   border-radius: 14px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .service-featured-photo {
@@ -553,8 +554,10 @@
 
   .service-card-right-image {
     width: 100% !important;
-    height: 180px !important;
+    max-width: 100% !important;
+    height: auto !important;
     min-height: 180px !important;
+    max-height: 240px !important;
     border-radius: 10px !important;
     overflow: hidden !important;
     margin-bottom: 1rem !important;
@@ -567,10 +570,12 @@
   }
 
   .service-featured-left-image {
-    min-height: 180px;
-    height: 180px;
-    border-radius: 10px;
-    overflow: hidden;
+    width: 100% !important;
+    min-height: 180px !important;
+    height: auto !important;
+    max-height: 240px !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
   }
 
   .service-featured-right-content {
