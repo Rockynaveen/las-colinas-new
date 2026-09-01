@@ -24,24 +24,6 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ currentHash = window
         }
       />
 
-      {/* Services Sub-Header Navigation Tabs */}
-      <div className="svc-tabs-bar">
-        <div className="svc-tabs-container">
-          <a
-            href="/services/hotel-management"
-            className={`svc-tab-item ${!isALaCarte ? 'active' : ''}`}
-          >
-            <span>HOTEL MANAGEMENT SERVICES</span>
-          </a>
-          <a
-            href="/services/a-la-carte"
-            className={`svc-tab-item ${isALaCarte ? 'active' : ''}`}
-          >
-            <span>A LA CARTE SERVICES</span>
-          </a>
-        </div>
-      </div>
-
       {/* Render selected service section */}
       {isALaCarte ? <ALaCarteServices /> : <DetailedServices />}
 
