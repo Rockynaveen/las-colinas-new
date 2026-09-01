@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, type Variants } from 'framer-motion';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import {
   Building2,
   GraduationCap,
@@ -148,23 +148,25 @@ const detailedServicesData: ServiceItem[] = [
 ];
 
 export const DetailedServices: React.FC = () => {
+  const reduceMotion = useReducedMotion();
+
   const containerVariants: Variants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
+        staggerChildren: 0.08,
+        delayChildren: 0.05,
       },
     },
   };
 
   const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 25 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.7,
+        duration: 0.6,
         ease: [0.16, 1, 0.3, 1],
       },
     },
@@ -176,9 +178,9 @@ export const DetailedServices: React.FC = () => {
         {/* Section Header */}
         <motion.div
           className="services-header"
-          initial={{ opacity: 0, y: 30 }}
+          initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.01 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="services-badge">
@@ -201,9 +203,9 @@ export const DetailedServices: React.FC = () => {
         <motion.div
           className="services-grid-cards"
           variants={containerVariants}
-          initial="hidden"
+          initial={reduceMotion ? "visible" : "hidden"}
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.01 }}
         >
           {detailedServicesData.map((service) => {
             const ServiceIcon = service.icon;

@@ -8,8 +8,9 @@ interface ServicesPageProps {
   currentHash?: string;
 }
 
-export const ServicesPage: React.FC<ServicesPageProps> = ({ currentHash = window.location.pathname }) => {
-  const isALaCarte = currentHash.includes('a-la-carte');
+export const ServicesPage: React.FC<ServicesPageProps> = ({ currentHash }) => {
+  const fullPath = (currentHash || window.location.pathname || '') + (window.location.hash || '');
+  const isALaCarte = fullPath.toLowerCase().includes('a-la-carte') || fullPath.toLowerCase().includes('alacarte');
 
   return (
     <div id="services-page" className="svc-page">
