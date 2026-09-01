@@ -40,7 +40,7 @@ const detailedServicesData: ServiceItem[] = [
       'Quality audits',
     ],
     icon: Building2,
-    image: '/services imgs/hotel-operations-management.webp',
+    image: '/services-imgs/hotel-operations-management.webp',
     alt: 'Hotel operations management',
     isFeatured: true,
   },
@@ -56,7 +56,7 @@ const detailedServicesData: ServiceItem[] = [
       'Guest satisfaction & service recovery training',
     ],
     icon: GraduationCap,
-    image: '/services imgs/staff-training.webp',
+    image: '/services-imgs/staff-training.webp',
     alt: 'Staff training',
   },
   {
@@ -70,7 +70,7 @@ const detailedServicesData: ServiceItem[] = [
       'Retention & team engagement strategies',
     ],
     icon: UserCheck,
-    image: '/services imgs/recruitment-support.webp',
+    image: '/services-imgs/recruitment-support.webp',
     alt: 'Recruitment support',
   },
   {
@@ -84,7 +84,7 @@ const detailedServicesData: ServiceItem[] = [
       'Internal fraud prevention controls',
     ],
     icon: ShieldCheck,
-    image: '/services imgs/financial-controls.webp',
+    image: '/services-imgs/financial-controls.webp',
     alt: 'Financial controls',
   },
   {
@@ -98,7 +98,7 @@ const detailedServicesData: ServiceItem[] = [
       'Owner financial reporting',
     ],
     icon: DollarSign,
-    image: '/services imgs/budgeting.webp',
+    image: '/services-imgs/budgeting.webp',
     alt: 'Budgeting',
   },
   {
@@ -112,7 +112,7 @@ const detailedServicesData: ServiceItem[] = [
       'Continuous operational refinement',
     ],
     icon: ClipboardList,
-    image: '/services imgs/SOP-Implementation.webp',
+    image: '/services-imgs/SOP-Implementation.webp',
     alt: 'SOP implementation',
   },
   {
@@ -126,7 +126,7 @@ const detailedServicesData: ServiceItem[] = [
       'Cost-efficient supply chain management',
     ],
     icon: Truck,
-    image: '/services imgs/vendor-management.webp',
+    image: '/services-imgs/vendor-management.webp',
     alt: 'Vendor management',
   },
   /* Quality Audits Card Centered in the Middle without altering internal layout */
@@ -141,7 +141,7 @@ const detailedServicesData: ServiceItem[] = [
       'Cleanliness & maintenance scoring',
     ],
     icon: Award,
-    image: '/services imgs/quality-audits.webp',
+    image: '/services-imgs/quality-audits.webp',
     alt: 'Quality audits',
     isCentered: true,
   },
