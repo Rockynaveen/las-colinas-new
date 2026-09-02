@@ -335,7 +335,7 @@ export const ALaCarteServices: React.FC = () => {
         >
           <div className="services-badge">
             <span className="services-badge-text">
-              <span style={{ color: '#041831', fontWeight: 800 }}>02</span> SERVICE
+              SERVICE
             </span>
             <span className="services-badge-diamond">✧</span>
           </div>

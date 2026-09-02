@@ -28,7 +28,7 @@ const servicesData: ServiceItem[] = [
     title: 'Hotel Management Services',
     description: 'We provide comprehensive hotel management services designed to maximize profitability, improve operational efficiency, and enhance guest satisfaction.',
     icon: Building2,
-    image: '/services-imgs/hotel-operations-management.webp',
+    image: '/hotel mangemnet services version imgs/hotel-operations-management-v2.webp',
     alt: 'Luxury hotel management',
   },
   {

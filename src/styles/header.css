@@ -214,7 +214,7 @@
   padding: 0.25rem 0;
   transition: color 0.25s ease;
   position: relative;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  text-shadow: none;
 }
 
 .nav-item-link:hover,
@@ -448,6 +448,7 @@
 /* Scrolled sticky white header style overrides */
 .site-header.scrolled .nav-item-link {
   color: #121F34 !important;
+  text-shadow: none !important;
 }
 
 .site-header.scrolled .nav-item-link:hover,

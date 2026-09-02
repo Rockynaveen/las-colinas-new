@@ -140,7 +140,7 @@ export const HomeServices: React.FC = () => {
         >
           <div className="services-badge">
             <span className="services-badge-diamond">✧</span>
-            <span><span style={{ color: '#041831', fontWeight: 800 }}>01</span> SERVICE</span>
+            <span>SERVICE</span>
             <span className="services-badge-diamond">✧</span>
           </div>
 

@@ -40,7 +40,7 @@ const detailedServicesData: ServiceItem[] = [
       'Quality audits',
     ],
     icon: Building2,
-    image: '/services-imgs/hotel-operations-management.webp',
+    image: '/hotel mangemnet services version imgs/hotel-operations-management-v2.webp',
     alt: 'Hotel operations management',
     isFeatured: true,
   },
@@ -56,7 +56,7 @@ const detailedServicesData: ServiceItem[] = [
       'Guest satisfaction & service recovery training',
     ],
     icon: GraduationCap,
-    image: '/services-imgs/staff-training.webp',
+    image: '/hotel mangemnet services version imgs/staff-training-v2.webp',
     alt: 'Staff training',
   },
   {
@@ -70,7 +70,7 @@ const detailedServicesData: ServiceItem[] = [
       'Retention & team engagement strategies',
     ],
     icon: UserCheck,
-    image: '/services-imgs/recruitment-support.webp',
+    image: '/hotel mangemnet services version imgs/recruitment -support-v2.webp',
     alt: 'Recruitment support',
   },
   {
@@ -84,7 +84,7 @@ const detailedServicesData: ServiceItem[] = [
       'Internal fraud prevention controls',
     ],
     icon: ShieldCheck,
-    image: '/services-imgs/financial-controls.webp',
+    image: '/hotel mangemnet services version imgs/financial-control-v2.webp',
     alt: 'Financial controls',
   },
   {
@@ -98,7 +98,7 @@ const detailedServicesData: ServiceItem[] = [
       'Owner financial reporting',
     ],
     icon: DollarSign,
-    image: '/services-imgs/budgeting.webp',
+    image: '/hotel mangemnet services version imgs/budgeting-v2.webp',
     alt: 'Budgeting',
   },
   {
@@ -112,7 +112,7 @@ const detailedServicesData: ServiceItem[] = [
       'Continuous operational refinement',
     ],
     icon: ClipboardList,
-    image: '/services-imgs/SOP-Implementation.webp',
+    image: '/hotel mangemnet services version imgs/sop-implementation-v2.webp',
     alt: 'SOP implementation',
   },
   {
@@ -126,7 +126,7 @@ const detailedServicesData: ServiceItem[] = [
       'Cost-efficient supply chain management',
     ],
     icon: Truck,
-    image: '/services-imgs/vendor-management.webp',
+    image: '/hotel mangemnet services version imgs/vendor-management-v2 .webp',
     alt: 'Vendor management',
   },
   /* Quality Audits Card Centered in the Middle without altering internal layout */
@@ -141,7 +141,7 @@ const detailedServicesData: ServiceItem[] = [
       'Cleanliness & maintenance scoring',
     ],
     icon: Award,
-    image: '/services-imgs/quality-audits.webp',
+    image: '/hotel mangemnet services version imgs/quality-audits-v2.webp',
     alt: 'Quality audits',
     isCentered: true,
   },
@@ -185,7 +185,7 @@ export const DetailedServices: React.FC = () => {
         >
           <div className="services-badge">
             <span className="services-badge-text">
-              <span style={{ color: '#041831', fontWeight: 800 }}>01</span> SERVICE
+              SERVICE
             </span>
             <span className="services-badge-diamond">✧</span>
           </div>

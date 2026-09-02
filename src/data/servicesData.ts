@@ -66,7 +66,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Guest experience & satisfaction optimization',
     ],
     icon: Building2,
-    image: '/services-imgs/hotel-operations-management.webp',
+    image: '/hotel mangemnet services version imgs/hotel-operations-management-v2.webp',
     alt: 'Hotel operations management',
   },
   {
@@ -83,7 +83,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Guest satisfaction & service recovery training',
     ],
     icon: GraduationCap,
-    image: '/services-imgs/staff-training.webp',
+    image: '/hotel mangemnet services version imgs/staff-training-v2.webp',
     alt: 'Staff training',
   },
   {
@@ -100,7 +100,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Retention & team engagement strategies',
     ],
     icon: UserCheck,
-    image: '/services-imgs/recruitment-support.webp',
+    image: '/hotel mangemnet services version imgs/recruitment -support-v2.webp',
     alt: 'Recruitment support',
   },
   {
@@ -117,7 +117,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Internal fraud prevention controls',
     ],
     icon: ShieldCheck,
-    image: '/services-imgs/financial-controls.webp',
+    image: '/hotel mangemnet services version imgs/financial-control-v2.webp',
     alt: 'Financial controls',
   },
   {
@@ -134,7 +134,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Owner financial reporting',
     ],
     icon: DollarSign,
-    image: '/services-imgs/budgeting.webp',
+    image: '/hotel mangemnet services version imgs/budgeting-v2.webp',
     alt: 'Budgeting',
   },
   {
@@ -151,7 +151,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Continuous operational refinement',
     ],
     icon: ClipboardList,
-    image: '/services-imgs/SOP-Implementation.webp',
+    image: '/hotel mangemnet services version imgs/sop-implementation-v2.webp',
     alt: 'SOP implementation',
   },
   {
@@ -168,7 +168,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Cost-efficient supply chain management',
     ],
     icon: Truck,
-    image: '/services-imgs/vendor-management.webp',
+    image: '/hotel mangemnet services version imgs/vendor-management-v2 .webp',
     alt: 'Vendor management',
   },
   {
@@ -185,7 +185,7 @@ export const HOTEL_MANAGEMENT_SERVICES: ServiceDetail[] = [
       'Cleanliness & maintenance scoring',
     ],
     icon: Award,
-    image: '/services-imgs/quality-audits.webp',
+    image: '/hotel mangemnet services version imgs/quality-audits-v2.webp',
     alt: 'Quality audits',
   },
 ];
