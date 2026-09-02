@@ -262,12 +262,13 @@
 
 .dropdown-panel-link {
   display: block;
-  padding: 0.6rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   color: rgba(255, 255, 255, 0.85);
   font-family: var(--font-sans);
   font-size: 0.785rem;
   font-weight: 500;
   letter-spacing: 0.04em;
+  line-height: 1.25;
   text-decoration: none;
   transition: all 0.2s ease;
 }
@@ -403,6 +404,7 @@
   font-family: var(--font-sans);
   font-size: 0.825rem;
   font-weight: 500;
+  line-height: 1.25;
   text-decoration: none;
   transition: color 0.2s ease;
 }

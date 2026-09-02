@@ -6,10 +6,9 @@ import { VideoBackground } from './VideoBackground';
 interface HeroProps {
   isHome2?: boolean;
   isHome3?: boolean;
-  isHome4?: boolean;
 }
 
-export const Hero: React.FC<HeroProps> = ({ isHome2: _isHome2, isHome3: _isHome3, isHome4 }) => {
+export const Hero: React.FC<HeroProps> = ({ isHome2: _isHome2, isHome3 }) => {
   const sectionRef = React.useRef<HTMLElement | null>(null);
 
   React.useEffect(() => {
@@ -53,9 +52,9 @@ export const Hero: React.FC<HeroProps> = ({ isHome2: _isHome2, isHome3: _isHome3
   };
 
   return (
-    <section ref={sectionRef} className="hero-section">
+    <section ref={sectionRef} className={`hero-section ${isHome3 ? 'home-3-hero' : ''}`}>
       {/* Full-bleed Background Video + Subtle Overlay */}
-      <VideoBackground isHome4={isHome4} />
+      <VideoBackground isHome3={isHome3} />
 
       {/* Hero Content Area */}
       <div className="hero-content-container">

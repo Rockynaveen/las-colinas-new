@@ -89,8 +89,9 @@ main {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transform: scale(1.0);
   z-index: 2;
-  transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.8s ease-in-out, transform 0.5s ease;
   pointer-events: none;
 }
 
@@ -102,7 +103,33 @@ main {
   opacity: 0;
 }
 
-/* Standard Mask for Home 1, Home 2, Home 3 */
+/* Home 2 Zoomed-Out Background Image Styling */
+.global-hero-video-container.home-2-bg {
+  background-color: #0A1322;
+}
+
+.hero-fallback-image.home-2-hero-image {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.0);
+  transform-origin: center;
+  transition: transform 0.5s ease;
+}
+
+/* Home 3 Background Image Styling */
+.global-hero-video-container.home-3-bg {
+  background-color: #080C16;
+}
+
+.hero-fallback-image.home-3-hero-image {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.0);
+  transform-origin: center;
+  transition: transform 0.5s ease;
+}
+
+/* Standard Mask & Sophisticated Dark Gradient Overlay for Hero */
 .hero-subtle-overlay,
 .hero-dark-theme-overlay {
   display: block !important;
@@ -110,18 +137,46 @@ main {
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.12) 50%, rgba(0, 0, 0, 0.28) 100%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.14) 60%, rgba(0, 0, 0, 0.05) 100%) !important;
+    linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.28) 35%, rgba(0, 0, 0, 0.15) 65%, rgba(0, 0, 0, 0.08) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.06) 50%, rgba(0, 0, 0, 0.18) 100%) !important;
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: none;
 }
 
-/* Exclusive Golden Bronze Luxury Mask for Home 4 */
-.hero-subtle-overlay.home-4-overlay {
-  background:
-    linear-gradient(180deg, rgba(24, 20, 15, 0.65) 0%, rgba(24, 20, 15, 0.48) 50%, rgba(24, 20, 15, 0.75) 100%),
-    linear-gradient(90deg, rgba(24, 20, 15, 0.75) 0%, rgba(24, 20, 15, 0.48) 60%, rgba(24, 20, 15, 0.15) 100%) !important;
+@media (max-width: 768px) {
+
+  .hero-subtle-overlay,
+  .hero-dark-theme-overlay {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.39) 0%, rgba(0, 0, 0, 0.30) 50%, rgba(0, 0, 0, 0.39) 100%),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.38) 0%, rgba(0, 0, 0, 0.20) 100%) !important;
+  }
+}
+
+/* Home 3 Specific High-Contrast Readability Adjustments */
+.home-3-hero .hero-title {
+  color: #FFFFFF !important;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 2px 6px rgba(0, 0, 0, 0.95) !important;
+}
+
+.home-3-hero .hero-title-accent {
+  color: #D4AF37 !important;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 2px 6px rgba(0, 0, 0, 0.95) !important;
+}
+
+.home-3-hero .hero-short-desc {
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9) !important;
+}
+
+.home-3-hero .hero-highlight-text {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9) !important;
+}
+
+.home-3-hero .hero-highlight-line {
+  background-color: #D4AF37 !important;
 }
 
 /* Hero Content Area - Clean, Spacious & Uncluttered */

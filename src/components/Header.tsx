@@ -57,14 +57,13 @@ export const Header: React.FC = () => {
   const homeList = [
     { name: 'Home 01', hash: '/' },
     { name: 'Home 02', hash: '/home-2' },
-    { name: 'Home 03', hash: '/home-3' },
-    { name: 'Home 04', hash: '/home-4' }
+    { name: 'Home 03', hash: '/home-3' }
   ];
 
-  const isHomeActive = ['/', '/home', '/home-1', '/home-2', '/home-page-2', '/home-3', '/home-page-3', '/home-4', '/home-page-4', '#home', '#'].includes(currentHash);
+  const isHomeActive = ['/', '/home', '/home-1', '/home-2', '/home-page-2', '/home-3', '/home-page-3', '#home', '#'].includes(currentHash);
   const isAboutHash = currentHash.includes('about') || ['overview', 'story', 'vision', 'values', 'advantage', 'team', 'leadership'].some(k => currentHash.toLowerCase().includes(k));
   const isServicesHash = currentHash.includes('services') || ['services', 'services-page', 'a-la-carte-services', 'a-la-carte'].some(k => currentHash.toLowerCase().includes(k));
-  const hasHero = isAboutHash || isServicesHash || ['/', '/home', '/home-1', '/home-2', '/home-page-2', '/home-3', '/home-page-3', '/home-4', '/home-page-4', '/careers', '/contact', '/portfolio', '#home', '#'].includes(currentHash);
+  const hasHero = isAboutHash || isServicesHash || ['/', '/home', '/home-1', '/home-2', '/home-page-2', '/home-3', '/home-page-3', '/careers', '/contact', '/portfolio', '#home', '#'].includes(currentHash);
 
   return (
     <>

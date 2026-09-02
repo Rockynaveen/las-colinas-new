@@ -51,7 +51,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'FF&E Procurement & Asset Planning',
     ],
     icon: Sparkles,
-    image: '/A la Carte service/a-la-carte-services-overview.webp',
+    image: '/A La Carte services v2 imgs/a  la carte -services- overview.webp',
     alt: 'A La Carte Services Overview',
     isFeatured: true,
   },
@@ -67,7 +67,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Property repositioning & modernization',
     ],
     icon: Hammer,
-    image: '/A la Carte service/hotel-renovation-and-development.webp',
+    image: '/A La Carte services v2 imgs/hotel-renovation-&-development-v2.webp',
     alt: 'Hotel Renovation & Development',
   },
   {
@@ -81,7 +81,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Direct booking conversion enhancement',
     ],
     icon: Globe,
-    image: '/A la Carte service/ota-management-distribution-strategy.webp',
+    image: '/A La Carte services v2 imgs/ota-management-&-distribution-strategy-v2.webp',
     alt: 'OTA Management & Distribution Strategy',
   },
   {
@@ -95,7 +95,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Valuation & disposition support',
     ],
     icon: TrendingUp,
-    image: '/A la Carte service/hospitality-investment-asset-management.webp',
+    image: '/A La Carte services v2 imgs/hospitality-investment-&-asset-management-v2.webp',
     alt: 'Hospitality Investment & Asset Management',
   },
   {
@@ -109,7 +109,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Service culture transformation',
     ],
     icon: Users,
-    image: '/A la Carte service/staff-training-leadership-development.webp',
+    image: '/A La Carte services v2 imgs/staff-training-&-leadership-development-v2.webp',
     alt: 'Staff Training & Leadership Development',
   },
   {
@@ -123,7 +123,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Cash flow management & forecasting',
     ],
     icon: Calculator,
-    image: '/A la Carte service/financial-accounting-management.webp',
+    image: '/A La Carte services v2 imgs/financial-&-accounting-management-v2.webp',
     alt: 'Financial & Accounting Management',
   },
   {
@@ -137,7 +137,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Competitive set monitoring',
     ],
     icon: BarChart3,
-    image: '/A la Carte service/revenue-management-optimization.webp',
+    image: '/A La Carte services v2 imgs/revenue-management-&-optimization-v2.webp',
     alt: 'Revenue Management & Optimization',
   },
   {
@@ -151,7 +151,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Post-inspection corrective action plans',
     ],
     icon: ShieldCheck,
-    image: '/A la Carte service/quality-assurance-readiness.webp',
+    image: '/A La Carte services v2 imgs/quality-assurance-(qa)-readiness-v2.webp',
     alt: 'Quality Assurance Readiness',
   },
   {
@@ -165,7 +165,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'On-site installation supervision',
     ],
     icon: Package,
-    image: '/A la Carte service/ffe-procurement-asset-planning.webp',
+    image: '/A La Carte services v2 imgs/ff&e-procurement-&-asset-planning-v2.webp',
     alt: 'FF&E Procurement & Asset Planning',
   },
   {
@@ -179,7 +179,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Independent vs brand conversion strategy',
     ],
     icon: Star,
-    image: '/A la Carte service/brand-selection-planning-review.webp',
+    image: '/A La Carte services v2 imgs/brand-selection-planning-&--review-v2.webp',
     alt: 'Brand Selection, Planning & Review',
   },
   {
@@ -193,7 +193,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Dry-run testing & grand opening readiness',
     ],
     icon: Key,
-    image: '/A la Carte service/hotel-pre-opening-services.webp',
+    image: '/A La Carte services v2 imgs/hotel-pre-opening-services-v2.webp',
     alt: 'Hotel Pre-Opening Services',
   },
   {
@@ -207,7 +207,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Risk mitigation & milestone tracking',
     ],
     icon: Briefcase,
-    image: '/A la Carte service/hospitality-project-management.webp',
+    image: '/A La Carte services v2 imgs/hospitality-project-management-v2.webp',
     alt: 'Hospitality Project Management',
   },
   {
@@ -221,7 +221,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Cancellation & deposit policy strategy',
     ],
     icon: Target,
-    image: '/A la Carte service/daily-rate-strategy-yield-management.webp',
+    image: '/A La Carte services v2 imgs/daily-rate-strategy-&-yield-management-v2.webp',
     alt: 'Daily Rate Strategy & Yield Management',
   },
   {
@@ -235,7 +235,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Total revenue per room (TRevPAR) focus',
     ],
     icon: Percent,
-    image: '/A la Carte service/price-optimization.webp',
+    image: '/A La Carte services v2 imgs/price-optimization-v2 .webp',
     alt: 'Price Optimization',
   },
   {
@@ -249,7 +249,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Revenue strategy alignment checks',
     ],
     icon: Activity,
-    image: '/A la Carte service/daily-sales-performance-monitoring.webp',
+    image: '/A La Carte services v2 imgs/daily-sales-performance-monitoring-v2.webp',
     alt: 'Daily Sales Performance Monitoring',
   },
   {
@@ -263,7 +263,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Group & event sales strategy',
     ],
     icon: Megaphone,
-    image: '/A la Carte service/sales-marketing-strategy.webp',
+    image: '/A La Carte services v2 imgs/sales-&-marketing-strategy-v2.webp',
     alt: 'Sales & Marketing Strategy',
   },
   {
@@ -277,7 +277,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Crisis leadership & rapid deployment',
     ],
     icon: UserPlus,
-    image: '/A la Carte service/task-force-management.webp',
+    image: '/A La Carte services v2 imgs/task-force-management-v2 .webp',
     alt: 'Task Force Management',
   },
   {
@@ -291,7 +291,7 @@ const aLaCarteServicesData: ServiceItem[] = [
       'Opportunity gap identification',
     ],
     icon: Search,
-    image: '/A la Carte service/competitive-benchmarking-market-analysis.webp',
+    image: '/A La Carte services v2 imgs/competitive-benchmarking-&-market-analysis-v2.webp',
     alt: 'Competitive Benchmarking & Market Analysis',
     isCentered: true,
   },

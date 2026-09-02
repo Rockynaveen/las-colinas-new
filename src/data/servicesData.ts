@@ -205,7 +205,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Property repositioning & modernization',
     ],
     icon: Hammer,
-    image: '/A la Carte service/hotel-renovation-and-development.webp',
+    image: '/A La Carte services v2 imgs/hotel-renovation-&-development-v2.webp',
     alt: 'Hotel renovation and development',
   },
   {
@@ -222,7 +222,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Direct booking conversion enhancement',
     ],
     icon: Globe,
-    image: '/A la Carte service/ota-management-distribution-strategy.webp',
+    image: '/A La Carte services v2 imgs/ota-management-&-distribution-strategy-v2.webp',
     alt: 'OTA management and distribution strategy',
   },
   {
@@ -239,7 +239,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Valuation & disposition support',
     ],
     icon: TrendingUp,
-    image: '/A la Carte service/hospitality-investment-asset-management.webp',
+    image: '/A La Carte services v2 imgs/hospitality-investment-&-asset-management-v2.webp',
     alt: 'Hospitality investment and asset management',
   },
   {
@@ -256,7 +256,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Service culture transformation',
     ],
     icon: Users,
-    image: '/A la Carte service/staff-training-leadership-development.webp',
+    image: '/A La Carte services v2 imgs/staff-training-&-leadership-development-v2.webp',
     alt: 'Staff training and leadership development',
   },
   {
@@ -273,7 +273,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Cash flow management & forecasting',
     ],
     icon: Calculator,
-    image: '/A la Carte service/financial-accounting-management.webp',
+    image: '/A La Carte services v2 imgs/financial-&-accounting-management-v2.webp',
     alt: 'Financial and accounting management',
   },
   {
@@ -290,7 +290,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Competitive set monitoring',
     ],
     icon: BarChart3,
-    image: '/A la Carte service/revenue-management-optimization.webp',
+    image: '/A La Carte services v2 imgs/revenue-management-&-optimization-v2.webp',
     alt: 'Revenue management and optimization',
   },
   {
@@ -307,7 +307,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Post-inspection corrective action plans',
     ],
     icon: ShieldCheck,
-    image: '/A la Carte service/quality-assurance-readiness.webp',
+    image: '/A La Carte services v2 imgs/quality-assurance-(qa)-readiness-v2.webp',
     alt: 'Quality assurance readiness',
   },
   {
@@ -324,7 +324,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'On-site installation supervision',
     ],
     icon: Package,
-    image: '/A la Carte service/ffe-procurement-asset-planning.webp',
+    image: '/A La Carte services v2 imgs/ff&e-procurement-&-asset-planning-v2.webp',
     alt: 'FF&E procurement and asset planning',
   },
   {
@@ -341,7 +341,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Independent vs brand conversion strategy',
     ],
     icon: Star,
-    image: '/A la Carte service/brand-selection-planning-review.webp',
+    image: '/A La Carte services v2 imgs/brand-selection-planning-&--review-v2.webp',
     alt: 'Brand selection planning and review',
   },
   {
@@ -358,7 +358,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Dry-run testing & grand opening readiness',
     ],
     icon: Key,
-    image: '/A la Carte service/hotel-pre-opening-services.webp',
+    image: '/A La Carte services v2 imgs/hotel-pre-opening-services-v2.webp',
     alt: 'Hotel pre-opening services',
     isFeatured: true,
   },
@@ -376,7 +376,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Risk mitigation & milestone tracking',
     ],
     icon: Briefcase,
-    image: '/A la Carte service/hospitality-project-management.webp',
+    image: '/A La Carte services v2 imgs/hospitality-project-management-v2.webp',
     alt: 'Hospitality project management',
   },
   {
@@ -393,7 +393,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Cancellation & deposit policy strategy',
     ],
     icon: Target,
-    image: '/A la Carte service/daily-rate-strategy-yield-management.webp',
+    image: '/A La Carte services v2 imgs/daily-rate-strategy-&-yield-management-v2.webp',
     alt: 'Daily rate strategy and yield management',
   },
   {
@@ -410,7 +410,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Total revenue per room (TRevPAR) focus',
     ],
     icon: Percent,
-    image: '/A la Carte service/price-optimization.webp',
+    image: '/A La Carte services v2 imgs/price-optimization-v2 .webp',
     alt: 'Price optimization',
   },
   {
@@ -427,7 +427,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Revenue strategy alignment checks',
     ],
     icon: Activity,
-    image: '/A la Carte service/daily-sales-performance-monitoring.webp',
+    image: '/A La Carte services v2 imgs/daily-sales-performance-monitoring-v2.webp',
     alt: 'Daily sales performance monitoring',
   },
   {
@@ -444,7 +444,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Group & event sales strategy',
     ],
     icon: Megaphone,
-    image: '/A la Carte service/sales-marketing-strategy.webp',
+    image: '/A La Carte services v2 imgs/sales-&-marketing-strategy-v2.webp',
     alt: 'Sales and marketing strategy',
   },
   {
@@ -461,7 +461,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Crisis leadership & rapid deployment',
     ],
     icon: UserPlus,
-    image: '/A la Carte service/task-force-management.webp',
+    image: '/A La Carte services v2 imgs/task-force-management-v2 .webp',
     alt: 'Task force management',
   },
   {
@@ -478,7 +478,7 @@ export const A_LA_CARTE_SERVICES: ServiceDetail[] = [
       'Opportunity gap identification',
     ],
     icon: Search,
-    image: '/A la Carte service/competitive-benchmarking-market-analysis.webp',
+    image: '/A La Carte services v2 imgs/competitive-benchmarking-&-market-analysis-v2.webp',
     alt: 'Competitive benchmarking and market analysis',
   },
 ];
