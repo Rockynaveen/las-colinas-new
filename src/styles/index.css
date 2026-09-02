@@ -572,6 +572,8 @@ body {
 
 .light-theme .dropdown-panel-link {
   color: #121F34 !important;
+  line-height: 1.15 !important;
+  padding: 0.35rem 1rem !important;
 }
 
 .light-theme .dropdown-panel-link:hover {
