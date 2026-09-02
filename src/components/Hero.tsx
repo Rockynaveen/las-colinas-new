@@ -9,7 +9,7 @@ interface HeroProps {
   isHome4?: boolean;
 }
 
-export const Hero: React.FC<HeroProps> = ({ isHome2: _isHome2, isHome3: _isHome3, isHome4: _isHome4 }) => {
+export const Hero: React.FC<HeroProps> = ({ isHome2: _isHome2, isHome3: _isHome3, isHome4 }) => {
   const sectionRef = React.useRef<HTMLElement | null>(null);
 
   React.useEffect(() => {
@@ -54,8 +54,8 @@ export const Hero: React.FC<HeroProps> = ({ isHome2: _isHome2, isHome3: _isHome3
 
   return (
     <section ref={sectionRef} className="hero-section">
-      {/* Full-bleed Background Video + Subtle Navy Tint */}
-      <VideoBackground />
+      {/* Full-bleed Background Video + Subtle Overlay */}
+      <VideoBackground isHome4={isHome4} />
 
       {/* Hero Content Area */}
       <div className="hero-content-container">

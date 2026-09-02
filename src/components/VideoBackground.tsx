@@ -2,7 +2,11 @@ import React from 'react';
 import { Volume2, VolumeX, Film } from 'lucide-react';
 import { useVideo, SCENES } from '../context/VideoContext';
 
-export const VideoBackground: React.FC = () => {
+interface VideoBackgroundProps {
+  isHome4?: boolean;
+}
+
+export const VideoBackground: React.FC<VideoBackgroundProps> = ({ isHome4 }) => {
   const {
     activeSceneIndex,
     setActiveSceneIndex,
@@ -23,8 +27,8 @@ export const VideoBackground: React.FC = () => {
     <div className="hero-video-container">
       {/* Cinematic HTML5 Background Video is rendered globally at the root level */}
 
-      {/* Subtle Dark Navy Tint Overlay */}
-      <div className="hero-subtle-overlay" />
+      {/* Subtle Overlay (Standard for Home 1-3, Dark Bronze for Home 4) */}
+      <div className={`hero-subtle-overlay ${isHome4 ? 'home-4-overlay' : ''}`} />
 
       {/* Interactive Controls Bar */}
       <div className="video-controls-bar">

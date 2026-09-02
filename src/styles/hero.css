@@ -102,7 +102,7 @@ main {
   opacity: 0;
 }
 
-/* Rich Golden Bronze Luxury Mask matching brand gold accents */
+/* Standard Mask for Home 1, Home 2, Home 3 */
 .hero-subtle-overlay,
 .hero-dark-theme-overlay {
   display: block !important;
@@ -110,11 +110,18 @@ main {
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(180deg, rgba(24, 20, 15, 0.65) 0%, rgba(24, 20, 15, 0.48) 50%, rgba(24, 20, 15, 0.75) 100%),
-    linear-gradient(90deg, rgba(24, 20, 15, 0.75) 0%, rgba(24, 20, 15, 0.48) 60%, rgba(24, 20, 15, 0.15) 100%) !important;
+    linear-gradient(180deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.12) 50%, rgba(0, 0, 0, 0.28) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.14) 60%, rgba(0, 0, 0, 0.05) 100%) !important;
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: none;
+}
+
+/* Exclusive Golden Bronze Luxury Mask for Home 4 */
+.hero-subtle-overlay.home-4-overlay {
+  background:
+    linear-gradient(180deg, rgba(24, 20, 15, 0.65) 0%, rgba(24, 20, 15, 0.48) 50%, rgba(24, 20, 15, 0.75) 100%),
+    linear-gradient(90deg, rgba(24, 20, 15, 0.75) 0%, rgba(24, 20, 15, 0.48) 60%, rgba(24, 20, 15, 0.15) 100%) !important;
 }
 
 /* Hero Content Area - Clean, Spacious & Uncluttered */
