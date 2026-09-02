@@ -22,7 +22,8 @@ export const MobileNavDrawer: React.FC<MobileNavDrawerProps> = ({ isOpen, onClos
       submenu: [
         { label: 'Home 01', href: '/' },
         { label: 'Home 02', href: '/home-2' },
-        { label: 'Home 03', href: '/home-3' }
+        { label: 'Home 03', href: '/home-3' },
+        { label: 'Home 04', href: '/home-4' }
       ]
     },
     {

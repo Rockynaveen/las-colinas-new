@@ -131,6 +131,7 @@ const AppContent: React.FC = () => {
 
   const isHome2Check = currentPath === '/home-2' || currentPath === '/home-page-2';
   const isHome3Check = currentPath === '/home-3' || currentPath === '/home-page-3';
+  const isHome4Check = currentPath === '/home-4' || currentPath === '/home-page-4';
   const isAboutCheck = currentPath.startsWith('/about') || ['/overview', '/story', '/vision', '/values', '/advantage', '/team', '/leadership'].some(k => currentPath.includes(k));
   const isServicesPath = currentPath.startsWith('/services') || currentPath === '/a-la-carte-services' || currentPath === '/a-la-carte';
   const isHomePage = !isAboutCheck && !isServicesPath && !['/portfolio', '/careers', '/contact'].includes(currentPath);
@@ -157,17 +158,22 @@ const AppContent: React.FC = () => {
       case '/home-3':
       case '/home-page-3':
         return <Home isHome3={true} />;
+      case '/home-4':
+      case '/home-page-4':
+        return <Home isHome4={true} />;
       default:
         return <Home isHome2={false} />;
     }
   };
 
-  // Dynamic Hero Background Image: Home 01 (/hero img.png) vs Home 02 (/hero dark  theme.png) vs Home 03 (/hero white theme.png)
-  const heroImageSrc = isHome3Check
-    ? '/hero white theme.png'
-    : isHome2Check
-      ? '/hero dark  theme.png'
-      : '/hero img.png';
+  // Dynamic Hero Background Image: Home 01 (/hero img.png) vs Home 02 (/hero dark  theme.png) vs Home 03 (/hero white theme.png) vs Home 04 (/images/breadcrumb.avif)
+  const heroImageSrc = isHome4Check
+    ? '/images/breadcrumb.avif'
+    : isHome3Check
+      ? '/hero white theme.png'
+      : isHome2Check
+        ? '/hero dark  theme.png'
+        : '/hero img.png';
 
   const memoizedHeroImage = useMemo(() => (
     <img

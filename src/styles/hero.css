@@ -102,7 +102,7 @@ main {
   opacity: 0;
 }
 
-/* Ultra Light Minimal Neutral Mask (rgba(0, 0, 0, 0.18)) */
+/* Rich Golden Bronze Luxury Mask matching brand gold accents */
 .hero-subtle-overlay,
 .hero-dark-theme-overlay {
   display: block !important;
@@ -110,8 +110,8 @@ main {
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.12) 50%, rgba(0, 0, 0, 0.28) 100%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.14) 60%, rgba(0, 0, 0, 0.05) 100%) !important;
+    linear-gradient(180deg, rgba(24, 20, 15, 0.65) 0%, rgba(24, 20, 15, 0.48) 50%, rgba(24, 20, 15, 0.75) 100%),
+    linear-gradient(90deg, rgba(24, 20, 15, 0.75) 0%, rgba(24, 20, 15, 0.48) 60%, rgba(24, 20, 15, 0.15) 100%) !important;
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: none;
@@ -149,7 +149,7 @@ main {
   color: var(--color-white);
   letter-spacing: -0.01em;
   margin-bottom: 1.5rem;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
 }
 
 @media (min-width: 640px) {
@@ -168,6 +168,7 @@ main {
   color: var(--color-gold-light);
   font-style: italic;
   font-weight: 400;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
 }
 
 /* Short Description: Short & Scan-friendly */
@@ -175,11 +176,11 @@ main {
   font-family: var(--font-sans);
   font-size: 1.025rem;
   line-height: 1.65;
-  color: rgba(245, 242, 234, 0.92);
+  color: rgba(245, 242, 234, 0.96);
   margin-bottom: 2rem;
   font-weight: 400;
   max-width: 680px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
 }
 
 @media (min-width: 768px) {
@@ -209,7 +210,7 @@ main {
   font-weight: 600;
   letter-spacing: 0.05em;
   color: var(--color-gold-light);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
 }
 
 @media (min-width: 768px) {

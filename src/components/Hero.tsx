@@ -6,9 +6,10 @@ import { VideoBackground } from './VideoBackground';
 interface HeroProps {
   isHome2?: boolean;
   isHome3?: boolean;
+  isHome4?: boolean;
 }
 
-export const Hero: React.FC<HeroProps> = ({ isHome2: _isHome2, isHome3: _isHome3 }) => {
+export const Hero: React.FC<HeroProps> = ({ isHome2: _isHome2, isHome3: _isHome3, isHome4: _isHome4 }) => {
   const sectionRef = React.useRef<HTMLElement | null>(null);
 
   React.useEffect(() => {

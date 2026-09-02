@@ -198,7 +198,7 @@
 }
 
 .nav-item-link {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   font-family: var(--font-sans);
   font-size: 0.785rem;
   font-weight: 600;
@@ -214,6 +214,7 @@
   padding: 0.25rem 0;
   transition: color 0.25s ease;
   position: relative;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .nav-item-link:hover,
