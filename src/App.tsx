@@ -181,7 +181,7 @@ const AppContent: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-[#121F34] relative overflow-hidden font-sans light-theme">
       {/* Header positioned transparently or glassmorphic */}
-      <Header />
+      <Header currentPath={currentPath} />
 
       {/* Global persistent background video */}
       <div className={`global-hero-video-container ${isHomePage ? 'visible' : 'hidden'} ${isHome2Check ? 'home-2-bg' : ''} ${isHome3Check ? 'home-3-bg' : ''}`}>

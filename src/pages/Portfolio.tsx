@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   MapPin, 
   ChevronDown,
@@ -9,8 +9,6 @@ import HomeCTA from '../components/HomeCTA';
 import { ServicesHero } from '../components/ServicesHero';
 import type { PortfolioCategory } from '../utils/portfolioData';
 import { portfolioService, type PortfolioResource } from '../services/portfolioService';
-
-const ease = [0.16, 1, 0.3, 1] as const;
 
 const mapResourceToCategory = (res: PortfolioResource): PortfolioCategory => {
   const name = res.heading || res.name || res.title || 'HOSPITALITY PROPERTY';
@@ -61,7 +59,6 @@ const defaultPortfolioItems: PortfolioCategory[] = [
 ];
 
 export const Portfolio: React.FC = () => {
-  const reduceMotion = useReducedMotion();
   const [categories, setCategories] = useState<PortfolioCategory[]>(defaultPortfolioItems);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -92,36 +89,38 @@ export const Portfolio: React.FC = () => {
 
   const displayedCategories = categories.slice(0, visibleCount);
 
-  const fadeUp = (delay: number) => ({
-    initial: reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.15 },
-    transition: { duration: 0.8, delay, ease }
-  });
-
   return (
     <div className="portfolio-page-wrap">
       
       {/* 1. HERO SECTION */}
       <ServicesHero
-        label="OUR PORTFOLIO"
-        heading="Exceptional Properties. Proven Performance."
-        subtext="We partner with owners and investors to develop, manage, and elevate hotel assets across leading markets."
+        label=""
+        heading=""
+        subtext=""
       />
+
+      {/* Header Section below hero image */}
+      <section className="portfolio-hero-header-section">
+        <motion.div
+          className="portfolio-page-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="portfolio-header-label">OUR PORTFOLIO</span>
+          <h1 className="portfolio-header-title">Exceptional Properties. Proven Performance.</h1>
+          <div className="portfolio-header-gold-line" />
+          <p className="portfolio-header-subtext">
+            We partner with owners and investors to develop, manage, and elevate hotel assets across leading markets.
+          </p>
+        </motion.div>
+      </section>
 
       {/* 2. PROPERTIES GRID SECTION (White/cream background) */}
       <section id="portfolio" className="portfolio-grid-section">
         <div className="portfolio-grid-container">
           
-          <motion.div 
-            className="portfolio-grid-header"
-            {...fadeUp(0.1)}
-          >
-            <span className="portfolio-section-label-gold">OUR PORTFOLIO</span>
-            <h2 className="portfolio-grid-title">Our Diverse Collection</h2>
-            <div className="portfolio-grid-divider" />
-          </motion.div>
-
           {/* Properties Grid */}
           {loading ? (
             <div style={{ textAlign: 'center', padding: '4rem 1.5rem', color: '#121F34' }}>

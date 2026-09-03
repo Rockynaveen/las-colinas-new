@@ -895,14 +895,72 @@
    2. PROPERTIES GRID SECTION (White/cream background)
    ========================================================================== */
 .portfolio-grid-section {
-  background-color: #faf7f2;
-  padding: 6rem 2rem;
-  border-top: 1px solid rgba(176, 140, 72, 0.15);
+  background-color: #ffffff;
+  padding: 2.25rem 2rem 6rem 2rem;
+  border-top: none;
 }
 
 .portfolio-grid-container {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* Hero Header Section (Below Image) */
+.portfolio-hero-header-section {
+  background-color: #FFFFFF;
+  padding: 50px 20px 15px 20px;
+  text-align: center;
+}
+
+.portfolio-page-header {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.portfolio-header-label {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  background-color: rgba(176, 140, 72, 0.08);
+  border: 1px solid rgba(176, 140, 72, 0.22);
+  color: #9E7C3B;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.portfolio-header-title {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 400;
+  color: #121F34;
+  margin: 0 0 0.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.portfolio-header-gold-line {
+  width: 48px;
+  height: 2.5px;
+  background: #B08C48;
+  opacity: 0.85;
+  margin: 0.25rem 0 1.25rem;
+  border-radius: 2px;
+}
+
+.portfolio-header-subtext {
+  font-family: var(--font-sans);
+  font-size: 1.025rem;
+  line-height: 1.7;
+  color: rgba(18, 31, 52, 0.7);
+  margin: 0;
+  max-width: 680px;
 }
 
 .portfolio-grid-header {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import {
   Hammer,
   Globe,
@@ -298,8 +298,6 @@ const aLaCarteServicesData: ServiceItem[] = [
 ];
 
 export const ALaCarteServices: React.FC = () => {
-  const reduceMotion = useReducedMotion();
-
   const containerVariants: Variants = {
     hidden: {},
     visible: {
@@ -311,7 +309,7 @@ export const ALaCarteServices: React.FC = () => {
   };
 
   const cardVariants: Variants = {
-    hidden: { opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 25 },
+    hidden: { opacity: 1, y: 0 },
     visible: {
       opacity: 1,
       y: 0,
@@ -325,37 +323,12 @@ export const ALaCarteServices: React.FC = () => {
   return (
     <section id="a-la-carte-services" className="services-section ala-carte-section">
       <div className="services-container">
-        {/* Section Header for 02 A La Carte Services */}
-        <motion.div
-          className="services-header"
-          initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.01 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className="services-badge">
-            <span className="services-badge-text">
-              SERVICE
-            </span>
-            <span className="services-badge-diamond">✧</span>
-          </div>
-
-          <h2 className="services-main-heading">
-            A La Carte Services
-          </h2>
-
-          <p className="services-main-description">
-            Specialized, targeted hospitality solutions tailored for specific property, financial, operational, and strategic needs across 17 distinct service disciplines.
-          </p>
-        </motion.div>
-
         {/* Services Grid Cards */}
         <motion.div
           className="services-grid-cards ala-carte-grid-cards"
           variants={containerVariants}
-          initial={reduceMotion ? "visible" : "hidden"}
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.01 }}
+          initial="visible"
+          animate="visible"
         >
           {aLaCarteServicesData.map((service) => {
             const ServiceIcon = service.icon;

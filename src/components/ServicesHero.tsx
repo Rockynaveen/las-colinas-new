@@ -24,6 +24,8 @@ export const ServicesHero: React.FC<ServicesHeroProps> = ({
     transition: { duration: 0.7, delay, ease },
   });
 
+  const hasContent = Boolean(label || heading || subtext);
+
   return (
     <section className="about-hero">
       <motion.img
@@ -38,21 +40,31 @@ export const ServicesHero: React.FC<ServicesHeroProps> = ({
 
       <div className="about-overlay" />
 
-      <div className="about-content">
-        <motion.span className="about-label" {...fadeUp(0.15)}>
-          {label}
-        </motion.span>
+      {hasContent && (
+        <div className="about-content">
+          {label && (
+            <motion.span className="about-label" {...fadeUp(0.15)}>
+              {label}
+            </motion.span>
+          )}
 
-        <motion.h1 className="about-title" {...fadeUp(0.28)}>
-          {heading}
-        </motion.h1>
+          {heading && (
+            <motion.h1 className="about-title" {...fadeUp(0.28)}>
+              {heading}
+            </motion.h1>
+          )}
 
-        <motion.div className="gold-line" {...fadeUp(0.38)} />
+          {(label || heading) && subtext && (
+            <motion.div className="gold-line" {...fadeUp(0.38)} />
+          )}
 
-        <motion.p className="about-desc" {...fadeUp(0.46)}>
-          {subtext}
-        </motion.p>
-      </div>
+          {subtext && (
+            <motion.p className="about-desc" {...fadeUp(0.46)}>
+              {subtext}
+            </motion.p>
+          )}
+        </div>
+      )}
     </section>
   );
 };

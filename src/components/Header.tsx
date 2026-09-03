@@ -4,11 +4,23 @@ import { ChevronDown, Menu } from 'lucide-react';
 import { Logo } from './Logo';
 import { MobileNavDrawer } from './MobileNavDrawer';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  currentPath?: string;
+}
+
+export const Header: React.FC<HeaderProps> = ({ currentPath: propPath }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [currentHash, setCurrentHash] = useState(window.location.hash || '#home');
+
+  const getPath = () => {
+    if (propPath) return propPath;
+    const pathname = window.location.pathname.replace(/\/$/, '') || '/';
+    const hash = window.location.hash.replace(/^#\/?/, '');
+    return hash ? pathname + '#' + hash : pathname;
+  };
+
+  const [localPath, setLocalPath] = useState(getPath);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,10 +28,8 @@ export const Header: React.FC = () => {
       setIsScrolled(scrolled);
     };
 
-    const handleHashChange = () => {
-      const p = window.location.pathname.replace(/\/$/, '') || '/';
-      const h = window.location.hash.replace(/^#\/?/, '');
-      setCurrentHash(h ? '/' + h : p);
+    const handleLocationChange = () => {
+      setLocalPath(getPath());
     };
 
     const handleOutsideClick = (e: MouseEvent) => {
@@ -27,23 +37,25 @@ export const Header: React.FC = () => {
       if (!target.closest('.nav-dropdown-wrapper')) {
         setActiveDropdown(null);
       }
+      handleLocationChange();
     };
 
-    // Check initial scroll on load
     handleScroll();
 
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('popstate', handleHashChange);
-    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    window.addEventListener('locationchange', handleLocationChange);
     document.addEventListener('click', handleOutsideClick);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('popstate', handleHashChange);
-      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+      window.removeEventListener('locationchange', handleLocationChange);
       document.removeEventListener('click', handleOutsideClick);
     };
-  }, []);
+  }, [propPath]);
 
   const aboutList = [
     { name: 'Overview', hash: '/aboutus/overview' },
@@ -60,10 +72,17 @@ export const Header: React.FC = () => {
     { name: 'Home 03', hash: '/home-3' }
   ];
 
-  const isHomeActive = ['/', '/home', '/home-1', '/home-2', '/home-page-2', '/home-3', '/home-page-3', '#home', '#'].includes(currentHash);
-  const isAboutHash = currentHash.includes('about') || ['overview', 'story', 'vision', 'values', 'advantage', 'team', 'leadership'].some(k => currentHash.toLowerCase().includes(k));
-  const isServicesHash = currentHash.includes('services') || ['services', 'services-page', 'a-la-carte-services', 'a-la-carte'].some(k => currentHash.toLowerCase().includes(k));
-  const hasHero = isAboutHash || isServicesHash || ['/', '/home', '/home-1', '/home-2', '/home-page-2', '/home-3', '/home-page-3', '/careers', '/contact', '/portfolio', '#home', '#'].includes(currentHash);
+  const activePath = propPath || localPath;
+  const pathLower = activePath.toLowerCase();
+
+  const isHomeActive = pathLower === '/' || pathLower === '/home' || pathLower.startsWith('/home-') || pathLower === '#home';
+  const isAboutActive = pathLower.includes('about') || ['overview', 'story', 'vision', 'values', 'advantage', 'team', 'leadership'].some(k => pathLower.includes(k));
+  const isServicesActive = pathLower.includes('services') || pathLower.includes('a-la-carte');
+  const isPortfolioActive = pathLower.includes('portfolio');
+  const isCareersActive = pathLower.includes('careers');
+  const isContactActive = pathLower.includes('contact');
+
+  const hasHero = isHomeActive || isAboutActive || isServicesActive || isPortfolioActive || isCareersActive || isContactActive;
 
   return (
     <>
@@ -116,7 +135,7 @@ export const Header: React.FC = () => {
                   e.stopPropagation();
                   setActiveDropdown(activeDropdown === 'about' ? null : 'about');
                 }}
-                className={`nav-item-link ${isAboutHash ? 'active' : ''}`}
+                className={`nav-item-link ${isAboutActive ? 'active' : ''}`}
               >
                 ABOUT US
                 <ChevronDown size={12} style={{ opacity: 0.7 }} />
@@ -145,7 +164,7 @@ export const Header: React.FC = () => {
                   e.stopPropagation();
                   setActiveDropdown(activeDropdown === 'services' ? null : 'services');
                 }}
-                className={`nav-item-link ${isServicesHash ? 'active' : ''}`}
+                className={`nav-item-link ${isServicesActive ? 'active' : ''}`}
               >
                 SERVICES
                 <ChevronDown size={12} style={{ opacity: 0.7 }} />
@@ -172,21 +191,21 @@ export const Header: React.FC = () => {
 
             <a
               href="/portfolio"
-              className={`nav-item-link ${currentHash.includes('portfolio') ? 'active' : ''}`}
+              className={`nav-item-link ${isPortfolioActive ? 'active' : ''}`}
             >
               PORTFOLIO
             </a>
 
             <a
               href="/careers"
-              className={`nav-item-link ${currentHash.includes('careers') ? 'active' : ''}`}
+              className={`nav-item-link ${isCareersActive ? 'active' : ''}`}
             >
               CAREERS
             </a>
 
             <a
               href="/contact"
-              className={`nav-item-link ${currentHash.includes('contact') ? 'active' : ''}`}
+              className={`nav-item-link ${isContactActive ? 'active' : ''}`}
             >
               CONTACT US
             </a>

@@ -110,9 +110,9 @@ export const Contact: React.FC = () => {
       
       {/* 1. HERO BANNER */}
       <ServicesHero
-        label="CONTACT US"
-        heading="Get In Touch With Las Colinas"
-        subtext="Have questions or want to explore how Las Colinas Hospitality Management can elevate your hotel asset? Reach out to our executive team today."
+        label=""
+        heading=""
+        subtext=""
       />
 
       {/* 2. GET IN TOUCH SECTION HEADER + ALTERNATING 4 INFO CARDS */}
@@ -121,8 +121,9 @@ export const Contact: React.FC = () => {
           
           {/* Section Header */}
           <motion.div className="contact-section-header" {...fadeUp(0.05)}>
-            <span className="contact-script-eyebrow">Contact Us</span>
+            <span className="contact-script-eyebrow">CONTACT US</span>
             <h2 className="contact-main-heading">Get In Touch With Las Colinas</h2>
+            <div className="contact-header-gold-line" />
             <p className="contact-sub-heading">
               Have questions or want to explore how Las Colinas Hospitality Management can elevate your hotel asset? Reach out to our executive team today.
             </p>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import {
   Building2,
   GraduationCap,
@@ -148,8 +148,6 @@ const detailedServicesData: ServiceItem[] = [
 ];
 
 export const DetailedServices: React.FC = () => {
-  const reduceMotion = useReducedMotion();
-
   const containerVariants: Variants = {
     hidden: {},
     visible: {
@@ -161,7 +159,7 @@ export const DetailedServices: React.FC = () => {
   };
 
   const cardVariants: Variants = {
-    hidden: { opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 25 },
+    hidden: { opacity: 1, y: 0 },
     visible: {
       opacity: 1,
       y: 0,
@@ -175,37 +173,12 @@ export const DetailedServices: React.FC = () => {
   return (
     <section id="services" className="services-section">
       <div className="services-container">
-        {/* Section Header */}
-        <motion.div
-          className="services-header"
-          initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.01 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className="services-badge">
-            <span className="services-badge-text">
-              SERVICE
-            </span>
-            <span className="services-badge-diamond">✧</span>
-          </div>
-
-          <h2 className="services-main-heading">
-            Hotel Management Services
-          </h2>
-
-          <p className="services-main-description">
-            We provide hands-on operational support across all departments, including front office, housekeeping, food and beverage, maintenance, and guest services, ensuring efficient and seamless hotel operations.
-          </p>
-        </motion.div>
-
         {/* Services Grid Cards */}
         <motion.div
           className="services-grid-cards"
           variants={containerVariants}
-          initial={reduceMotion ? "visible" : "hidden"}
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.01 }}
+          initial="visible"
+          animate="visible"
         >
           {detailedServicesData.map((service) => {
             const ServiceIcon = service.icon;

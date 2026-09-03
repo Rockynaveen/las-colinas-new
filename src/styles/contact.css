@@ -1086,14 +1086,27 @@
 }
 
 .contact-script-eyebrow {
+  display: inline-block !important;
+  padding: 6px 18px !important;
+  border-radius: 9999px !important;
+  background-color: rgba(176, 140, 72, 0.08) !important;
+  border: 1px solid rgba(176, 140, 72, 0.22) !important;
+  color: #9E7C3B !important;
   font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: #B08C48 !important;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 0.5rem;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 1rem !important;
+}
+
+.contact-header-gold-line {
+  width: 48px;
+  height: 2.5px;
+  background: #B08C48;
+  opacity: 0.85;
+  margin: 0.25rem auto 1.25rem;
+  border-radius: 2px;
 }
 
 .contact-main-heading {

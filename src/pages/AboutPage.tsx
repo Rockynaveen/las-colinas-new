@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import AboutHero from '../components/AboutHero';
 import { AboutOverview } from '../components/About/AboutOverview';
 import { OurStory } from './OurStory';
@@ -44,6 +45,24 @@ export const AboutPage: React.FC = () => {
     <div className="about-page-wrap">
       {/* Hero Header Banner */}
       <AboutHero />
+
+      {/* Header Section below hero image */}
+      <section className="about-hero-header-section">
+        <motion.div
+          className="about-page-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="about-header-label">ABOUT US</span>
+          <h1 className="about-header-title">Elevating Hospitality.</h1>
+          <div className="about-header-gold-line" />
+          <p className="about-header-subtext">
+            Full-service hotel management, focused on performance and exceptional guest experiences.
+          </p>
+        </motion.div>
+      </section>
 
       {/* <SectionNavigation /> */}
 
