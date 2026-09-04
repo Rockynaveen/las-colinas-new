@@ -120,7 +120,7 @@ main {
 @media (max-width: 768px) {
   .hero-fallback-image.home-1-hero-image {
     transform: none !important;
-    object-position: 82% center !important;
+    object-position: center !important;
   }
 }
 
@@ -228,7 +228,7 @@ main {
     height: 100dvh !important;
     max-height: none !important;
     background-size: cover !important;
-    background-position: 82% center !important;
+    background-position: center !important;
   }
 
   /* Hero images for Home 2, 3, 4 filling responsive height */
@@ -245,14 +245,14 @@ main {
     transform: none !important;
   }
 
-  /* Home 1 hero image: clean full-viewport cover shifted to right side on mobile & tablet */
+  /* Home 1 hero image: clean full-viewport cover on mobile & tablet */
   .hero-fallback-image.home-1-hero-image {
     position: absolute !important;
     inset: 0 !important;
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    object-position: 82% center !important;
+    object-position: center !important;
     transform: none !important;
   }
 
@@ -299,11 +299,11 @@ main {
     height: 100vh !important;
     height: 100dvh !important;
     max-height: none !important;
-    background-position: 82% center !important;
+    background-position: center !important;
   }
 
   .hero-fallback-image.home-1-hero-image {
-    object-position: 82% center !important;
+    object-position: center !important;
   }
 
   /* Other homes (Home 2, 3, 4) on phone screens */
@@ -583,6 +583,10 @@ main {
   flex-direction: column;
   align-items: center;
   text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  outline: none;
   cursor: pointer;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
 }

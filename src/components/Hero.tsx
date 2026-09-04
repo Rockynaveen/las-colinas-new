@@ -30,13 +30,28 @@ export const Hero: React.FC<HeroProps> = ({ isHome2, isHome3, isHome4 }) => {
     };
   }, []);
 
-  const handleScrollClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleScrollClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    const aboutEl = document.getElementById('about');
-    if (aboutEl) {
-      aboutEl.scrollIntoView({ behavior: 'smooth' });
+    e.stopPropagation();
+
+    // Scroll down to the next section immediately below the hero (BrandMarquee, etc.)
+    if (sectionRef.current) {
+      const nextSection = sectionRef.current.nextElementSibling as HTMLElement | null;
+      if (nextSection) {
+        const offset = 70; // Header height
+        const targetTop = nextSection.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({
+          top: Math.max(0, targetTop),
+          behavior: 'smooth'
+        });
+        return;
+      }
+      window.scrollTo({
+        top: sectionRef.current.offsetHeight,
+        behavior: 'smooth'
+      });
     } else {
-      window.scrollBy({ top: window.innerHeight * 0.85, behavior: 'smooth' });
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
     }
   };
 
@@ -48,8 +63,8 @@ export const Hero: React.FC<HeroProps> = ({ isHome2, isHome3, isHome4 }) => {
       {/* Hero Bottom Mouse Scroll Indicator (Different per Home Page) */}
       {isHome4 ? (
         /* HOME 4: Metropolitan Skyline Glow Mouse Indicator */
-        <a
-          href="#about"
+        <button
+          type="button"
           onClick={handleScrollClick}
           className="hero-mouse-indicator mouse-style-skyline"
           aria-label="Scroll down to explore Dallas-Fort Worth"
@@ -62,11 +77,11 @@ export const Hero: React.FC<HeroProps> = ({ isHome2, isHome3, isHome4 }) => {
             <span className="skyline-chevron chevron-bot" />
           </div>
           <span className="mouse-scroll-text font-outfit">EXPLORE DFW</span>
-        </a>
+        </button>
       ) : isHome2 ? (
         /* HOME 2: Executive Falling Arrow & Geometric Mouse (Inspired by Pullagantiramachandra XxPZZE) */
-        <a
-          href="#about"
+        <button
+          type="button"
           onClick={handleScrollClick}
           className="hero-mouse-indicator mouse-style-falling"
           aria-label="Scroll down to explore"
@@ -79,11 +94,11 @@ export const Hero: React.FC<HeroProps> = ({ isHome2, isHome3, isHome4 }) => {
             <span className="falling-arrow arrow-item-2" />
           </div>
           <span className="mouse-scroll-text font-outfit">EXPLORE</span>
-        </a>
+        </button>
       ) : isHome3 ? (
         /* HOME 3: Haute Editorial Floating Minimalist Mouse & Bouncing Arrow (Inspired by Jurbank WZovGE) */
-        <a
-          href="#about"
+        <button
+          type="button"
           onClick={handleScrollClick}
           className="hero-mouse-indicator mouse-style-jurbank"
           aria-label="Scroll down to discover"
@@ -95,14 +110,14 @@ export const Hero: React.FC<HeroProps> = ({ isHome2, isHome3, isHome4 }) => {
             <span className="jurbank-chevron" />
           </div>
           <span className="mouse-scroll-text font-editorial">DISCOVER</span>
-        </a>
+        </button>
       ) : (
         /* HOME 1: Classic Luxury Mouse & Cascading Chevrons (Inspired by Rightblog EagNMN) */
-        <a
-          href="#about"
+        <button
+          type="button"
           onClick={handleScrollClick}
           className="hero-mouse-indicator mouse-style-rightblog"
-          aria-label="Scroll down to about"
+          aria-label="Scroll down"
         >
           <div className="mouse-body-rightblog">
             <div className="mouse-wheel-rightblog" />
@@ -113,7 +128,7 @@ export const Hero: React.FC<HeroProps> = ({ isHome2, isHome3, isHome4 }) => {
             <span className="cascade-arrow arrow-trei" />
           </div>
           <span className="mouse-scroll-text font-sans">SCROLL DOWN</span>
-        </a>
+        </button>
       )}
     </section>
   );
