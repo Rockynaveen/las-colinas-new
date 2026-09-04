@@ -119,8 +119,8 @@ main {
 
 @media (max-width: 768px) {
   .hero-fallback-image.home-1-hero-image {
-    transform: scale(1.4, 2.0) !important;
-    transform-origin: center 58% !important;
+    transform: none !important;
+    object-position: center !important;
   }
 }
 
@@ -182,10 +182,11 @@ main {
 }
 
 @media (max-width: 900px) {
-  /* Mobile & Tablet Hero Section */
-  .hero-section {
+  /* Mobile & Tablet Hero Section for Home 2, Home 3, Home 4 (NOT full height) */
+  .hero-section:not(.home-1-hero) {
     min-height: 450px !important;
     height: clamp(450px, 58vh, 620px) !important;
+    max-height: 620px !important;
     width: 100% !important;
     max-width: 100vw !important;
     display: block !important;
@@ -193,30 +194,44 @@ main {
     overflow: hidden !important;
   }
 
-  /* Home 1 Hero: Exactly 300px height on mobile */
-  .hero-section.home-1-hero {
-    min-height: 300px !important;
-    height: 300px !important;
-    max-height: 300px !important;
-  }
-
-  /* Global background container matches hero min-height */
-  .global-hero-video-container {
-    min-height: 300px !important;
-    height: var(--hero-height, 300px) !important;
+  /* Global background container for Home 2, Home 3, Home 4 matches reduced hero height */
+  .global-hero-video-container:not(.home-1-bg) {
+    min-height: 450px !important;
+    height: var(--hero-height, clamp(450px, 58vh, 620px)) !important;
+    max-height: 620px !important;
     background-size: cover !important;
     background-position: center 55% !important;
   }
 
-  /* Home 1 background container: Exactly 300px height */
-  .global-hero-video-container.home-1-bg,
-  .global-hero-video-container:not(.home-2-bg):not(.home-3-bg):not(.home-4-bg) {
-    min-height: 300px !important;
-    height: 300px !important;
-    max-height: 300px !important;
+  /* HOME 1 ONLY: Full height hero section in mobile & tablet versions */
+  .hero-section.home-1-hero {
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: none !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    overflow: hidden !important;
   }
 
-  /* Hero image filling responsive height (exclude home-1-hero-image so its zoom transform applies) */
+  /* Home 1 background container: Full height in mobile & tablet versions */
+  .global-hero-video-container.home-1-bg,
+  .global-hero-video-container:not(.home-2-bg):not(.home-3-bg):not(.home-4-bg) {
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: none !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  /* Hero images for Home 2, 3, 4 filling responsive height */
   .hero-fallback-image:not(.home-1-hero-image),
   .hero-fallback-image.home-2-hero-image,
   .hero-fallback-image.home-3-hero-image,
@@ -230,16 +245,15 @@ main {
     transform: none !important;
   }
 
-  /* Home 1 hero fallback image explicitly scaled */
+  /* Home 1 hero image: clean full-viewport cover on mobile & tablet */
   .hero-fallback-image.home-1-hero-image {
     position: absolute !important;
     inset: 0 !important;
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    object-position: center 58% !important;
-    transform: scale(1.4, 2.0) !important;
-    transform-origin: center 58% !important;
+    object-position: center !important;
+    transform: none !important;
   }
 
   /* Remove dark overlay on mobile so the full image is bright and crisp */
@@ -254,38 +268,55 @@ main {
     display: none !important;
   }
 
-  /* Keep the mouse symbol in the mobile version for Home 1 */
+  /* Keep the mouse indicator in mobile & tab version for Home 1 */
   .hero-section.home-1-hero .hero-mouse-indicator {
     display: flex !important;
-    bottom: 0.55rem !important;
+    bottom: 2rem !important;
     left: 50% !important;
-    transform: translateX(-50%) scale(0.72) !important;
+    transform: translateX(-50%) scale(0.82) !important;
     z-index: 30 !important;
   }
 
   .hero-section.home-1-hero .hero-mouse-indicator:hover {
-    transform: translateX(-50%) translateY(-2px) scale(0.72) !important;
+    transform: translateX(-50%) translateY(-2px) scale(0.82) !important;
   }
 }
 
 @media (max-width: 480px) {
-  /* Phone screens: Home 1 fixed at 300px height */
+  /* Phone screens: Home 1 stays FULL HEIGHT */
   .hero-section.home-1-hero {
-    min-height: 300px !important;
-    height: 300px !important;
-    max-height: 300px !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: none !important;
   }
 
   .global-hero-video-container.home-1-bg,
   .global-hero-video-container:not(.home-2-bg):not(.home-3-bg):not(.home-4-bg) {
-    min-height: 300px !important;
-    height: 300px !important;
-    max-height: 300px !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: none !important;
+  }
+
+  /* Other homes (Home 2, 3, 4) on phone screens */
+  .hero-section:not(.home-1-hero) {
+    min-height: 420px !important;
+    height: clamp(420px, 55vh, 520px) !important;
+    max-height: 520px !important;
+  }
+
+  .global-hero-video-container:not(.home-1-bg) {
+    min-height: 420px !important;
+    height: var(--hero-height, 420px) !important;
+    max-height: 520px !important;
   }
 
   .hero-section.home-1-hero .hero-mouse-indicator {
-    bottom: 0.5rem !important;
-    transform: translateX(-50%) scale(0.68) !important;
+    bottom: 1.5rem !important;
+    transform: translateX(-50%) scale(0.76) !important;
   }
 }
 
