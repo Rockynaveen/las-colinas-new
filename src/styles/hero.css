@@ -103,9 +103,31 @@ main {
   opacity: 0;
 }
 
+/* Home 1 Background Image Styling */
+.global-hero-video-container.home-1-bg {
+  background-color: #FAF8F5;
+  background-image: none !important;
+}
+
+.hero-fallback-image.home-1-hero-image {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.0);
+  transform-origin: center;
+  transition: transform 0.5s ease;
+}
+
+@media (max-width: 768px) {
+  .hero-fallback-image.home-1-hero-image {
+    transform: scale(1.4, 2.0) !important;
+    transform-origin: center 58% !important;
+  }
+}
+
 /* Home 2 Zoomed-Out Background Image Styling */
 .global-hero-video-container.home-2-bg {
-  background-color: #0A1322;
+  background-color: #000000 !important;
+  background-image: none !important;
 }
 
 .hero-fallback-image.home-2-hero-image {
@@ -119,11 +141,26 @@ main {
 /* Home 3 Background Image Styling */
 .global-hero-video-container.home-3-bg {
   background-color: #080C16;
+  background-image: none !important;
 }
 
 .hero-fallback-image.home-3-hero-image {
   object-fit: cover;
   object-position: center;
+  transform: scale(1.0);
+  transform-origin: center;
+  transition: transform 0.5s ease;
+}
+
+/* Home 4 Dallas Skyline Background Image Styling */
+.global-hero-video-container.home-4-bg {
+  background-color: #07152B;
+  background-image: none !important;
+}
+
+.hero-fallback-image.home-4-hero-image {
+  object-fit: cover;
+  object-position: center 38%;
   transform: scale(1.0);
   transform-origin: center;
   transition: transform 0.5s ease;
@@ -144,13 +181,120 @@ main {
   pointer-events: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  /* Mobile & Tablet Hero Section */
+  .hero-section {
+    min-height: 450px !important;
+    height: clamp(450px, 58vh, 620px) !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    display: block !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
 
+  /* Home 1 Hero: Exactly 300px height on mobile */
+  .hero-section.home-1-hero {
+    min-height: 300px !important;
+    height: 300px !important;
+    max-height: 300px !important;
+  }
+
+  /* Global background container matches hero min-height */
+  .global-hero-video-container {
+    min-height: 300px !important;
+    height: var(--hero-height, 300px) !important;
+    background-size: cover !important;
+    background-position: center 55% !important;
+  }
+
+  /* Home 1 background container: Exactly 300px height */
+  .global-hero-video-container.home-1-bg,
+  .global-hero-video-container:not(.home-2-bg):not(.home-3-bg):not(.home-4-bg) {
+    min-height: 300px !important;
+    height: 300px !important;
+    max-height: 300px !important;
+  }
+
+  /* Hero image filling responsive height (exclude home-1-hero-image so its zoom transform applies) */
+  .hero-fallback-image:not(.home-1-hero-image),
+  .hero-fallback-image.home-2-hero-image,
+  .hero-fallback-image.home-3-hero-image,
+  .hero-fallback-image.home-4-hero-image {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 35% !important;
+    transform: none !important;
+  }
+
+  /* Home 1 hero fallback image explicitly scaled */
+  .hero-fallback-image.home-1-hero-image {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 58% !important;
+    transform: scale(1.4, 2.0) !important;
+    transform-origin: center 58% !important;
+  }
+
+  /* Remove dark overlay on mobile so the full image is bright and crisp */
   .hero-subtle-overlay,
   .hero-dark-theme-overlay {
-    background:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.39) 0%, rgba(0, 0, 0, 0.30) 50%, rgba(0, 0, 0, 0.39) 100%),
-      linear-gradient(90deg, rgba(0, 0, 0, 0.38) 0%, rgba(0, 0, 0, 0.20) 100%) !important;
+    display: none !important;
+    opacity: 0 !important;
+  }
+
+  /* Hide mouse wheel scroll prompt on other homes in mobile */
+  .hero-mouse-indicator {
+    display: none !important;
+  }
+
+  /* Keep the mouse symbol in the mobile version for Home 1 */
+  .hero-section.home-1-hero .hero-mouse-indicator {
+    display: flex !important;
+    bottom: 0.55rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) scale(0.72) !important;
+    z-index: 30 !important;
+  }
+
+  .hero-section.home-1-hero .hero-mouse-indicator:hover {
+    transform: translateX(-50%) translateY(-2px) scale(0.72) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Phone screens: Home 1 fixed at 300px height */
+  .hero-section.home-1-hero {
+    min-height: 300px !important;
+    height: 300px !important;
+    max-height: 300px !important;
+  }
+
+  .global-hero-video-container.home-1-bg,
+  .global-hero-video-container:not(.home-2-bg):not(.home-3-bg):not(.home-4-bg) {
+    min-height: 300px !important;
+    height: 300px !important;
+    max-height: 300px !important;
+  }
+
+  .hero-section.home-1-hero .hero-mouse-indicator {
+    bottom: 0.5rem !important;
+    transform: translateX(-50%) scale(0.68) !important;
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .hero-section {
+    max-height: 100vh !important;
+  }
+  .global-hero-video-container {
+    max-height: 100vh !important;
   }
 }
 
@@ -390,62 +534,377 @@ main {
   color: var(--color-gold-light);
 }
 
-/* Scroll Prompt Indicator */
-.hero-scroll-prompt {
+/* ==========================================================================
+   Hero Bottom Mouse Scroll Indicators (Distinct per Home Page)
+   ========================================================================== */
+.hero-mouse-indicator {
   position: absolute;
-  bottom: 2rem;
+  bottom: 1.15rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
-  display: none;
+  z-index: 25;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
-  opacity: 0.6;
-  transition: opacity 0.3s ease, transform 0.3s ease;
   text-decoration: none;
   cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
 }
 
-.hero-scroll-prompt:hover {
-  opacity: 1;
-  transform: translate(-50%, 2px);
+.hero-mouse-indicator:hover {
+  transform: translateX(-50%) translateY(-3px);
 }
 
-@media (min-width: 768px) {
-  .hero-scroll-prompt {
-    display: flex;
-  }
-}
-
-.hero-scroll-label {
+.mouse-scroll-text {
   font-family: var(--font-sans);
   font-size: 0.65rem;
+  font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-cream);
+  margin-top: 0.5rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
-.hero-scroll-line {
-  width: 1px;
-  height: 24px;
-  background: linear-gradient(180deg, var(--color-gold) 0%, transparent 100%);
-  animation: pulseScroll 2s infinite ease-in-out;
+/* 1. HOME 1 MOUSE: Classic Luxury Mouse & Cascading Chevrons (Inspired by Rightblog EagNMN) */
+.mouse-style-rightblog .mouse-body-rightblog {
+  width: 26px;
+  height: 44px;
+  border: 2px solid #C6A457;
+  border-radius: 14px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding-top: 7px;
+  background: rgba(10, 19, 34, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
 }
 
-@keyframes pulseScroll {
+.mouse-wheel-rightblog {
+  width: 4px;
+  height: 8px;
+  background: #E3C564;
+  border-radius: 2px;
+  animation: rightblogWheel 2s infinite cubic-bezier(0.65, 0, 0.35, 1);
+}
 
-  0%,
-  100% {
-    opacity: 0.4;
+@keyframes rightblogWheel {
+  0% {
+    opacity: 1;
     transform: translateY(0);
   }
-
-  50% {
-    opacity: 1;
-    transform: translateY(4px);
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
   }
 }
+
+.mouse-arrows-cascade {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin-top: 6px;
+}
+
+.cascade-arrow {
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid #C6A457;
+  border-bottom: 2px solid #C6A457;
+  transform: rotate(45deg);
+  animation: rightblogArrows 2s infinite ease-in-out;
+}
+
+.arrow-unu {
+  animation-delay: 0.1s;
+}
+
+.arrow-doi {
+  animation-delay: 0.25s;
+}
+
+.arrow-trei {
+  animation-delay: 0.4s;
+}
+
+@keyframes rightblogArrows {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-4px, -4px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+}
+
+.mouse-style-rightblog .mouse-scroll-text {
+  color: #E3C564;
+}
+
+/* 2. HOME 2 MOUSE: Executive Falling Arrow & Geometric Mouse (Inspired by Pullagantiramachandra XxPZZE) */
+.mouse-style-falling .mouse-body-falling {
+  width: 24px;
+  height: 42px;
+  border: 2px solid #D4AF37;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  background: rgba(7, 12, 22, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.25), inset 0 0 8px rgba(212, 175, 55, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.mouse-drop-line {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 14px;
+  background: linear-gradient(180deg, #D4AF37 0%, transparent 100%);
+  animation: fallingDrop 1.6s infinite cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@keyframes fallingDrop {
+  0% {
+    transform: translateY(-14px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(44px);
+    opacity: 0;
+  }
+}
+
+.falling-arrow-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 22px;
+  width: 22px;
+  margin-top: 6px;
+}
+
+.falling-arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #D4AF37;
+  border-bottom: 2px solid #D4AF37;
+  transform: rotate(45deg);
+  animation: fallingArrowMotion 1.8s infinite ease-in-out;
+}
+
+.arrow-item-1 {
+  animation-delay: 0s;
+}
+
+.arrow-item-2 {
+  animation-delay: 0.4s;
+}
+
+@keyframes fallingArrowMotion {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-6px, -6px);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+}
+
+.mouse-style-falling .mouse-scroll-text {
+  color: #F8FAFC;
+  letter-spacing: 0.24em;
+}
+
+/* 3. HOME 3 MOUSE: Haute Editorial Floating Minimalist Mouse & Bouncing Arrow (Inspired by Jurbank WZovGE) */
+.mouse-style-jurbank .mouse-body-jurbank {
+  width: 22px;
+  height: 38px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+  background: rgba(16, 22, 34, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.mouse-track-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+  animation: jurbankDot 1.8s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+@keyframes jurbankDot {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(12px);
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.jurbank-arrow-wrapper {
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+  animation: jurbankBounce 2s infinite ease-in-out;
+}
+
+.jurbank-chevron {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #D4B66E;
+  border-bottom: 2px solid #D4B66E;
+  transform: rotate(45deg);
+  display: block;
+}
+
+@keyframes jurbankBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(7px);
+  }
+  60% {
+    transform: translateY(3px);
+  }
+}
+
+.mouse-style-jurbank .mouse-scroll-text {
+  color: #FAF8F5;
+  letter-spacing: 0.28em;
+}
+
+/* 4. HOME 4 MOUSE: Metropolitan Skyline Glow Mouse Indicator */
+.mouse-style-skyline .mouse-body-skyline {
+  width: 25px;
+  height: 42px;
+  border: 2px solid #E5C06E;
+  border-radius: 12px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+  background: rgba(10, 27, 54, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(229, 192, 110, 0.25);
+}
+
+.mouse-glow-orb {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #F5C862;
+  box-shadow: 0 0 10px #F5C862, 0 0 18px #E5C06E;
+  animation: skylineOrb 2s infinite ease-in-out;
+}
+
+@keyframes skylineOrb {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(14px);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.skyline-arrow-wrapper {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.skyline-chevron {
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid #E5C06E;
+  border-bottom: 2px solid #E5C06E;
+  transform: rotate(45deg);
+  display: block;
+  animation: skylinePulse 2s infinite ease-in-out;
+}
+
+.chevron-top {
+  animation-delay: 0s;
+}
+
+.chevron-bot {
+  animation-delay: 0.3s;
+}
+
+@keyframes skylinePulse {
+  0% {
+    opacity: 0.3;
+    transform: rotate(45deg) translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(45deg) translateY(3px);
+  }
+  100% {
+    opacity: 0.3;
+    transform: rotate(45deg) translateY(0);
+  }
+}
+
+.mouse-style-skyline .mouse-scroll-text {
+  color: #F5C862;
+  letter-spacing: 0.22em;
+}
+
+@media (max-width: 640px) {
+  .hero-mouse-indicator {
+    bottom: 0.85rem;
+    transform: translateX(-50%) scale(0.85);
+  }
+
+  .hero-mouse-indicator:hover {
+    transform: translateX(-50%) translateY(-2px) scale(0.85);
+  }
+}
+
 
 /* Mobile Font Size & Spacing Optimizations */
 @media (max-width: 640px) {

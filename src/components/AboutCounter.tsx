@@ -17,7 +17,7 @@ const CountUpNumber: React.FC<{ target: number; suffix: string; duration?: numbe
 }) => {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInView(ref, { once: true, amount: 0.05 });
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export const AboutCounter: React.FC = () => {
   const fadeUp = (delay: number) => ({
     initial: reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.15 },
+    viewport: { once: true, amount: 0.05 },
     transition: { duration: 0.8, delay, ease }
   });
 

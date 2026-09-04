@@ -176,7 +176,7 @@
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  object-position: right !important;
+  object-position: center !important;
   display: block !important;
 }
 
@@ -335,3 +335,101 @@
     padding: 1rem 1.75rem;
   }
 }
+
+/* Home 2 Dedicated CTA Section - Centered Luxury Plaque with Reduced Space */
+.home2-cta-section {
+  background-color: #000000 !important;
+  padding: 2.5rem 0 2rem !important;
+}
+
+.home2-cta-panel {
+  background-color: #000000 !important;
+  background: radial-gradient(ellipse at 50% 50%, rgba(176, 140, 72, 0.08) 0%, #000000 80%) !important;
+  border: 1px solid rgba(176, 140, 72, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 40px rgba(176, 140, 72, 0.04);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.home2-cta-panel .cta-inner-frame {
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(176, 140, 72, 0.4);
+}
+
+.home2-cta-panel .cta-banner-grid {
+  min-height: unset !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100%;
+}
+
+.home2-cta-panel .cta-left-column {
+  flex: 1;
+  max-width: 780px;
+  padding: 3.25rem 2.5rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  margin: 0 auto;
+}
+
+.home2-cta-panel .cta-banner-heading {
+  text-align: center !important;
+  font-size: clamp(2rem, 3.2vw, 2.65rem);
+  line-height: 1.25;
+}
+
+.home2-cta-panel .cta-heading-divider {
+  margin: 1.25rem auto !important;
+  width: 55px;
+  height: 2px;
+  background-color: var(--color-gold);
+}
+
+.home2-cta-panel .cta-banner-subtext {
+  text-align: center !important;
+  max-width: 620px;
+  margin: 0 auto 2rem auto !important;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(245, 242, 234, 0.85);
+}
+
+.home2-cta-panel .cta-banner-buttons {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1.25rem;
+  width: auto;
+}
+
+@media (max-width: 991px) {
+  .home2-cta-panel .cta-left-column {
+    padding: 3rem 2rem !important;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .home2-cta-panel .cta-left-column {
+    padding: 2.75rem 1.5rem !important;
+  }
+
+  .home2-cta-panel .cta-banner-buttons {
+    flex-direction: column !important;
+    width: 100%;
+    gap: 0.85rem;
+  }
+
+  .home2-cta-panel .cta-btn-gold-rect,
+  .home2-cta-panel .cta-btn-outline-rect {
+    width: 100%;
+  }
+}
+
+

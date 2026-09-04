@@ -12,20 +12,21 @@ import { HomeCTA } from '../components/HomeCTA';
 interface HomeProps {
   isHome2?: boolean;
   isHome3?: boolean;
+  isHome4?: boolean;
 }
 
-export const Home: React.FC<HomeProps> = ({ isHome2, isHome3 }) => {
+export const Home: React.FC<HomeProps> = ({ isHome2, isHome3, isHome4 }) => {
   return (
     <>
-      <Hero isHome2={isHome2} isHome3={isHome3} />
+      <Hero isHome2={isHome2} isHome3={isHome3} isHome4={isHome4} />
       <BrandMarquee />
-      <About />
-      <AboutCounter />
+      <About isHome2={isHome2} isHome3={isHome3} isHome4={isHome4} />
+      {!isHome2 && <AboutCounter />}
       <Services />
       <WhyChooseUs />
       <PortfolioHome />
       <LeadershipCarousel />
-      <HomeCTA />
+      <HomeCTA isHome2={isHome2} />
     </>
   );
 };

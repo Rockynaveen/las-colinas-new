@@ -371,10 +371,32 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
     margin-bottom: 2rem;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .why-header-left {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .why-section-label {
+    text-align: center;
+  }
+
+  .why-section-heading {
+    text-align: center;
   }
 
   .why-header-right {
     max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .why-section-description {
+    text-align: center;
   }
 
   .why-main-grid {

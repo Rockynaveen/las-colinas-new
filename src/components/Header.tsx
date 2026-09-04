@@ -69,7 +69,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPath: propPath }) => {
   const homeList = [
     { name: 'Home 01', hash: '/' },
     { name: 'Home 02', hash: '/home-2' },
-    { name: 'Home 03', hash: '/home-3' }
+    { name: 'Home 03', hash: '/home-3' },
+    { name: 'Home 04', hash: '/home-4' }
   ];
 
   const activePath = propPath || localPath;

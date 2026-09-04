@@ -131,6 +131,7 @@ const AppContent: React.FC = () => {
 
   const isHome2Check = currentPath === '/home-2' || currentPath === '/home-page-2';
   const isHome3Check = currentPath === '/home-3' || currentPath === '/home-page-3';
+  const isHome4Check = currentPath === '/home-4' || currentPath === '/home-page-4';
   const isAboutCheck = currentPath.startsWith('/about') || ['/overview', '/story', '/vision', '/values', '/advantage', '/team', '/leadership'].some(k => currentPath.includes(k));
   const isServicesPath = currentPath.startsWith('/services') || currentPath === '/a-la-carte-services' || currentPath === '/a-la-carte';
   const isHomePage = !isAboutCheck && !isServicesPath && !['/portfolio', '/careers', '/contact'].includes(currentPath);
@@ -157,26 +158,33 @@ const AppContent: React.FC = () => {
       case '/home-3':
       case '/home-page-3':
         return <Home isHome3={true} />;
+      case '/home-4':
+      case '/home-page-4':
+        return <Home isHome4={true} />;
       default:
         return <Home isHome2={false} />;
     }
   };
 
-  // Dynamic Hero Background Image: Home 01 (/hero img.png) vs Home 02 (/hero dark  theme.png) vs Home 03 (/hero white theme.png)
-  const heroImageSrc = isHome3Check
-    ? '/hero white theme.png'
-    : isHome2Check
-      ? '/hero dark  theme.png'
-      : '/hero img.png';
+  const isHome1Check = !isHome2Check && !isHome3Check && !isHome4Check;
+
+  // Dynamic Hero Background Image: Home 01 (/hero img.png) vs Home 02 (/hero dark theme.png) vs Home 03 (/hero white theme.png) vs Home 04 (/lc-hero-4.webp)
+  const heroImageSrc = isHome4Check
+    ? '/lc-hero-4.webp'
+    : isHome3Check
+      ? '/hero white theme.png'
+      : isHome2Check
+        ? '/hero dark  theme.png'
+        : '/hero img.png';
 
   const memoizedHeroImage = useMemo(() => (
     <img
       key={heroImageSrc}
       src={heroImageSrc}
       alt="Las Colinas Hospitality Hero Background"
-      className={`hero-fallback-image visible ${isHome2Check ? 'home-2-hero-image' : ''} ${isHome3Check ? 'home-3-hero-image' : ''}`}
+      className={`hero-fallback-image visible ${isHome1Check ? 'home-1-hero-image' : ''} ${isHome2Check ? 'home-2-hero-image' : ''} ${isHome3Check ? 'home-3-hero-image' : ''} ${isHome4Check ? 'home-4-hero-image' : ''}`}
     />
-  ), [heroImageSrc, isHome2Check, isHome3Check]);
+  ), [heroImageSrc, isHome1Check, isHome2Check, isHome3Check, isHome4Check]);
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-[#121F34] relative overflow-hidden font-sans light-theme">
@@ -184,7 +192,7 @@ const AppContent: React.FC = () => {
       <Header currentPath={currentPath} />
 
       {/* Global persistent background video */}
-      <div className={`global-hero-video-container ${isHomePage ? 'visible' : 'hidden'} ${isHome2Check ? 'home-2-bg' : ''} ${isHome3Check ? 'home-3-bg' : ''}`}>
+      <div className={`global-hero-video-container ${isHomePage ? 'visible' : 'hidden'} ${isHome1Check ? 'home-1-bg' : ''} ${isHome2Check ? 'home-2-bg' : ''} ${isHome3Check ? 'home-3-bg' : ''} ${isHome4Check ? 'home-4-bg' : ''}`}>
         {memoizedHeroImage}
       </div>
 
